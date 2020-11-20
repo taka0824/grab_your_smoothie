@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <%= form_with model: @smoothie, url: end_users_smoothies_path, local: true do |f| %>
+      <div class="col-xs-6">
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="col-xs-6">
+        <%= f.label :introduction, "スムージー説明文" %><br>
+        <%= f.text_area :introduction %><br>
+        マイページのおすすめレシピに登録しますか？<br>
+        <%= f.radio_button :is_recommended, :true %>
+        <%= f.label :is_recommended, "Yes" %><br>
+        <%= f.radio_button :is_recommended, :false %>
+        <%= f.label :is_recommended, "No" %><br>
+        <%= f.submit "保存", class:"btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

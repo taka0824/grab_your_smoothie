@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class='col-xs-3 col-offset-xs-4'>
+      <h2>ユーザー一覧</h2>
+    </div>
+  </div>
+  <div class="row">
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>ユーザー名</th>
+          <th>スムージー投稿</th>
+          <th>いいねした投稿</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @end_users.each do |end_user| %>
+          <tr>
+            <td>
+              <%= link_to end_user.name, end_users_end_user_path(end_user) %>
+            </td>
+            <td>
+              <%= link_to end_user.smoothies.count, recipe_list_end_users_end_user_path(end_user) %>レシピ
+            </td>
+            <td>
+              <%= link_to end_user.favorites.count, favorite_list_end_users_end_user_path(end_user) %>レシピ
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

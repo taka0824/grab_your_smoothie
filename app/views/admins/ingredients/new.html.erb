@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <%= form_with model: @ingredient,url: admins_ingredients_path, local: true do |f| %>
+      <div class="col-xs-3">
+        <%= f.attachment_field :image %>
+      </div>
+      <div class="col-xs-9">
+        <h3>栄養素は材料100gあたりの数値を入力</h3>
+        <%= f.label :name_hiragana, "材料名" %>
+        <%= f.text_field :name %><br>
+        <%= f.label :edible_part_amount, "1つあたりの可食部重量" %>
+        <%= f.text_field :edible_part_amount %>g<br>
+        <%= f.label :energy, "エネルギー" %>
+        <%= f.text_field :energy %>kcal<br>
+        <%= f.label :protein, "タンパク質" %>
+        <%= f.text_field :protein %>g<br>
+        <%= f.label :carb, "糖質" %>
+        <%= f.text_field :carb %>g<br>
+        <%= f.label :lipid, "脂質" %>
+        <%= f.text_field :lipid %>g<br>
+        <%= f.label :vitamin_a, "ビタミンA" %>
+        <%= f.text_field :vitamin_a %>μgRAE<br>
+        <%= f.label :vitamin_b1, "ビタミンB1" %>
+        <%= f.text_field :vitamin_b1 %>mg<br>
+        <%= f.label :vitamin_b2, "ビタミンB2" %>
+        <%= f.text_field :vitamin_b2 %>mg<br>
+        <%= f.label :vitamin_b6, "ビタミンB6" %>
+        <%= f.text_field :vitamin_b6 %>mg<br>
+        <%= f.label :vitamin_b12, "ビタミンB12" %>
+        <%= f.text_field :vitamin_b12 %>μg<br>
+        <%= f.label :vitamin_c, "ビタミンC" %>
+        <%= f.text_field :vitamin_c %>mg<br>
+        <%= f.label :vitamin_d, "ビタミンD" %>
+        <%= f.text_field :vitamin_d %>μg<br>
+        <%= f.label :vitamin_e, "ビタミンE" %>
+        <%= f.text_field :vitamin_e %>mg<br>
+        <%= f.label :vitamin_k, "ビタミンK" %>
+        <%= f.text_field :vitamin_k %>μg<br>
+        <%= f.submit "追加" %>
+      </div>
+    <% end %>
+  </div>
+</div>

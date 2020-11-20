@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      材料詳細編集画面
+    </div>
+  </div>
+  <%= form_with model: @ingredient, url: admins_ingredient_path(@ingredient), local: true do |f| %>
+    <div class="row">
+      <div class="col-xs-6">
+        <%= @ingredient.name %><br>
+        <%= attachment_image_tag @ingredient, :image, :fill, 200, 200, format:'jpeg',fallback:"no_image.jpg",size:"200x200"%><br>
+         <%= f.attachment_field :image %>
+            画像選択
+      </div>
+      <div class="col-xs-6">
+        1個あたりの可食部<%= @ingredient.edible_part_amount %>gに含まれる栄養素
+        <table class="table">
+          <thead>
+            <tr>
+              <th>栄養素</th>
+              <th>量</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>エネルギー</td>
+              <td><%= f.text_field :energy, value: @ingredient.energy %>kcal</td>
+            </tr>
+            <tr>
+              <td>タンパク質</td>
+              <td><%= f.text_field :protein, value: @ingredient.protein %>g</td>
+            </tr>
+            <tr>
+              <td>糖質</td>
+              <td><%= f.text_field :carb, value: @ingredient.carb %>g</td>
+            </tr>
+            <tr>
+              <td>脂質</td>
+              <td><%= f.text_field :lipid, value: @ingredient.lipid %>g</td>
+            </tr>
+            <tr>
+              <td>ビタミンA</td>
+              <td><%= f.text_field :vitamin_a, value: @ingredient.convert_to_micro(@ingredient.vitamin_a) %>μg</td>
+            </tr>
+            <tr>
+              <td>ビタミンB1</td>
+              <td><%= f.text_field :vitamin_b1, value: @ingredient.convert_to_mili(@ingredient.vitamin_b1) %>mg</td>
+            </tr>
+            <tr>
+              <td>ビタミンB2</td>
+              <td><%= f.text_field :vitamin_b2, value: @ingredient.convert_to_mili(@ingredient.vitamin_b2) %>mg</td>
+            </tr>
+            <tr>
+              <td>ビタミンB6</td>
+              <td><%= f.text_field :vitamin_b6, value: @ingredient.convert_to_mili(@ingredient.vitamin_b6) %>mg</td>
+            </tr>
+            <tr>
+              <td>ビタミンB12</td>
+              <td><%= f.text_field :vitamin_b12, value: @ingredient.convert_to_micro(@ingredient.vitamin_b12) %>μg</td>
+            </tr>
+            <tr>
+              <td>ビタミンC</td>
+              <td><%= f.text_field :vitamin_c, value: @ingredient.convert_to_mili(@ingredient.vitamin_c) %>mg</td>
+            </tr>
+            <tr>
+              <td>ビタミンD</td>
+              <td><%= f.text_field :vitamin_d, value: @ingredient.convert_to_micro(@ingredient.vitamin_d) %>μg</td>
+            </tr>
+            <tr>
+              <td>ビタミンE</td>
+              <td><%= f.text_field :vitamin_e, value: @ingredient.convert_to_mili(@ingredient.vitamin_e) %>mg</td>
+            </tr>
+            <tr>
+              <td>ビタミンK</td>
+              <td><%= f.text_field :vitamin_k, value: @ingredient.convert_to_micro(@ingredient.vitamin_k) %>μg</td>
+            </tr>
+          </tbody>
+        </table>
+        <%= f.submit "更新" %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-5">
+      <%= link_to admins_ingredient_path(@ingredient), method: :delete do %>
+        <btn class="btn btn-danger">削除</btn>
+      <% end %>
+    </div>
+</div>
+</div>

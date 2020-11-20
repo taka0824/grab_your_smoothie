@@ -4,10 +4,51 @@
     <title>Gys</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <script src="https://kit.fontawesome.com/850f0b1727.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
+  <div class="header-list">
+    <nav>
+      <ul>
+        <% if end_user_signed_in? %>
+          <li class="header-list-item"><%= link_to "トップ", root_path %></button></li>
+          <li class="header-list-item"><%= link_to "about", about_path %></button></li>
+          <li class="header-list-item"><%= link_to "マイページ", end_users_end_user_path(current_end_user) %></li>
+          <li class="header-list-item"><%= link_to "ユーザー一覧", end_users_end_users_path %></li>
+          <li class="header-list-item"><%= link_to "レシピ", end_users_search_ways_path %></li>
+          <li class="header-list-item"><%= link_to "ジューサー", end_users_juicer_ingredients_path %></li>
+          <li class="header-list-item"><%= link_to "栄養素一覧", end_users_nutrients_path %></li>
+          <li class="header-list-item"><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
+        <% elsif admin_signed_in? %>
+          <li class="header-list-item"><%= link_to "会員", admins_end_users_path %></li>
+          <li class="header-list-item"><%= link_to "材料", admins_ingredients_path %></li>
+          <li class="header-list-item"><%= link_to "栄養素", admins_nutrients_path %></li>
+          <li class="header-list-item"><%= link_to "コメント", admins_comments_path %></li>
+          <li class="header-list-item"><%= link_to "スムージー", admins_smoothies_path %></li>
+          <li class="header-list-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        <% else %>
+          <li class="header-list-item"><%= link_to "トップ", root_path %></button></li>
+          <li class="header-list-item"><%= link_to "about", about_path %></button></li>
+          <li class="header-list-item"><%= link_to "ユーザー一覧", end_users_end_users_path %></li>
+          <li class="header-list-item"><%= link_to "レシピ", end_users_search_ways_path %></li>
+          <li class="header-list-item"><%= link_to "ジューサー", end_users_juicer_ingredients_path %></li>
+          <li class="header-list-item"><%= link_to "栄養素一覧", end_users_nutrients_path %></li>
+          <li class="header-list-item"><%= link_to "新規登録", new_end_user_registration_path %></li>
+          <li class="header-list-item"><%= link_to "ログイン", new_end_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+
+
+  <% if flash[:notice] %>
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
   <body>
     <%= yield %>

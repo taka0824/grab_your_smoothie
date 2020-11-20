@@ -1,0 +1,28 @@
+<% if comments.empty? %>
+　<h3>コメントはまだありません</h3>
+<% else %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ユーザー名</th>
+        <th>コメント</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% comments.each do |comment| %>
+        <tr>
+          <td><%= comment.end_user.name %></td>
+          <td><%= comment.content %></td>
+          <td>
+            <% if current_end_user == comment.end_user %>
+              <%= link_to end_users_smoothy_comment_path(smoothie, comment), method: :delete do %>
+                <button class="btn btn-danger">削除</button>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

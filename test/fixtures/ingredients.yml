@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_hiragana: 
+  name_katakana: MyString
+  name_kanji: MyString
+  image_id: MyString
+  edible_part_amount: 1
+  energy: 9.99
+  protein: 9.99
+  carb: 9.99
+  lipid: 9.99
+  vitamin_a: 9.99
+  vitamin_b1: 9.99
+  vitamin_b2: 
+  vitamin_b6: 9.99
+  vitamin_b12: 9.99
+  vitamin_c: 9.99
+  vitamin_d: 9.99
+  vitamin_e: 9.99
+  vitamin_k: 9.99
+
+two:
+  name_hiragana: 
+  name_katakana: MyString
+  name_kanji: MyString
+  image_id: MyString
+  edible_part_amount: 1
+  energy: 9.99
+  protein: 9.99
+  carb: 9.99
+  lipid: 9.99
+  vitamin_a: 9.99
+  vitamin_b1: 9.99
+  vitamin_b2: 
+  vitamin_b6: 9.99
+  vitamin_b12: 9.99
+  vitamin_c: 9.99
+  vitamin_d: 9.99
+  vitamin_e: 9.99
+  vitamin_k: 9.99

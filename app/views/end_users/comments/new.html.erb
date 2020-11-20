@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>コメント</h2>
+    </div>
+    <div class="col-xs-6">
+      <%= attachment_image_tag @smoothie, :image, :fill, 200, 200, format:'jpeg',fallback:"no_image.jpg",size:"200x200"%><br>
+      <%= @smoothie.introduction %><br>
+      <div class="comment_form">
+        <%= render partial: "end_users/comments/comment_form", locals: { smoothie: @smoothie, comment: @comment } %>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class='comment_table'>
+        <%= render partial: "end_users/comments/comment_table", locals: { comments: @comments, smoothie: @smoothie} %>
+      </div>
+    </div>
+  </div>
+</div>

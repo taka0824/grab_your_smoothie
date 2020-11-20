@@ -1,0 +1,2 @@
+module JuicerIngredientsHelper
+end
