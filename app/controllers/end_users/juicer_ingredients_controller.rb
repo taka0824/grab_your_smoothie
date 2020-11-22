@@ -1,5 +1,5 @@
 class EndUsers::JuicerIngredientsController < ApplicationController
-
+  before_action :authenticate_end_user!
   def create
     @juicer_ingredient = current_end_user.juicer_ingredients.new(juicer_ingredient_params)
     if current_end_user.juicer_ingredients.find_by(ingredient_id: params[:juicer_ingredient][:ingredient_id]).present?

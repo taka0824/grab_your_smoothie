@@ -1,5 +1,5 @@
 class EndUsers::FavoritesController < ApplicationController
-
+  before_action :authenticate_end_user!
   def create
     current_end_user.favorites.new(smoothie_id: params[:smoothy_id]).save
     redirect_to request.referer

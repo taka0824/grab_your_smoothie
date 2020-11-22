@@ -3,110 +3,52 @@
     <div class="col-xs-3">
       <%= render partial: "end_users/end_users/mypage_sidebar", locals: { end_user: @end_user } %>
     </div>
-    <% if @smoothie == nil %>
-      <div class="col-xs-3">
-        <h3>おすすめスムージはまだ登録されていません</h3>
-      </div>
-    <% else %>
-      <div class='col-xs-3'>
-        <h2><%= @end_user.name %>さんおすすめレシピ</h2><br>
-        <div class="introduction">
-          <%= @smoothie.introduction %>
+    <div class="col-xs-9">
+      <% if @smoothie == nil %>
+        <div class="row">
+          <div class="col-xs-9">
+            <div class="page-titale">
+              <h3>おすすめスムージはまだ登録されていません</h3>
+            </div>
+          </div>
         </div>
-        <div class="smoothie_image">
-          <%= attachment_image_tag @smoothie, :image, :fill, 200, 200, format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
+      <% else %>
+        <div class="row">
+          <div class="col-xs-9">
+            <div class="page-titale">
+              <h2><%= @end_user.name %>さんおすすめレシピ</h2>
+            </div>
+          </div>
         </div>
-        <div class="favorite_button">
-          <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: @smoothie } %>
+        <div class="row">
+          <div class='col-xs-3'>
+            <div class="introduction">
+              <%= @smoothie.introduction %>
+            </div>
+            <div class="smoothie_image">
+              <%= attachment_image_tag @smoothie, :image, :fill, 200, 200, format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
+            </div>
+            <div class="favorite_button">
+              <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: @smoothie } %>
+            </div>
+            <div class="comment_button">
+              <%= link_to new_end_users_smoothy_comment_path(@smoothie) do %>
+                <i class="fas fa-pen"></i>コメント<%= @smoothie.comments.count %>件
+              <% end %>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="ingredients-table">
+              <%= render partial: "end_users/ingredients/total_ingredients_table", locals: { smoothie: @smoothie } %>
+            </div>
+          </div>
+          <div class='col-xs-3'>
+            <div class="nutrients-table">
+              <%= render partial: "end_users/smoothies/total_nutrients_table", locals: { smoothie_ingredients: @smoothie_ingredients} %>
+            </div>
+          </div>
         </div>
-        <div class="comment_button">
-          <%= link_to new_end_users_smoothy_comment_path(@smoothie) do %>
-            <i class="fas fa-pen"></i>コメント<%= @smoothie.comments.count %>件
-          <% end %>
-        </div>
-      </div>
-      <div class="col-xs-3">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>材料名</th>
-              <th>量（グラム）</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @smoothie.smoothie_ingredients.each do |smoothie_ingredient| %>
-              <tr>
-                <td><%= smoothie_ingredient.ingredient.name %></td>
-                <td><%= smoothie_ingredient.amount %>グラム</td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-      <div class='col-xs-3'>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>栄養素</th>
-              <th>量</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>エネルギー</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_gram(:energy) %> kcal</td>
-            </tr>
-            <tr>
-              <td>タンパク質</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_gram(:protein) %> g</td>
-            </tr>
-            <tr>
-              <td>糖質</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_gram(:carb) %> g</td>
-            </tr>
-            <tr>
-              <td>脂質</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_gram(:lipid) %> g</td>
-            </tr>
-            <tr>
-              <td>ビタミンA</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_micro(:vitamin_a) %> μg</td>
-            </tr>
-            <tr>
-              <td>ビタミンB1</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_mili(:vitamin_b1) %> mg</td>
-            </tr>
-            <tr>
-              <td>ビタミンB2</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_mili(:vitamin_b2) %> mg</td>
-            </tr>
-            <tr>
-              <td>ビタミンB6</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_mili(:vitamin_b6) %> mg</td>
-            </tr>
-            <tr>
-              <td>ビタミンB12</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_micro(:vitamin_b12) %> μg</td>
-            </tr>
-            <tr>
-              <td>ビタミンC</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_mili(:vitamin_c) %> mg</td>
-            </tr>
-            <tr>
-              <td>ビタミンD</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_micro(:vitamin_d) %> μg</td>
-            </tr>
-            <tr>
-              <td>ビタミンE</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_mili(:vitamin_e) %> mg</td>
-            </tr>
-            <tr>
-              <td>ビタミンK</td>
-              <td><%= @smoothie_ingredients.total_nutrient_to_micro(:vitamin_k) %> μg</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

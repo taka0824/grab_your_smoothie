@@ -1,9 +1,14 @@
 <div class="container">
   <div class="row">
-    <%= form_with model: @ingredient,url: confirm_admins_ingredients_path, method: :get, local: true do |f| %>
+    <%= form_with model: @ingredient,url: confirm_end_users_ingredients_path, method: :get, local: true do |f| %>
       <div class="col-xs-9">
-        <h3>栄養素は材料100gあたりの数値を入力</h3>
-         <table class="table">
+        <div class="form-header">
+          <h4>
+            ※栄養素は100gあたりの数値入力をお願いいたします。<br>
+            不明な箇所は0とご入力ください。
+          </h4>
+        </div>
+        <table class="table">
           <tr>
             <th><%= f.label :name_hiragana, "材料名" %></th>
             <td><%= f.text_field :name %></td>

@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>材料名</th>
+      <th>量（グラム）</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% smoothie.smoothie_ingredients.each do |smoothie_ingredient| %>
+      <tr>
+        <td><%= smoothie_ingredient.ingredient.name %></td>
+        <td><%= smoothie_ingredient.amount %>グラム</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

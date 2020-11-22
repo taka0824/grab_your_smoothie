@@ -1,4 +1,5 @@
 class EndUsers::CommentsController < ApplicationController
+  before_action :authenticate_end_user!
 
   def new
     @smoothie = Smoothie.find(params[:smoothy_id])
@@ -14,7 +15,7 @@ class EndUsers::CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find_by(params[:id]).destroy
+    Comment.find(params[:id]).destroy
     redirect_to request.referer
   end
 

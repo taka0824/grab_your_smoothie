@@ -1,11 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
-      <%= @ingredient.name %><br>
-      <%= attachment_image_tag @ingredient, :image, :fill, 200, 200, format:'jpeg',fallback:"no_image.jpg",size:"200x200"%><br>
-    </div>
-    <div class="col-xs-4">
-      <h3>１(個/杯）あたりの可食部<%= @ingredient.edible_part_amount %>に含まれる栄養素</h3>
+      <h3><%= @ingredient.name %>100gあたりに含まれる栄養素一覧</h3>
       <table class="table">
         <thead>
           <tr>
@@ -17,19 +13,19 @@
         <tbody>
           <tr>
             <td>エネルギー</td>
-            <td><%= @ingredient.energy %>kcal</td>
+            <td><%= @ingredient.energy.round(3) %>kcal</td>
           </tr>
           <tr>
             <td>タンパク質</td>
-            <td><%= @ingredient.protein %>g</td>
+            <td><%= @ingredient.protein.round(3) %>g</td>
           </tr>
           <tr>
             <td>糖質</td>
-            <td><%= @ingredient.carb %>g</td>
+            <td><%= @ingredient.carb.round(3) %>g</td>
           </tr>
           <tr>
             <td>脂質</td>
-            <td><%= @ingredient.lipid %>g</td>
+            <td><%= @ingredient.lipid.round(3) %>g</td>
           </tr>
           <tr>
             <td>ビタミンA</td>
@@ -71,11 +67,15 @@
       </table>
     </div>
     <div class="col-xs-4">
-      <%= form_with model: @juicer_ingredient, url: end_users_juicer_ingredients_path, local: true do |f| %>
+      <div class="form-to-add-juicer">
+        <%= form_with model: @juicer_ingredient, url: end_users_juicer_ingredients_path, local: true do |f| %>
         <%= f.hidden_field :ingredient_id, :value => @ingredient.id %>
         <%= f.text_field :amount %>グラム
-        <%= f.submit "ジューサーに追加" %>
+        <div class='add-btn'>
+          <%= f.submit "ジューサーに追加" %>
+        </div>
       <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -7,27 +7,11 @@
       <%= @end_user.name %>さんの投稿はありません
     <% else %>
       <div class="col-xs-9">
-        <div class="page_title">
+        <div class="page-title">
           <h2><%= @end_user.name %>さんの投稿レシピ一覧</h2>
         </div>
-        <div class="recipes">
-          <% @smoothies.each do |smoothie| %>
-            <div class="recipe">
-              <div class="recipe_image">
-                <%= link_to end_users_smoothy_path(smoothie) do %>
-                  <%= attachment_image_tag smoothie, :image, :fill, 150, 150, format:'jpeg', fallback: "no_image.jpg", size: "150x150" %>
-                <% end %>
-              </div>
-              <div>
-                <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: smoothie } %>
-              </div>
-              <div>
-                <%= link_to new_end_users_smoothy_comment_path(smoothie) do %>
-                  <i class="fas fa-pen"></i>コメント<%= smoothie.comments.count %>件
-                <% end %>
-              </div>
-            </div>
-          <% end %>
+        <div class="smoothies">
+          <%= render partial: "end_users/smoothies/smoothie_boxes", locals: { smoothies: @smoothies } %>
         </div>
       </div>
     <% end %>

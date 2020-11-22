@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="page_title">
+        <h2>レシピ検索</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="search-way-boxes">
+        <div class="search-way-box">
+          <%= link_to new_smoothies_end_users_smoothies_path do %>
+            <div class="box-header">
+              <p>新着から</p>
+            </div>
+          <% end %>
+        </div>
+        <div class="search-way-box">
+          <%= link_to  smoothie_ranking_end_users_smoothies_path do %>
+            <div class="box-header">
+              <p>ランキングから</p>
+            </div>
+          <% end %>
+        </div>
+        <div class="search-way-box">
+          <div class="box-header">
+            <p>
+              材料or説明文<br>
+              検索
+            </p>
+          </div>
+          <div class="search-form">
+            <%= form_with url: end_users_searches_recipe_search_path, local: true, method: :get do |f| %>
+              <%= f.text_field :word, placeholder: "ここに入力" %>
+              <%= f.submit "検索" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="search-way-box">
+          <%= link_to end_users_ingredients_path do %>
+            <div class="box-header">
+              <p>自分で作る</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

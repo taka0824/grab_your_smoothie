@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <div class="page_title">
+        <% if @smoothies.empty? %>
+          <h2><%= @word %>と関連するスムージはありません</h2>
+        <% else %>
+          <h2><%= @word %>と関連するスムージー一覧</h2>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% if @smoothies.any? %>
+    <div class="row">
+      <div class="col-xs-9">
+        <div class="smoothies">
+          <%= render partial: "end_users/smoothies/smoothie_boxes", locals: { smoothies: @smoothies } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

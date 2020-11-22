@@ -1,7 +1,16 @@
 class EndUsers::SmoothiesController < ApplicationController
-
+  before_action :authenticate_end_user!
+  
   def new
     @smoothie = Smoothie.new
+  end
+  
+  def new_smoothies
+    @smoothies = Smoothie.first(9)
+  end
+  
+  def smoothie_ranking
+    @all_ranks = Smoothie.joins(:favorites).where(favorites: {created_at: Time.now.all_month}).group(:id).order('count(favorites.smoothie_id) desc')
   end
 
   def show

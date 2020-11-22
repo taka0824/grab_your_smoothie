@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     get "searches/recipe_search" => "searches#recipe_search"
     get "searches/ingredient_search" => "searches#ingredient_search"
     resources :nutrients, only: [:index]
-    resources :ingredients, only: [:index, :new, :create, :show]
+    resources :ingredients, only: [:index, :new, :create, :show] do
+      get :confirm, on: :collection
+    end
     resources :juicer_ingredients, only: [:create, :index, :destroy, :update] do
       delete :destroy_all, on: :collection
     end
@@ -38,9 +40,11 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :comments, only: [:index, :destroy]
     resources :end_users, only: [:index, :update]
-    resources :ingredients, only: [:create, :show, :update, :destroy, :index, :new]
+    resources :ingredients, only: [:create, :show, :update, :destroy, :index, :new] do
+      get :confirm, on: :collection
+    end
     resources :smoothies, only: [:index, :show, :destroy]
-     resources :nutrients, only: [:index]
+    resources :nutrients, only: [:index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

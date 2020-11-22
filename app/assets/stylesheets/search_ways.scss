@@ -1,3 +1,20 @@
 // Place all the styles related to the search_ways controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search-way-boxes {
+  display: flex;
+}
+
+.search-way-box {
+  width: 20%;
+  height: 200px;
+  margin-right: 5%;
+  border: solid 2px black;
+}
+
+.box-header {
+  border: solid 2px black;
+  margin: 5px;
+  text-align: center;
+}

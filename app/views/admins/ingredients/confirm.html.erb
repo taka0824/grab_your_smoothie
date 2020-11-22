@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="ingredient-name">
+        <%= @ingredient.name %>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <h3>１(個/杯）あたりの可食部<%= @ingredient.edible_part_amount %>に含まれる栄養素</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>栄養素</th>
+            <th>量</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>〜グラムあたりの栄養栄養素量</td>
+            <td><%= @gram %>gあたり</td>
+          </tr>
+          <tr>
+            <td>エネルギー</td>
+            <td><%= @ingredient.energy %>kcal</td>
+          </tr>
+          <tr>
+            <td>タンパク質</td>
+            <td><%= @ingredient.protein %>g</td>
+          </tr>
+          <tr>
+            <td>糖質</td>
+            <td><%= @ingredient.carb %>g</td>
+          </tr>
+          <tr>
+            <td>脂質</td>
+            <td><%= @ingredient.lipid %>g</td>
+          </tr>
+          <tr>
+            <td>ビタミンA</td>
+            <td><%= @ingredient.vitamin_a%>μg</td>
+          </tr>
+          <tr>
+            <td>ビタミンB1</td>
+            <td><%= @ingredient.vitamin_b1 %>mg</td>
+          </tr>
+          <tr>
+            <td>ビタミンB2</td>
+            <td><%= @ingredient.vitamin_b2 %>mg</td>
+          </tr>
+          <tr>
+            <td>ビタミンB6</td>
+            <td><%= @ingredient.vitamin_b6 %>mg</td>
+          </tr>
+          <tr>
+            <td>ビタミンB12</td>
+            <td><%= @ingredient.vitamin_b12 %>μg</td>
+          </tr>
+          <tr>
+            <td>ビタミンC</td>
+            <td><%= @ingredient.vitamin_c %>mg</td>
+          </tr>
+          <tr>
+            <td>ビタミンD</td>
+            <td><%= @ingredient.vitamin_d %>μg</td>
+          </tr>
+          <tr>
+            <td>ビタミンE</td>
+            <td><%= @ingredient.vitamin_e %>mg</td>
+          </tr>
+          <tr>
+            <td>ビタミンK</td>
+            <td><%= @ingredient.vitamin_k %>μg</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>上記の内容で誤りはないですか？</h3>
+      <%= form_with model: @ingredient,url: admins_ingredients_path, local: true do |f| %>
+        <%= f.hidden_field :name, :value => @ingredient.name %>
+        <%= f.hidden_field :edible_part_amount, :value => @ingredient.edible_part_amount %>
+        <%= f.hidden_field :gram, :value => @gram %>
+        <%= f.hidden_field :energy, :value => @ingredient.energy %>
+        <%= f.hidden_field :protein, :value => @ingredient.protein %>
+        <%= f.hidden_field :carb, :value => @ingredient.carb %>
+        <%= f.hidden_field :lipid, :value => @ingredient.lipid %>
+        <%= f.hidden_field :vitamin_a, :value => @ingredient.vitamin_a %>
+        <%= f.hidden_field :vitamin_b1, :value => @ingredient.vitamin_b1 %>
+        <%= f.hidden_field :vitamin_b2, :value => @ingredient.vitamin_b2 %>
+        <%= f.hidden_field :vitamin_b6, :value => @ingredient.vitamin_b6 %>
+        <%= f.hidden_field :vitamin_b12, :value => @ingredient.vitamin_b12 %>
+        <%= f.hidden_field :vitamin_c, :value => @ingredient.vitamin_c %>
+        <%= f.hidden_field :vitamin_d, :value => @ingredient.vitamin_d %>
+        <%= f.hidden_field :vitamin_e, :value => @ingredient.vitamin_e %>
+        <%= f.hidden_field :vitamin_k, :value => @ingredient.vitamin_k %>
+        <%= f.submit "はい" %>
+      <% end %>
+      <button class="btn btn-primay">修正が必要</button>
+    </div>
+  </div>
+</div>

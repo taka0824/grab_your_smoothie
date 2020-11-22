@@ -7,13 +7,7 @@
   <%= form_with model: @ingredient, url: admins_ingredient_path(@ingredient), local: true do |f| %>
     <div class="row">
       <div class="col-xs-6">
-        <%= @ingredient.name %><br>
-        <%= attachment_image_tag @ingredient, :image, :fill, 200, 200, format:'jpeg',fallback:"no_image.jpg",size:"200x200"%><br>
-         <%= f.attachment_field :image %>
-            画像選択
-      </div>
-      <div class="col-xs-6">
-        1個あたりの可食部<%= @ingredient.edible_part_amount %>gに含まれる栄養素
+        <%= @ingredient.name %>100gあたりに含まれる栄養素一覧
         <table class="table">
           <thead>
             <tr>
@@ -25,19 +19,19 @@
           <tbody>
             <tr>
               <td>エネルギー</td>
-              <td><%= f.text_field :energy, value: @ingredient.energy %>kcal</td>
+              <td><%= f.text_field :energy, value: @ingredient.energy.round(3) %>kcal</td>
             </tr>
             <tr>
               <td>タンパク質</td>
-              <td><%= f.text_field :protein, value: @ingredient.protein %>g</td>
+              <td><%= f.text_field :protein, value: @ingredient.protein.round(3) %>g</td>
             </tr>
             <tr>
               <td>糖質</td>
-              <td><%= f.text_field :carb, value: @ingredient.carb %>g</td>
+              <td><%= f.text_field :carb, value: @ingredient.carb.round(3) %>g</td>
             </tr>
             <tr>
               <td>脂質</td>
-              <td><%= f.text_field :lipid, value: @ingredient.lipid %>g</td>
+              <td><%= f.text_field :lipid, value: @ingredient.lipid.round(3) %>g</td>
             </tr>
             <tr>
               <td>ビタミンA</td>
