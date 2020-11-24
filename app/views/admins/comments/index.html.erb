@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h2>コメント一覧</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>コメント作成日時</th>
+            <th>スムージーID</th>
+            <th>コメントユーザーID</th>
+            <th>コメント内容</th>
+            <th>削除ボタン</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td>
+                <!-- if comment.created_at == Date.today.beginning_of_day..Date.today.end_of_day-->
+                <!--<i class="far fa-star"></i>-->
+              </td>
+              <td><%= comment.created_at.to_s(:datetime_jp) %></td>
+              <td><%= comment.smoothie.end_user_id %></td>
+              <td><%= comment.end_user_id %></td>
+              <td><%= comment.content %></td>
+              <td>
+                <%= link_to admins_comment_path(comment), method: :delete, data: {confirm: "削除しますか？"} do %>
+                  <button class="btn btn-danger">削除</button>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

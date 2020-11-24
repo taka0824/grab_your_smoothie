@@ -17,6 +17,16 @@ class EndUsers::JuicerIngredientsController < ApplicationController
     @juicer_ingredients = current_end_user.juicer_ingredients
   end
 
+  def update
+    @juicer_ingredient = JuicerIngredient.find(params[:id])
+    if params[:juicer_ingredient][:amount] == "0"
+      @juicer_ingredient.destroy
+    else
+      @juicer_ingredient.update(juicer_ingredient_params)
+    end
+    redirect_to request.referer
+  end
+
   def destroy
     JuicerIngredient.find(params[:id]).destroy
     redirect_to request.referer

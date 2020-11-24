@@ -10,11 +10,28 @@
     </div>
     <div class="row">
       <div class="col-xs-10">
-        <% @ingredients.each do |ingredient| %>
-          <%= link_to admins_ingredient_path(ingredient) do %>
-            <%= ingredient.name %>
-          <% end %>
-        <% end %>
+        <div class="admin-ingredient-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>追加日</th>
+                <th>材料名</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @ingredients.each do |ingredient| %>
+                <tr>
+                  <td><%= ingredient.created_at.strftime('%Y/%m/%d') %></td>
+                  <td>
+                    <%= link_to admins_ingredient_path(ingredient) do %>
+                      <%= ingredient.name %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

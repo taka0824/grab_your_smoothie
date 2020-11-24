@@ -77,7 +77,7 @@
   <% end %>
   <div class="row">
     <div class="col-xs-2 col-xs-offset-5">
-      <%= link_to admins_ingredient_path(@ingredient), method: :delete do %>
+      <%= link_to admins_ingredient_path(@ingredient), method: :delete, data: {confirm: "削除しますか？"} do %>
         <btn class="btn btn-danger">削除</btn>
       <% end %>
     </div>

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page-titel">
+        <h2>アカウント情報変更</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= form_with model: @end_user, url: end_users_end_user_path(@end_user), local: true do |f| %>
+        <table class="table">
+          <tr>
+            <th><%= f.label :name, "アカウント名" %></th>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :email, :"メールアドレス" %></th>
+            <td><%= f.email_field :email %></td>
+          </tr>
+        </table>
+        <%= f.submit "変更", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ class EndUsers::IngredientsController < ApplicationController
   before_action :convert_nutrients_to_gram_per_100_gram, only: [:create]
 
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
   end
 
   def show

@@ -7,9 +7,16 @@ class EndUsers::EndUsersController < ApplicationController
   def show
     @end_user = EndUser.find(params[:id])
     @smoothie = @end_user.smoothies.find_by(is_recommended: true)
-    if @smoothie != nil
-      @smoothie_ingredients = @smoothie.smoothie_ingredients
-    end
+  end
+
+  def edit
+    @end_user = EndUser.find(params[:id])
+  end
+
+  def update
+    end_user = EndUser.find(params[:id])
+    end_user.update(end_user_params)
+    redirect_to request.referer
   end
 
   def recipe_list
@@ -25,9 +32,14 @@ class EndUsers::EndUsersController < ApplicationController
   def destroy_confirm
   end
 
-  def destroy
-    EndUser.find(params[:id]).destroy
+  def is_deleted_update
+    EndUser.find(params[:id]).update(is_deleted: true)
     redirect_to root_path
+  end
+
+  private
+  def end_user_params
+    params.require(:end_user).permit(:name, :email)
   end
 
 end

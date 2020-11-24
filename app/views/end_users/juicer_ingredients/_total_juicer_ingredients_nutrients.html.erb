@@ -1,0 +1,63 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>栄養素</th>
+      <th>量</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>エネルギー</td>
+      <td><%= juicer_ingredients.total_nutrient_to_gram(:energy) %> kcal</td>
+    </tr>
+    <tr>
+      <td>タンパク質</td>
+      <td><%= juicer_ingredients.total_nutrient_to_gram(:protein) %> g</td>
+    </tr>
+    <tr>
+      <td>糖質</td>
+      <td><%= juicer_ingredients.total_nutrient_to_gram(:carb) %>g</td>
+    </tr>
+    <tr>
+      <td>脂質</td>
+      <td><%= juicer_ingredients.total_nutrient_to_gram(:lopid) %>g</td>
+    </tr>
+    <tr>
+      <td>ビタミンA</td>
+      <td><%= juicer_ingredients.total_nutrient_to_micro(:vitamin_a) %> μg</td>
+    </tr>
+    <tr>
+      <td>ビタミンB1</td>
+      <td><%= juicer_ingredients.total_nutrient_to_mili(:vitamin_b1) %>mg</td>
+    </tr>
+    <tr>
+      <td>ビタミンB2</td>
+      <td><%= juicer_ingredients.total_nutrient_to_mili(:vitamin_b2) %> mg</td>
+    </tr>
+    <tr>
+      <td>ビタミンB6</td>
+      <td><%= juicer_ingredients.total_nutrient_to_mili(:vitamin_b6) %> mg</td>
+    </tr>
+    <tr>
+      <td>ビタミンB12</td>
+      <td><%= juicer_ingredients.total_nutrient_to_micro(:vitamin_b12) %> μg</td>
+    </tr>
+    <tr>
+      <td>ビタミンC</td>
+      <td><%= juicer_ingredients.total_nutrient_to_mili(:vitamin_c) %> mg</td>
+    </tr>
+    <tr>
+      <td>ビタミンD</td>
+      <td><%= juicer_ingredients.total_nutrient_to_micro(:vitamin_d) %> μg</td>
+    </tr>
+    <tr>
+      <td>ビタミンE</td>
+      <td><%= juicer_ingredients.total_nutrient_to_mili(:vitamin_e) %> mg</td>
+    </tr>
+    <tr>
+      <td>ビタミンK</td>
+      <td><%= juicer_ingredients.total_nutrient_to_micro(:vitamin_k) %> μg</td>
+    </tr>
+  </tbody>
+</table>

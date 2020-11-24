@@ -1,19 +1,49 @@
-<% lastFavorite = 0 %>
-<% j = 1 %>
- <% @all_ranks.each.with_index(1) do |ranking, i| %>
-   <% if i == 1 %>
-     <% lastFavorite = ranking.favorites.count %>
-   <% end %>
-   <% if ranking.favorites.count != lastFavorite %>
-     <% j = i %>
-     第<%= j %>位
-     <%= attachment_image_tag ranking, :image, :fill, 150, 150, format:'jpeg', fallback: "no_image.jpg", size: "150x150" %>
-     いいね数：<%= ranking.favorites.count %>
-     <% lastFavorite = ranking.favorites.count %>
-   <% else %>
-     <% lastFavorite = ranking.favorites.count %>
-     第<%= j %>位
-    <%= attachment_image_tag ranking, :image, :fill, 150, 150, format:'jpeg', fallback: "no_image.jpg", size: "150x150" %>
-     いいね数：<%= ranking.favorites.count %>
-    <% end %>
- <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h2>月間スムージー人気ランキング</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="smoothie-boxes">
+        <% lastFavorite = 0 %>
+        <% j = 1 %>
+        <% @all_ranks.each.with_index(1) do |ranking, i| %>
+          <div class="smoothie-box">
+            <% if i == 1 %>
+              <% lastFavorite = ranking.favorites.count %>
+            <% end %>
+            <% if ranking.favorites.count != lastFavorite %>
+              <% j = i %>
+              <div class="ranking-number">
+                第<%= j %>位<br>
+                いいね数：<%= ranking.favorites.count %>
+              </div>
+              <div class="smoothie-image">
+                <%= link_to end_users_smoothy_path(ranking) do %>
+                  <%= attachment_image_tag ranking, :image, :fill, 150, 150, format:'jpeg', fallback: "no_image.jpg", size: "150x150" %>
+                <% end %>
+              </div>
+              <% lastFavorite = ranking.favorites.count %>
+            <% else %>
+              <% lastFavorite = ranking.favorites.count %>
+              <div class="ranking-number">
+                第<%= j %>位<br>
+                いいね数：<%= ranking.favorites.count %>
+              </div>
+              <div class="smoothie-image">
+                <%= link_to end_users_smoothy_path(ranking) do %>
+                  <%= attachment_image_tag ranking, :image, :fill, 150, 150, format:'jpeg', fallback: "no_image.jpg", size: "150x150" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

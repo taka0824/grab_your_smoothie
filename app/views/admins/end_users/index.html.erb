@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h2>会員一覧</h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ユーザーID</th>
+            <th>ユーザー名</th>
+            <th>規約違反回数</th>
+            <th>会員ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @end_users.each do |end_user| %>
+            <tr>
+              <td><%= end_user.id %></td>
+              <td><%= end_user.name %></td>
+              <td><%= end_user.rule_violation_number %> 回</td>
+              <td>
+                <% if end_user.is_deleted == true %>
+                  退会済み
+                <% else %>
+                  有効
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>材料名</th>
+      <th>使用された回数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% ingredients.each do |ingredient| %>
+      <tr>
+        <td>
+          <%= link_to end_users_ingredient_path(ingredient) do %>
+            <%= ingredient.name %>
+          <% end %>
+        </td>
+        <td><%= ingredient.smoothie_ingredients.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

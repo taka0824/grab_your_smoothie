@@ -1,10 +1,33 @@
 <div class="container">
   <div class="row">
     <%= form_with model: @smoothie, url: end_users_smoothies_path, local: true do |f| %>
-      <div class="col-xs-6">
+      <div class="col-xs-3">
         <%= f.attachment_field :image %>
       </div>
-      <div class="col-xs-6">
+      <div class="col-xs-3">
+        <div class="ingredients-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>材料名</th>
+                <th>量（グラム）</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @juicer_ingredients.each do |juicer_ingredient| %>
+                <tr>
+                  <td><%= juicer_ingredient.ingredient.name %></td>
+                  <td><%= juicer_ingredient.amount %>グラム</td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <%= render partial: "end_users/juicer_ingredients/total_juicer_ingredients_nutrients", locals: { juicer_ingredients: @juicer_ingredients } %>
+      </div>
+      <div class="col-xs-3">
         <%= f.label :introduction, "スムージー説明文" %><br>
         <%= f.text_area :introduction %><br>
         マイページのおすすめレシピに登録しますか？<br>

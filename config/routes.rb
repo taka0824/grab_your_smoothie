@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :juicer_ingredients, only: [:create, :index, :destroy, :update] do
       delete :destroy_all, on: :collection
     end
-    resources :end_users, only: [:show, :index, :destroy] do
+    resources :end_users, only: [:show, :index, :destroy, :edit, :update] do
       get :destroy_confirm, on: :collection
       patch :is_deleted_update, on: :member
       get :favorite_list, on: :member
@@ -38,12 +38,20 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :comments, only: [:index, :destroy]
-    resources :end_users, only: [:index, :update]
+    get "top" => "homes#top"
+    resources :comments, only: [:index, :destroy] do
+      get :todays_comments, on: :collection
+    end
+    resources :end_users, only: [:index, :destroy] do
+      patch :is_deleted_update, on: :member
+    end
     resources :ingredients, only: [:create, :show, :update, :destroy, :index, :new] do
       get :confirm, on: :collection
+      get :todays_ingredients, on: :collection
     end
-    resources :smoothies, only: [:index, :show, :destroy]
+    resources :smoothies, only: [:index, :show, :destroy] do
+      get :todays_smoothies, on: :collection
+    end
     resources :nutrients, only: [:index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

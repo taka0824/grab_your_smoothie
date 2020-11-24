@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page-title">
+
+      </div>
+    </div>
+  </div>
+  <% if @smoothies.empty? %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-title">
+          <h2>本日投稿されたスムージーはありません</h2>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class='col-xs-12'>
+        <div class="page-title">
+          <h2>スムージー投稿一覧</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-9">
+        <div class="smoothies-box">
+          <%= render partial: "end_users/smoothies/smoothies_boxes", locals: { smoothies: @smoothies } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

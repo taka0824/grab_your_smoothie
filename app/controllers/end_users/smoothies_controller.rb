@@ -1,22 +1,21 @@
 class EndUsers::SmoothiesController < ApplicationController
   before_action :authenticate_end_user!
-  
+
   def new
     @smoothie = Smoothie.new
+    @juicer_ingredients = JuicerIngredient.where(end_user_id: current_end_user)
   end
-  
+
   def new_smoothies
-    @smoothies = Smoothie.first(9)
+    @smoothies = Smoothie.all.order(created_at: "DESC").limit(9)
   end
-  
+
   def smoothie_ranking
-    @all_ranks = Smoothie.joins(:favorites).where(favorites: {created_at: Time.now.all_month}).group(:id).order('count(favorites.smoothie_id) desc')
+    @all_ranks = Smoothie.joins(:favorites).where(favorites: {created_at: Time.now.all_month}).group(:id).order('count(favorites.smoothie_id) desc').limit(9)
   end
 
   def show
     @smoothie = Smoothie.find(params[:id])
-    @smoothie_ingredients = @smoothie.smoothie_ingredients
-    @end_user = @smoothie.end_user
   end
 
   def create

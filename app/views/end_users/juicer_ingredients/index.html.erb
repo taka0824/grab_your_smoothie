@@ -7,7 +7,7 @@
   <div class="row">
     <% if @juicer_ingredients.any? %>
       <div class="col-xs-6">
-        <%= link_to destroy_all_end_users_juicer_ingredients_path, method: :delete do %>
+        <%= link_to destroy_all_end_users_juicer_ingredients_path, method: :delete, data: {confirm: "削除しますか？"} do %>
           <btn class="btn btn-danger">ジューサーを空にする</btn>
         <% end %>
         <br>
@@ -24,10 +24,13 @@
               <tr>
                 <td><%= ingredient.ingredient.name %></td>
                 <td>
-                  <%= ingredient.amount %>グラム
+                  <%= form_with model: ingredient, url: end_users_juicer_ingredient_path(ingredient), local: true do |f| %>
+                    <%= f.text_field :amount %> グラム
+                    <%= f.submit "変更", class:"btn btn-primary" %>
+                  <% end %>
                 </td>
                 <td>
-                  <%= link_to end_users_juicer_ingredient_path(ingredient), method: :delete do %>
+                  <%= link_to end_users_juicer_ingredient_path(ingredient), method: :delete, data: {confirm: "削除しますか？" } do %>
                     <button class="btn btn-danger">削除</button>
                   <% end %>
                 </td>
@@ -45,69 +48,9 @@
         <% end %>
       </div>
       <div class="col-xs-6">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>栄養素</th>
-              <th>量</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>エネルギー</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_gram(:energy) %> kcal</td>
-            </tr>
-            <tr>
-              <td>タンパク質</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_gram(:protein) %> g</td>
-            </tr>
-            <tr>
-              <td>糖質</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_gram(:carb) %>g</td>
-            </tr>
-            <tr>
-              <td>脂質</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_gram(:lopid) %>g</td>
-            </tr>
-            <tr>
-              <td>ビタミンA</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_micro(:vitamin_a) %> μg</td>
-            </tr>
-            <tr>
-              <td>ビタミンB1</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_mili(:vitamin_b1) %>mg</td>
-            </tr>
-            <tr>
-              <td>ビタミンB2</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_mili(:vitamin_b2) %> mg</td>
-            </tr>
-            <tr>
-              <td>ビタミンB6</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_mili(:vitamin_b6) %> mg</td>
-            </tr>
-            <tr>
-              <td>ビタミンB12</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_micro(:vitamin_b12) %> μg</td>
-            </tr>
-            <tr>
-              <td>ビタミンC</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_mili(:vitamin_c) %> mg</td>
-            </tr>
-            <tr>
-              <td>ビタミンD</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_micro(:vitamin_d) %> μg</td>
-            </tr>
-            <tr>
-              <td>ビタミンE</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_mili(:vitamin_e) %> mg</td>
-            </tr>
-            <tr>
-              <td>ビタミンK</td>
-              <td><%= @juicer_ingredients.total_nutrient_to_micro(:vitamin_k) %> μg</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="juicer-ingredients-nutrient-table">
+          <%= render partial: "end_users/juicer_ingredients/total_juicer_ingredients_nutrients", locals: { juicer_ingredients: @juicer_ingredients } %>
+        </div>
       </div>
     <% else %>
       <h3>材料が入っていません</h3>

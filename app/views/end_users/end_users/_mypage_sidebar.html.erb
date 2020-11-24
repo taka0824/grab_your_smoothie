@@ -6,7 +6,12 @@
   <p>いいねしたレシピ数</p>
   <%= link_to end_user.favorites.count, favorite_list_end_users_end_user_path(end_user) %>件
   <br>
-  <%= link_to destroy_confirm_end_users_end_users_path(end_user) do %>
-    <button class="btn btn-danger">退会する</button>
+  <% if end_user.id == current_end_user.id %>
+    <%= link_to destroy_confirm_end_users_end_users_path(end_user) do %>
+      <button class="btn btn-danger">退会する</button>
+    <% end %>
+    <%= link_to  edit_end_users_end_user_path(end_user.id) do %>
+      <button class="btn btn-success">アカウント情報を編集する</button>
+    <% end %>
   <% end %>
 </div>
