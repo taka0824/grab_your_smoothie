@@ -7,6 +7,7 @@
   <div class="row">
     <% if @juicer_ingredients.any? %>
       <div class="col-xs-6">
+        <%= render partial: "layouts/error_message", locals: {model: @juicer_ingredient} %>
         <%= link_to destroy_all_end_users_juicer_ingredients_path, method: :delete, data: {confirm: "削除しますか？"} do %>
           <btn class="btn btn-danger">ジューサーを空にする</btn>
         <% end %>

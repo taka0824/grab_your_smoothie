@@ -1,6 +1,7 @@
 class Admins::IngredientsController < ApplicationController
   before_action :authenticate_admin!
   before_action :convert_nutrients_to_gram_per_100_gram, only: [:create, :update]
+  
 
   def index
     @ingredients = Ingredient.all.order(created_at: "DESC")
@@ -26,19 +27,25 @@ class Admins::IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    @ingredient.save
-    redirect_to admins_ingredient_path(@ingredient)
+    if @ingredient.save
+      flash[:notice]  = "材料を作成しました"
+      redirect_to admins_ingredient_path(@ingredient)
+    end
   end
 
   def destroy
-    Ingredient.find(params[:id]).destroy
-    redirect_to admins_ingredients_path
+    if Ingredient.find(params[:id]).destroy
+      flash[:notice] = "材料を削除しました"
+      redirect_to admins_ingredients_path
+    end
   end
 
   def update
     @ingredient = Ingredient.find(params[:id])
-    @ingredient.update(ingredient_params)
-    redirect_to request.referer
+    if @ingredient.update(ingredient_params)
+      flash[:notice] = "材料情報を変更しました"
+      redirect_to request.referer
+    end
   end
 
   private

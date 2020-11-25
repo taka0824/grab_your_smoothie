@@ -12,6 +12,8 @@ class EndUser < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :in_juicer_ingredients, through: :juicer_ingredients, source: :ingredient
 
+  validates :name, presence: true
+
   def active_for_authentication?
     super && (self.is_deleted == false)
   end

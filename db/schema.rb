@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_050139) do
+ActiveRecord::Schema.define(version: 2020_11_24_113032) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -57,19 +57,19 @@ ActiveRecord::Schema.define(version: 2020_11_23_050139) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.integer "edible_part_amount"
-    t.decimal "energy", precision: 12, scale: 9
-    t.decimal "protein", precision: 12, scale: 9
-    t.decimal "carb", precision: 12, scale: 9
-    t.decimal "lipid", precision: 12, scale: 9
-    t.decimal "vitamin_a", precision: 12, scale: 9
-    t.decimal "vitamin_b1", precision: 12, scale: 9
-    t.decimal "vitamin_b2", precision: 12, scale: 9
-    t.decimal "vitamin_b6", precision: 12, scale: 9
-    t.decimal "vitamin_b12", precision: 12, scale: 9
-    t.decimal "vitamin_c", precision: 12, scale: 9
-    t.decimal "vitamin_d", precision: 12, scale: 9
-    t.decimal "vitamin_e", precision: 12, scale: 9
-    t.decimal "vitamin_k", precision: 12, scale: 9
+    t.decimal "energy", precision: 12, scale: 9, default: "0.0", null: false
+    t.decimal "protein", precision: 12, scale: 9, default: "0.0"
+    t.decimal "carb", precision: 12, scale: 9, default: "0.0"
+    t.decimal "lipid", precision: 12, scale: 9, default: "0.0"
+    t.decimal "vitamin_a", precision: 12, scale: 9, default: "0.0"
+    t.decimal "vitamin_b1", precision: 12, scale: 9, default: "0.0"
+    t.decimal "vitamin_b2", precision: 12, scale: 9, default: "0.0"
+    t.decimal "vitamin_b6", precision: 12, scale: 9, default: "0.0"
+    t.decimal "vitamin_b12", precision: 12, scale: 9, default: "0.0"
+    t.decimal "vitamin_c", precision: 12, scale: 9, default: "0.0"
+    t.decimal "vitamin_d", precision: 12, scale: 9, default: "0.0"
+    t.decimal "vitamin_e", precision: 12, scale: 9, default: "0.0"
+    t.decimal "vitamin_k", precision: 12, scale: 9, default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

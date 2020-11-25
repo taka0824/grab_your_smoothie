@@ -3,7 +3,16 @@ class EndUsers::IngredientsController < ApplicationController
   before_action :convert_nutrients_to_gram_per_100_gram, only: [:create]
 
   def index
-    @ingredients = Ingredient.joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
+    frequent_ingredients = Ingredient.joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
+    all_ingredients = Ingredient.all
+    @ingredients = []
+    frequent_ingredients.each do |f|
+      @ingredients << f
+    end
+    all_ingredients.each do |a|
+      @ingredients << a
+    end
+    @ingredients = @ingredients.uniq
   end
 
   def show
@@ -22,8 +31,10 @@ class EndUsers::IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    @ingredient.save
-    redirect_to end_users_ingredient_path(@ingredient)
+    if @ingredient.save
+      flash[:notice] = "材料を追加しました"
+      redirect_to end_users_ingredient_path(@ingredient)
+    end
   end
 
   private

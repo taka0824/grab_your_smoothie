@@ -1,75 +1,71 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
-      <div class="ingredient-name">
-        <%= @ingredient.name %>
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <h3>１(個/杯）あたりの可食部<%= @ingredient.edible_part_amount %>に含まれる栄養素</h3>
+      <h3>新規材料追加</h3>
       <table class="table">
-        <thead>
-          <tr>
-            <th>栄養素</th>
-            <th>量</th>
-            <th></th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
-            <td>〜グラムあたりの栄養栄養素量</td>
+            <th>材料名</th>
+            <td><%= @ingredient.name %></td>
+          </tr>
+          <tr>
+            <th>1つあたりの可食部重量</th>
+            <td><%= @ingredient.edible_part_amount %> g</td>
+          </tr>
+          <tr>
+            <th>〜グラムあたりの栄養栄養素量</th>
             <td><%= @gram %>gあたり</td>
           </tr>
           <tr>
-            <td>エネルギー</td>
+            <th>エネルギー</th>
             <td><%= @ingredient.energy %>kcal</td>
           </tr>
           <tr>
-            <td>タンパク質</td>
+            <th>タンパク質</th>
             <td><%= @ingredient.protein %>g</td>
           </tr>
           <tr>
-            <td>糖質</td>
+            <th>糖質</th>
             <td><%= @ingredient.carb %>g</td>
           </tr>
           <tr>
-            <td>脂質</td>
+            <th>脂質</th>
             <td><%= @ingredient.lipid %>g</td>
           </tr>
           <tr>
-            <td>ビタミンA</td>
+            <th>ビタミンA</th>
             <td><%= @ingredient.vitamin_a%>μg</td>
           </tr>
           <tr>
-            <td>ビタミンB1</td>
+            <th>ビタミンB1</th>
             <td><%= @ingredient.vitamin_b1 %>mg</td>
           </tr>
           <tr>
-            <td>ビタミンB2</td>
+            <th>ビタミンB2</th>
             <td><%= @ingredient.vitamin_b2 %>mg</td>
           </tr>
           <tr>
-            <td>ビタミンB6</td>
+            <th>ビタミンB6</th>
             <td><%= @ingredient.vitamin_b6 %>mg</td>
           </tr>
           <tr>
-            <td>ビタミンB12</td>
+            <th>ビタミンB12</th>
             <td><%= @ingredient.vitamin_b12 %>μg</td>
           </tr>
           <tr>
-            <td>ビタミンC</td>
+            <th>ビタミンC</th>
             <td><%= @ingredient.vitamin_c %>mg</td>
           </tr>
           <tr>
-            <td>ビタミンD</td>
+            <th>ビタミンD</th>
             <td><%= @ingredient.vitamin_d %>μg</td>
           </tr>
           <tr>
-            <td>ビタミンE</td>
+            <th>ビタミンE</th>
             <td><%= @ingredient.vitamin_e %>mg</td>
           </tr>
           <tr>
-            <td>ビタミンK</td>
+            <th>ビタミンK</th>
             <td><%= @ingredient.vitamin_k %>μg</td>
           </tr>
         </tbody>

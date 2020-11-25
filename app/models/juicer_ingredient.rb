@@ -2,6 +2,8 @@ class JuicerIngredient < ApplicationRecord
   belongs_to :end_user
   belongs_to :ingredient
 
+  validates :amount, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
+
   def self.total_nutrient_to_gram(vitamin)
     array = []
     self.all.each do |juicer_ingredient|

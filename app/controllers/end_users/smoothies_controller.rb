@@ -28,14 +28,13 @@ class EndUsers::SmoothiesController < ApplicationController
       end
     end
     @smoothie.save
-
     current_end_user.juicer_ingredients.each do |smoothie_ingredient|
       ingredient_id = smoothie_ingredient.ingredient.id
       amount = smoothie_ingredient.amount
       SmoothieIngredient.new(smoothie_id: @smoothie.id, ingredient_id: ingredient_id, amount: amount).save
     end
-
     current_end_user.juicer_ingredients.destroy_all
+    flash[:notice] = "スムージーレシピを投稿しました"
     redirect_to root_path
   end
 
@@ -43,6 +42,7 @@ class EndUsers::SmoothiesController < ApplicationController
     smoothie = Smoothie.find(params[:id])
     id = smoothie.end_user_id
     smoothie.destroy
+    flash[:notice] = "スムージー投稿を削除しました"
     redirect_to recipe_list_end_users_end_user_path(id)
   end
 
@@ -53,6 +53,7 @@ class EndUsers::SmoothiesController < ApplicationController
     end
     smoothie = Smoothie.find(params[:id])
     smoothie.update(is_recommended: true)
+    flash[:notice] = "おすすめレシピを変更しました"
     redirect_to request.referer
   end
 

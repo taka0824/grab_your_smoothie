@@ -69,6 +69,7 @@
     <div class="col-xs-4">
       <div class="form-to-add-juicer">
         <%= form_with model: @juicer_ingredient, url: end_users_juicer_ingredients_path, local: true do |f| %>
+        <%= render partial: "layouts/error_message", locals: {model: f.object} %>
         <%= f.hidden_field :ingredient_id, :value => @ingredient.id %>
         <%= f.text_field :amount %>グラム
         <div class='add-btn'>

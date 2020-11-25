@@ -18,55 +18,67 @@
           </thead>
           <tbody>
             <tr>
-              <td>エネルギー</td>
+              <th><%= f.label :name, "材料名" %></th>
+              <td><%= f.text_field :name, value: @ingredient.name %></td>
+            </tr>
+            <tr>
+              <th><%= f.label :edible_part_amount, "1つあたりの可食部重量" %></th>
+              <td><%= f.text_field :edible_part_amount, value: @ingredient.edible_part_amount %> g</td>
+            </tr>
+            <tr>
+              <th><%= f.label :gram, "〜グラムあたりの栄養素量" %></th>
+              <td><%= f.text_field :gram, value: "100" %> g</td>
+            </tr>
+            <tr>
+              <th><%= f.label :energy, "エネルギー" %></th>
               <td><%= f.text_field :energy, value: @ingredient.energy.round(3) %>kcal</td>
             </tr>
             <tr>
-              <td>タンパク質</td>
+              <th><%= f.label :protein, "タンパク質" %></th>
               <td><%= f.text_field :protein, value: @ingredient.protein.round(3) %>g</td>
             </tr>
             <tr>
-              <td>糖質</td>
+              <th><%= f.label :carb, "糖質" %></th>
               <td><%= f.text_field :carb, value: @ingredient.carb.round(3) %>g</td>
             </tr>
             <tr>
-              <td>脂質</td>
+              <th><%= f.label :lipid, "脂質" %></th>
               <td><%= f.text_field :lipid, value: @ingredient.lipid.round(3) %>g</td>
             </tr>
             <tr>
-              <td>ビタミンA</td>
+              <th><%= f.label :vitamin_a, "ビタミンA" %></th>
               <td><%= f.text_field :vitamin_a, value: @ingredient.convert_to_micro(@ingredient.vitamin_a) %>μg</td>
             </tr>
             <tr>
-              <td>ビタミンB1</td>
+              <th><%= f.label :vitamin_b1, "ビタミンB1" %></th>
               <td><%= f.text_field :vitamin_b1, value: @ingredient.convert_to_mili(@ingredient.vitamin_b1) %>mg</td>
             </tr>
             <tr>
-              <td>ビタミンB2</td>
+              <th><%= f.label :vitamin_b2, "ビタミンB2" %></th>
               <td><%= f.text_field :vitamin_b2, value: @ingredient.convert_to_mili(@ingredient.vitamin_b2) %>mg</td>
             </tr>
             <tr>
-              <td>ビタミンB6</td>
+              <th><%= f.label :vitamin_b6, "ビタミンB6" %></th>
               <td><%= f.text_field :vitamin_b6, value: @ingredient.convert_to_mili(@ingredient.vitamin_b6) %>mg</td>
             </tr>
             <tr>
-              <td>ビタミンB12</td>
+              <th><%= f.label :vitamin_b12, "ビタミンB12" %></th>
               <td><%= f.text_field :vitamin_b12, value: @ingredient.convert_to_micro(@ingredient.vitamin_b12) %>μg</td>
             </tr>
             <tr>
-              <td>ビタミンC</td>
+              <th> <%= f.label :vitamin_c, "ビタミンC" %></th>
               <td><%= f.text_field :vitamin_c, value: @ingredient.convert_to_mili(@ingredient.vitamin_c) %>mg</td>
             </tr>
             <tr>
-              <td>ビタミンD</td>
+              <th><%= f.label :vitamin_d, "ビタミンD" %></th>
               <td><%= f.text_field :vitamin_d, value: @ingredient.convert_to_micro(@ingredient.vitamin_d) %>μg</td>
             </tr>
             <tr>
-              <td>ビタミンE</td>
+              <th><%= f.label :vitamin_e, "ビタミンE" %></th>
               <td><%= f.text_field :vitamin_e, value: @ingredient.convert_to_mili(@ingredient.vitamin_e) %>mg</td>
             </tr>
             <tr>
-              <td>ビタミンK</td>
+              <th><%= f.label :vitamin_k, "ビタミンK" %></th>
               <td><%= f.text_field :vitamin_k, value: @ingredient.convert_to_micro(@ingredient.vitamin_k) %>μg</td>
             </tr>
           </tbody>

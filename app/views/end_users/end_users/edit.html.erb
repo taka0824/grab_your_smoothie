@@ -9,6 +9,7 @@
   <div class="row">
     <div class="col-xs-12">
       <%= form_with model: @end_user, url: end_users_end_user_path(@end_user), local: true do |f| %>
+        <%= render partial: "layouts/error_message", locals: { model: f.object } %>
         <table class="table">
           <tr>
             <th><%= f.label :name, "アカウント名" %></th>

@@ -8,15 +8,24 @@ class EndUsers::CommentsController < ApplicationController
   end
 
   def create
-    comment = current_end_user.comments.new(comment_params)
-    comment.smoothie_id = params[:smoothy_id]
-    comment.save
-    redirect_to request.referer
+    @comment = current_end_user.comments.new(comment_params)
+    @smoothie = Smoothie.find(params[:smoothy_id])
+    @comment.smoothie_id = @smoothie.id
+    if @comment.save
+      flash[:notice] = "コメントを投稿しました"
+      redirect_to new_end_users_smoothy_comment_path(@smoothie)
+    else
+      @comments = @smoothie.comments
+      render "end_users/comments/new"
+    end
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to request.referer
+    comment = Comment.find(params[:id])
+    smoothie = comment.smoothie
+    comment.destroy
+    flash[:notice] = "コメントを削除しました"
+    redirect_to new_end_users_smoothy_comment_path(smoothie)
   end
 
   private
