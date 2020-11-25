@@ -16,7 +16,7 @@
           <td><%= comment.content %></td>
           <td>
             <% if current_end_user == comment.end_user %>
-              <%= link_to end_users_smoothy_comment_path(smoothie, comment), method: :delete, data: {confirm: "削除しますか？"} do %>
+              <%= link_to end_users_smoothy_comment_path(smoothie, comment), remote: true, method: :delete, data: {confirm: "削除しますか？"} do %>
                 <button class="btn btn-danger">削除</button>
               <% end %>
             <% end %>

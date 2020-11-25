@@ -7,7 +7,7 @@
             <%= attachment_image_tag smoothie, :image, :fill, 150, 150, format:'jpeg', fallback: "no_image.jpg", size: "150x150" %>
           <% end %>
         </div>
-        <div class="favorite-button">
+        <div class="favorite_buttons_<%= smoothie.id %>">
           <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: smoothie } %>
         </div>
         <div class="comment-button">

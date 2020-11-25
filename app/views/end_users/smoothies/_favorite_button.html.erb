@@ -1,10 +1,10 @@
 <% if smoothie.favorited_by?(current_end_user) %>
-  <%= link_to end_users_smoothy_favorites_path(smoothie), method: :delete do %>
+  <%= link_to end_users_smoothy_favorites_path(smoothie), remote: true, method: :delete do %>
     <i class="fas fa-heart", style="color: red;"></i>
   <% end %>
    いいね<%= smoothie.favorites.count %>件
 <% else %>
-  <%= link_to end_users_smoothy_favorites_path(smoothie), method: :post do %>
+  <%= link_to end_users_smoothy_favorites_path(smoothie), remote: true, method: :post do %>
     <i class="fas fa-heart"></i>
   <% end %>
    いいね<%= smoothie.favorites.count %>件

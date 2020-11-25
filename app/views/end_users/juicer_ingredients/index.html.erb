@@ -44,7 +44,7 @@
         <%= link_to end_users_ingredients_path do %>
           <button class='btn btn-success'>材料を追加する</button>
         <% end %>
-        <%= link_to new_end_users_smoothy_path do %>
+        <%= link_to new_end_users_smoothy_path, data: {"turbolinks" => false} do %>
           <button class="btn btn-primary">レシピ保存画面へ</button>
         <% end %>
       </div>

@@ -2,7 +2,9 @@
   <div class="row">
     <%= form_with model: @smoothie, url: end_users_smoothies_path, local: true do |f| %>
       <div class="col-xs-3">
-        <%= f.attachment_field :image %>
+        <%#= f.attachment_field :image %>
+        <%= attachment_image_tag @smoothie, :image, fallback: 'no_image.jpg', format: 'jpeg', size:'200x200', onChange: "$('.img_field').change()", class: 'center-block img_prev'%>
+        <%= f.attachment_field :image, class: 'img_field' %>
       </div>
       <div class="col-xs-3">
         <div class="ingredients-table">

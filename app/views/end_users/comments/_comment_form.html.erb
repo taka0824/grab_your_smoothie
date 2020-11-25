@@ -1,5 +1,7 @@
-<%= form_with model: [smoothie, comment], url: end_users_smoothy_comments_path(smoothie), local: true do |f| %>
-  <%= render partial: "layouts/error_message", locals: { model: f.object } %>
+<%= form_with model: [smoothie, comment], url: end_users_smoothy_comments_path(smoothie), remote: true do |f| %>
+  <div class="error-messages">
+    <%= render partial: "layouts/error_message", locals: { model: f.object } %>
+  </div>
   <%= f.text_area :content, placeholder:"コメントを入力" %><br>
   <%= f.submit "送信", class:"btn btn-primary" %>
 <% end %>

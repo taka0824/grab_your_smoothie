@@ -10,22 +10,20 @@ class EndUsers::CommentsController < ApplicationController
   def create
     @comment = current_end_user.comments.new(comment_params)
     @smoothie = Smoothie.find(params[:smoothy_id])
+    # 非同期通信のrender先で必要な変数
     @comment.smoothie_id = @smoothie.id
-    if @comment.save
-      flash[:notice] = "コメントを投稿しました"
-      redirect_to new_end_users_smoothy_comment_path(@smoothie)
-    else
-      @comments = @smoothie.comments
-      render "end_users/comments/new"
-    end
+    @comments = @smoothie.comments
+    # 非同期通信のrender先で必要な変数
+    @comment.save
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    smoothie = comment.smoothie
-    comment.destroy
-    flash[:notice] = "コメントを削除しました"
-    redirect_to new_end_users_smoothy_comment_path(smoothie)
+    @comment = Comment.find(params[:id])
+    @smoothie = @comment.smoothie
+    # 非同期通信のrender先で必要な変数
+    @comments = @smoothie.comments
+    # 非同期通信のrender先で必要な変数
+    @comment.destroy
   end
 
   private
