@@ -12,14 +12,7 @@
           <btn class="btn btn-danger">ジューサーを空にする</btn>
         <% end %>
         <br>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>材料名</th>
-              <th>量</th>
-              <th>カートから削除</th>
-            </tr>
-          </thead>
+        <table class="table table-bordered">
           <tbody>
             <% @juicer_ingredients.each do |ingredient| %>
               <tr>

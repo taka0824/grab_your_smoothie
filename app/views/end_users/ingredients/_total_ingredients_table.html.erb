@@ -2,14 +2,14 @@
   <thead>
     <tr>
       <th>材料名</th>
-      <th>量（グラム）</th>
+      <th>量</th>
     </tr>
   </thead>
   <tbody>
     <% smoothie.smoothie_ingredients.each do |smoothie_ingredient| %>
       <tr>
         <td><%= smoothie_ingredient.ingredient.name %></td>
-        <td><%= smoothie_ingredient.amount %>グラム</td>
+        <td><%= smoothie_ingredient.amount %> g</td>
       </tr>
     <% end %>
   </tbody>

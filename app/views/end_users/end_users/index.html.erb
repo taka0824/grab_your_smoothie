@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row">
-    <table class='table'>
+    <table class='end_users-table'>
       <thead>
         <tr>
           <th>ユーザー名</th>
@@ -17,7 +17,10 @@
         <% @end_users.each do |end_user| %>
           <tr>
             <td>
-              <%= link_to end_user.name, end_users_end_user_path(end_user) %>
+              <%= link_to end_users_end_user_path(end_user) do %>
+                <%= attachment_image_tag end_user.smoothies.find_by(is_recommended: true), :image, :fill, 50, 50, format:'jpeg', fallback: "no_image.jpg", size: "50x50" %><br>
+                <%= end_user.name %>
+              <% end %>
             </td>
             <td>
               <%= link_to end_user.smoothies.count, recipe_list_end_users_end_user_path(end_user) %>レシピ
