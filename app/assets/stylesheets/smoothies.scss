@@ -3,11 +3,34 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .smoothie-boxes {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+  padding: 0 10px 0 10px;
 }
 
 .smoothie-box {
   width: 30%;
-  margin:5px;
+  margin-right: 5%;
+  margin-bottom: 10px;
+}
+
+.smoothie-box:nth-of-type(3n) {
+  margin-right: 0;
+}
+
+.smoothie-image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.image-size {
+  width: 100%;
+  height: auto;
+}
+
+.favorite-button, .comment-button, .ranking-number, .ranking-favorite-number {
+  display: flex;
+  justify-content: center;
 }

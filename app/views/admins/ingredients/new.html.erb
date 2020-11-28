@@ -1,9 +1,15 @@
 <div class="container">
   <div class="row">
-    <%= form_with model: @ingredient,url: confirm_admins_ingredients_path, method: :get, local: true do |f| %>
-      <div class="col-xs-9">
+    <div class="col-xs-12">
+      <div class="page-title">
         <h3>新規材料追加</h3>
-         <table class="table">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <%= form_with model: @ingredient,url: confirm_admins_ingredients_path, method: :get, local: true do |f| %>
+        <table class="table">
           <tr>
             <th><%= f.label :name, "材料名" %></th>
             <td><%= f.text_field :name %></td>
@@ -70,7 +76,7 @@
           </tr>
         </table>
         <%= f.submit "追加" %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

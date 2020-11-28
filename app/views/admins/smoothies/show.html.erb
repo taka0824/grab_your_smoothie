@@ -9,7 +9,7 @@
   <div class="row">
     <div class='col-xs-4'>
       <div class="smoothie_image">
-        <%= attachment_image_tag @smoothie, :image, :fill, 200, 200, format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
+        <%= attachment_image_tag @smoothie, :image, :fill, 300, 300, class:"image-size", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
       </div>
       <div class="introduction">
         <%= @smoothie.introduction %>

@@ -1,3 +1,3 @@
-$("comment_table").html("<%= j(render partial: 'end_users/comments/comment_table', locals: {comments: @comments, smoothie: @smoothie}) %>");
+$(".comment_table").html("<%= j(render partial: 'end_users/comments/comment_table', locals: {comments: @comments, smoothie: @smoothie}) %>");
 $("textarea").val('');
 $(".error-messages").html("<%= j(render partial: 'layouts/error_message', locals: { model: @comment}) %>");

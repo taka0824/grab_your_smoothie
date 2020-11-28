@@ -20,13 +20,11 @@
           <li class="header-list-item btn"><%= link_to "ユーザー一覧", end_users_end_users_path %></li>
           <li class="header-list-item btn"><%= link_to "レシピ", end_users_search_ways_path %></li>
           <li class="header-list-item btn"><%= link_to "ジューサー", end_users_juicer_ingredients_path %></li>
-          <li class="header-list-item btn"><%= link_to "栄養素一覧", end_users_nutrients_path %></li>
           <li class="header-list-item btn"><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
         <% elsif admin_signed_in? %>
           <li class="header-list-item btn"><%= link_to "トップ", admins_top_path %></li>
           <li class="header-list-item btn"><%= link_to "会員", admins_end_users_path %></li>
           <li class="header-list-item btn"><%= link_to "材料", admins_ingredients_path %></li>
-          <li class="header-list-item btn"><%= link_to "栄養素", admins_nutrients_path %></li>
           <li class="header-list-item btn"><%= link_to "コメント", admins_comments_path %></li>
           <li class="header-list-item btn"><%= link_to "スムージー", admins_smoothies_path %></li>
           <li class="header-list-item btn"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>

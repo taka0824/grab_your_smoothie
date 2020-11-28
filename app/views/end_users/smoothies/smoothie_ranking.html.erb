@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <div class="segment-title">
+      <div class="page-title">
         <h2>月間スムージー人気ランキング</h2>
       </div>
     </div>
@@ -19,24 +19,28 @@
             <% if ranking.favorites.count != lastFavorite %>
               <% j = i %>
               <div class="ranking-number">
-                第<%= j %>位<br>
+                第<%= j %>位
+              </div>
+              <div class="ranking-favorite-number">
                 いいね数：<%= ranking.favorites.count %>
               </div>
               <div class="smoothie-image">
                 <%= link_to end_users_smoothy_path(ranking) do %>
-                  <%= attachment_image_tag ranking, :image, :fill, 150, 150, format:'jpeg', fallback: "no_image.jpg", size: "150x150" %>
+                  <%= attachment_image_tag ranking, :image, :fill, 400, 400, class: "image-size", format:'jpeg', fallback: "no_image.jpg", size: "400x400" %>
                 <% end %>
               </div>
               <% lastFavorite = ranking.favorites.count %>
             <% else %>
               <% lastFavorite = ranking.favorites.count %>
               <div class="ranking-number">
-                第<%= j %>位<br>
+                第<%= j %>位
+              </div>
+              <div class="ranking-favorite-number">
                 いいね数：<%= ranking.favorites.count %>
               </div>
               <div class="smoothie-image">
                 <%= link_to end_users_smoothy_path(ranking) do %>
-                  <%= attachment_image_tag ranking, :image, :fill, 150, 150, format:'jpeg', fallback: "no_image.jpg", size: "150x150" %>
+                  <%= attachment_image_tag ranking, :image, :fill, 400, 400, class: "image-size", format:'jpeg', fallback: "no_image.jpg", size: "400x400" %>
                 <% end %>
               </div>
             <% end %>

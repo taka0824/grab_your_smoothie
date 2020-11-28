@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-4">
-      <div class="ingredient-name">
-        <%= @ingredient.name %>
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h3><%= @ingredient.name %>100gあたりに含まれる栄養素</h3>
       </div>
     </div>
-    <div class="col-xs-4">
-      <h3>１(個/杯）あたりの可食部<%= @ingredient.edible_part_amount %>に含まれる栄養素</h3>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
       <table class="table">
         <thead>
           <tr>
@@ -74,6 +75,10 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
       <h3>上記の内容で誤りはないですか？</h3>
       <%= form_with model: @ingredient,url: admins_ingredients_path, local: true do |f| %>
         <%= f.hidden_field :name, :value => @ingredient.name %>
@@ -92,9 +97,8 @@
         <%= f.hidden_field :vitamin_d, :value => @ingredient.vitamin_d %>
         <%= f.hidden_field :vitamin_e, :value => @ingredient.vitamin_e %>
         <%= f.hidden_field :vitamin_k, :value => @ingredient.vitamin_k %>
-        <%= f.submit "はい" %>
+        <%= f.submit "はい" %><button class="btn btn-primay">修正が必要</button>
       <% end %>
-      <button class="btn btn-primay">修正が必要</button>
     </div>
   </div>
 </div>

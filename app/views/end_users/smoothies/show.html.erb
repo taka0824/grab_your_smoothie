@@ -29,12 +29,12 @@
             <%= @smoothie.end_user.name %>さんのおすすめレシピ
           <% end %>
           <div class="smoothie_image">
-            <%= attachment_image_tag @smoothie, :image, :fill, 200, 200, format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
+            <%= attachment_image_tag @smoothie, :image, :fill, 300, 300, class:"image-size", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
           </div>
           <div class="introduction">
             <%= @smoothie.introduction %>
           </div>
-          <div class="favorite_buttons_<%= @smoothie.id %>">
+          <div id="favorite_buttons_<%= @smoothie.id %>">
             <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: @smoothie } %>
           </div>
           <div class="comment">

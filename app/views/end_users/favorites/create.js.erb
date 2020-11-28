@@ -1,1 +1,1 @@
-$('.favorite_buttons_<%= @smoothie.id %>').html("<%= j(render partial: 'end_users/smoothies/favorite_button', locals: {smoothie: @smoothie}) %>");
+$('#favorite_buttons_<%= @smoothie.id %>').html("<%= j(render partial: 'end_users/smoothies/favorite_button', locals: {smoothie: @smoothie}) %>");
