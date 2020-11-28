@@ -29,21 +29,27 @@ body {
 
 ul {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .page-title {
   text-align: center;
+  margin-bottom: 50px;
   font-family: 'Comic Sans MS';
 }
 
-.sign-in-form-container {
+// .page-title span {
+//   background-color: #98FB98;
+//   border-radius: 10px;
+// }
+
+.sign-in-form-container, .sign-up-form-container {
   width: 100%;
 }
 
-.sign-in-form {
+.sign-in-form, .sign-up-form {
   width: 300px;
-  padding: 10px;
+  padding: 20px;
   margin: 50px auto 0 auto;
   border: groove 3px #EEEEEE;
 }
@@ -52,4 +58,12 @@ ul {
   text-align: center;
   margin-bottom: 15px;
   font-family: "Comic Sans MS";
+}
+
+.open-full-page {
+  text-align: right;
+}
+
+.about-text {
+  text-align: center;
 }

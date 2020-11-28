@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="page-title">
-          <h2><%= @word %>と関連する材料</h2>
+          <h2>INGREDIENT RELATED TO "<%= @word %>"</h2>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="page-title">
-        <h2><%= @word %>と関連する材料はありません</h2>
+        <h2>NO INGREDIENT FOUND RELATED TO "<%= @word %>"</h2>
       </div>
       <div class="add-ingredient-btn">
         <%= link_to new_end_users_ingredient_path do %>

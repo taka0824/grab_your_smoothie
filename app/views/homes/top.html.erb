@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="page-title">
-        <h2>THIS MONTH'S HOT SMOOTHIES</h2>
+        <h2>THIS MONTH'S RANKING</h2>
       </div>
     </div>
   </div>
@@ -47,8 +47,15 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
+      <%= link_to smoothie_ranking_end_users_smoothies_path do %>
+        <p class="open-full-page">続きを見る</p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
       <div class="page-title">
-        <h2>NEW POSTED</h2>
+        <h2>RECENT POSTS</h2>
       </div>
     </div>
   </div>
@@ -57,10 +64,19 @@
       <div class="smoothie-boxes">
         <% @new_smoothies.each do |smoothie| %>
           <div class="smoothie-box">
-            <%= attachment_image_tag smoothie, :image, :fill, 300, 300, class:"image-size", format:'jpeg', fallback: "no_image.jpg", size: "300x300" %>
+            <%= link_to end_users_smoothy_path(smoothie) do  %>
+              <%= attachment_image_tag smoothie, :image, :fill, 300, 300, class:"image-size", format:'jpeg', fallback: "no_image.jpg", size: "300x300" %>
+            <% end %>
           </div>
         <% end %>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= link_to new_smoothies_end_users_smoothies_path do %>
+        <p class="open-full-page">続きを見る</p>
+      <% end %>
     </div>
   </div>
 </div>

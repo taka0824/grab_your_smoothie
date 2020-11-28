@@ -4,17 +4,31 @@
 
 .search-way-boxes {
   display: flex;
+  justify-content: space-around;
 }
 
 .search-way-box {
   width: 20%;
   height: 200px;
-  margin-right: 5%;
-  border: solid 2px black;
+  padding:10px;
+  // margin-right: 5%;
+  border: groove 2px #EEEEEE;
 }
 
 .box-header {
-  border: solid 2px black;
+  height: 40px;
+  border: groove 2px #EEEEEE;
   margin: 5px;
   text-align: center;
+  font-size: 16px;
+  line-height: 40px;
+}
+
+.search-icon {
+  text-align: center;
+}
+
+.fa-hotjar {
+  font-size: 70px;
+  margin-top: 30px;
 }

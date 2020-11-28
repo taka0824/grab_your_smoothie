@@ -3,9 +3,9 @@
     <div class="col-xs-12">
       <div class="page-title">
         <% if @smoothies.empty? %>
-          <h2><%= @word %>と関連するスムージはありません</h2>
+          <h2>NO SMOOTHIE FOUND RELATED TO "<%= @word %>"</h2>
         <% else %>
-          <h2><%= @word %>と関連するスムージー一覧</h2>
+          <h2>SMOOTHIES RELATED TO "<%= @word %>"</h2>
         <% end %>
       </div>
     </div>

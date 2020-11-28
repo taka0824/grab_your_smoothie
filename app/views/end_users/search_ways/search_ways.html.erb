@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="page-title">
-        <h2>レシピ検索</h2>
+        <h2>RECIPES SEARCH</h2>
       </div>
     </div>
   </div>
@@ -13,6 +13,9 @@
           <%= link_to new_smoothies_end_users_smoothies_path do %>
             <div class="box-header">
               <p>新着から</p>
+            </div>
+            <div class="search-icon">
+              <i class="fab fa-hotjar"></i>
             </div>
           <% end %>
         </div>
@@ -25,15 +28,14 @@
         </div>
         <div class="search-way-box">
           <div class="box-header">
-            <p>
-              材料or説明文<br>
-              検索
-            </p>
+            <p>検索</p>
           </div>
           <div class="search-form">
-            <%= form_with url: end_users_searches_recipe_search_path, local: true, method: :get do |f| %>
-              <%= f.text_field :word, placeholder: "ここに入力" %>
-              <%= f.submit "検索" %>
+            <%= form_with url: end_users_searches_recipe_search_path, class:"form-inline", local: true, method: :get do |f| %>
+              <div class="form-group">
+                <%= f.text_field :word, class:"form-control",placeholder: "ここに入力" %>
+                <%= f.submit "検索" %>
+              </div>
             <% end %>
           </div>
         </div>

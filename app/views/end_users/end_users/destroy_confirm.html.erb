@@ -1,20 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-3">
-      <h3>本当に退会しますか？</h3>
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h3>ARE YOU SURE?</h3>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-5">
-      <p>
-        退会すると、会員登録情報や<br>
-        これまでの購入履歴が閲覧できなくなります。<br>
+    <div class="col-xs-12">
+      <p class="resign-confirmation-text">
+        退会すると会員登録情報や<br>
+        これまでの作成レシピが閲覧できなくなります。<br>
         退会する場合は、「退会する」をクリックしてください。
       </p>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-5">
+    <div class="col-xs-12 confirm-buttons">
       <%= link_to end_users_end_user_path(current_end_user) do %>
         <button class="btn btn-primary">退会しない</button>
       <% end %>

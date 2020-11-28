@@ -14,7 +14,7 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="page-title">
-              <h2>スムージー詳細画面</h2>
+              <h2><span>SMOOTHIE DETAIL</span></h2>
             </div>
           </div>
         </div>
@@ -22,13 +22,13 @@
           <%if @smoothie.end_user == current_end_user && @smoothie.is_recommended == false %>
             <div class="update_is_recommended_button">
               <%= link_to is_recommended_update_end_users_smoothy_path(@smoothie), method: :patch do %>
-                <button class="btn btn-primary">おすすめレシピに登録する</button>
+                <button class="btn btn-primary center-block">おすすめレシピに登録する</button>
               <% end %>
             </div>
           <% elsif @smoothie.end_user == current_end_user && @smoothie.is_recommended == true %>
-            <%= @smoothie.end_user.name %>さんのおすすめレシピ
+            <button class="btn btn-primary center-block"><%= @smoothie.end_user.name %>さんのおすすめレシピ</button>
           <% end %>
-          <div class="smoothie_image">
+          <div class="smoothie_image show-page-smoothie-box">
             <%= attachment_image_tag @smoothie, :image, :fill, 300, 300, class:"image-size", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
           </div>
           <div class="introduction">
