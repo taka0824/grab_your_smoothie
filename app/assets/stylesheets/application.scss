@@ -20,13 +20,36 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+}
+
+body {
+  background-color: #E6FFE9;
 }
 
 ul {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .page-title {
   text-align: center;
+  font-family: 'Comic Sans MS';
+}
+
+.sign-in-form-container {
+  width: 100%;
+}
+
+.sign-in-form {
+  width: 300px;
+  padding: 10px;
+  margin: 50px auto 0 auto;
+  border: groove 3px #EEEEEE;
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: "Comic Sans MS";
 }

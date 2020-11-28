@@ -4,7 +4,7 @@
       <div class="smoothie-box">
         <div class="smoothie-image">
           <%= link_to end_users_smoothy_path(smoothie) do %>
-            <%= attachment_image_tag smoothie, :image, :fill, 400,400, class: "image-size", format:'jpeg', fallback: "no_image.jpg", size: "400x400" %>
+            <%= attachment_image_tag smoothie, :image, :fill, 400, 400, class: "image-size", format:'jpeg', fallback: "no_image.jpg" %>
           <% end %>
         </div>
         <div id="favorite_buttons_<%= smoothie.id %>", class="favorite-button">
