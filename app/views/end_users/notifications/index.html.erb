@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h2>ACTIVITY</h2>
+      </div>
+    </div>
+  </div>
+  <% if @notifications.exists? %>
+    <div class="row">
+      <div class="activity-list">
+        <table class="table">
+          <% @notifications.each do |notification| %>
+            <tr>
+              <td>
+                <p>
+                  <%= notification.visitor.name %>さんが
+                  <% case notification.action %>
+                    <% when "comment" then %>
+                      <% if notification.smoothie.end_user.id == current_end_user.id %>
+                        <%= link_to new_end_users_smoothy_comment_path(notification.smoothie_id) do %>
+                          あなたの投稿
+                        <% end %>
+                          にコメントしました
+                      <% else %>
+                        <%= link_to new_end_users_smoothy_comment_path(notification.smoothie_id) do %>
+                          <%= notification.smoothie.end_user.name %>さんの投稿
+                        <% end %>
+                        にコメントしました
+                      <% end %>
+                    <% when "favorite" then %>
+                      <%= link_to end_users_smoothy_path(notification.smoothie_id) do %>
+                        あなたの投稿
+                      <% end %>
+                      をお気に入りしました
+                  <% end %>
+                  <span><%= notification.how_long_ago %></span>
+                </p>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>通知はありません</h2>
+      </div>
+    </div>
+  <% end %>
+</div>

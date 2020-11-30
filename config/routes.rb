@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get "search_ways" => "search_ways#search_ways"
     get "searches/recipe_search" => "searches#recipe_search"
     get "searches/ingredient_search" => "searches#ingredient_search"
-    resources :nutrients, only: [:index]
+    resources :notifications, only: [:index]
     resources :ingredients, only: [:index, :new, :create, :show] do
       get :confirm, on: :collection
     end
@@ -52,7 +52,6 @@ Rails.application.routes.draw do
     resources :smoothies, only: [:index, :show, :destroy] do
       get :todays_smoothies, on: :collection
     end
-    resources :nutrients, only: [:index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

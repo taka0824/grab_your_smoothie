@@ -11,7 +11,9 @@ class EndUser < ApplicationRecord
   has_many :smoothies, class_name: 'Smoothie', dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :in_juicer_ingredients, through: :juicer_ingredients, source: :ingredient
-
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
+  
   validates :name, presence: true
 
   def active_for_authentication?

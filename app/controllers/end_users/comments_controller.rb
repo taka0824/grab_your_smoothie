@@ -14,7 +14,9 @@ class EndUsers::CommentsController < ApplicationController
     @comment.smoothie_id = @smoothie.id
     @comments = @smoothie.comments
     # 非同期通信のrender先で必要な変数
-    @comment.save
+    if @comment.save
+      @smoothie.create_notification_comment(current_end_user, @comment.id)
+    end
   end
 
   def destroy

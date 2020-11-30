@@ -4,6 +4,9 @@ class EndUsers::FavoritesController < ApplicationController
     @smoothie = Smoothie.find(params[:smoothy_id])
     current_end_user.favorites.new(smoothie_id: params[:smoothy_id]).save
     # redirect_to request.referer
+    
+    @smoothie.create_notification_like(current_end_user)
+    # 通知作成
   end
 
   def destroy
