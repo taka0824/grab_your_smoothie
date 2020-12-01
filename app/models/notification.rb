@@ -15,21 +15,4 @@ class Notification < ApplicationRecord
     end
   end
 
-  # def action_detail(current_end_user)
-  #   case action
-  #     when "comment" then
-  #       if smoothie.end_user.id == current_end_user.id
-  #         link_to "あなたの投稿", new_end_users_smoothy_comment_path(smoothie_id)
-  #           + "にコメントしました"
-  #       else
-  #         link_to "smoothie.end_user.nameさんの投稿", new_end_users_smoothy_comment_path(smoothie_id)
-  #           + "にコメントしました"
-  #       end
-  #     when "favorite" then
-  #       byebug
-  #       link_to "あなたの投稿", end_users_smoothy_path(smoothie_id)
-  #       + "をお気に入りしました"
-  #   end
-  # end
-
 end

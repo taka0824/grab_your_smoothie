@@ -2,44 +2,47 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="page-title">
-        <h2>ACTIVITY</h2>
+        <h2><span>ACTIVITY</span></h2>
       </div>
     </div>
   </div>
   <% if @notifications.exists? %>
     <div class="row">
-      <div class="activity-list">
-        <table class="table">
+      <div class="activity-list col-xs-6 col-xs-offset-3">
+        <table class="table notification-table">
           <% @notifications.each do |notification| %>
             <tr>
               <td>
-                <p>
-                  <%= notification.visitor.name %>さんが
-                  <% case notification.action %>
-                    <% when "comment" then %>
-                      <% if notification.smoothie.end_user.id == current_end_user.id %>
-                        <%= link_to new_end_users_smoothy_comment_path(notification.smoothie_id) do %>
-                          あなたの投稿
-                        <% end %>
-                          にコメントしました
-                      <% else %>
-                        <%= link_to new_end_users_smoothy_comment_path(notification.smoothie_id) do %>
-                          <%= notification.smoothie.end_user.name %>さんの投稿
-                        <% end %>
-                        にコメントしました
-                      <% end %>
-                    <% when "favorite" then %>
-                      <%= link_to end_users_smoothy_path(notification.smoothie_id) do %>
+                <%= notification.visitor.name %>さんが
+                <% case notification.action %>
+                  <% when "comment" then %>
+                    <% if notification.smoothie.end_user.id == current_end_user.id %>
+                      <%= link_to end_users_smoothy_comments_path(notification.smoothie) do %>
                         あなたの投稿
                       <% end %>
-                      をお気に入りしました
-                  <% end %>
-                  <span><%= notification.how_long_ago %></span>
-                </p>
+                        にコメントしました
+                    <% else %>
+                      <%= link_to end_users_smoothy_comments_path(notification.smoothie) do %>
+                        <%= notification.smoothie.end_user.name %>さんの投稿
+                      <% end %>
+                      にコメントしました
+                    <% end %>
+                  <% when "favorite" then %>
+                    <%= link_to end_users_smoothy_path(notification.smoothie_id) do %>
+                      あなたの投稿
+                    <% end %>
+                    をお気に入りしました
+                <% end %>
+                <span>(<%= notification.how_long_ago %>)</span>
               </td>
             </tr>
           <% end %>
         </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="paginate-container">
+        <%= paginate @notifications %>
       </div>
     </div>
   <% else %>

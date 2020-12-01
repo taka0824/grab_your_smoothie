@@ -1,10 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2>コメント</h2>
+      <div class="page-title">
+        <h2>COMMENT</h2>
+      </div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-xs-6">
-      <%= attachment_image_tag @smoothie, :image, :fill, 200, 200, format:'jpeg',fallback:"no_image.jpg",size:"200x200"%><br>
+      <%= attachment_image_tag @smoothie, :image, :fill, 400, 400, class: "image-size", format:'jpeg',fallback:"no_image.jpg",size:"400x400"%><br>
       <%= @smoothie.introduction %><br>
     </div>
     <div class="col-xs-6">

@@ -2,16 +2,21 @@ class EndUsers::SmoothiesController < ApplicationController
   before_action :authenticate_end_user!
 
   def new
+    if JuicerIngredient.where(end_user_id: current_end_user.id).empty?
+      redirect_to end_users_juicer_ingredients_path
+    end
     @smoothie = Smoothie.new
     @juicer_ingredients = JuicerIngredient.where(end_user_id: current_end_user)
   end
 
   def new_smoothies
-    @smoothies = Smoothie.all.order(created_at: "DESC").limit(9)
+    @smoothies = Smoothie.all.order(created_at: "DESC").page(params[:page]).per(9)
   end
 
   def smoothie_ranking
-    @all_ranks = Smoothie.joins(:favorites).where(favorites: {created_at: Time.now.all_month}).group(:id).order('count(favorites.smoothie_id) desc').limit(9)
+    # @all_ranks = Smoothie.joins(:favorites).where(favorites: {created_at: Time.now.all_month}).group(:id).order('count(favorites.smoothie_id) desc').limit(9)
+    # 上の記述は今月分のいいねだけを対象
+    @all_ranks = Smoothie.joins(:favorites).group(:id).order('count(favorites.smoothie_id) desc').limit(9)
   end
 
   def show

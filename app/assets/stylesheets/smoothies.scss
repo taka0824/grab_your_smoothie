@@ -29,6 +29,23 @@
 .image-size {
   width: 100%;
   height: auto;
+  border: ridge 5px #DCC2FF
+}
+
+.smoothie-box:nth-of-type(odd) .image-size {
+  border: ridge 5px #DCC2FF;
+}
+
+.smoothie-box:nth-of-type(even) .image-size {
+  border: ridge 5px #FFBEDA;
+}
+
+.user-record:nth-of-type(odd) .user-index-image {
+  border: ridge 3px #DCC2FF;
+}
+
+.user-record:nth-of-type(even) .user-index-image {
+  border: ridge 3px #FFBEDA;
 }
 
 .favorite-button, .comment-button, .ranking-number, .ranking-favorite-number {
@@ -38,4 +55,8 @@
 
 .show-page-smoothie-box {
   margin: 20px;
+}
+
+.nutrients-table, .nutrients-table th  {
+  text-align: center;
 }

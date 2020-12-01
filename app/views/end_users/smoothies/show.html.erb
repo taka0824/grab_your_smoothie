@@ -38,7 +38,7 @@
             <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: @smoothie } %>
           </div>
           <div class="comment">
-            <%= link_to new_end_users_smoothy_comment_path(@smoothie) do %>
+            <%= link_to end_users_smoothy_comments_path(@smoothie) do %>
               <i class="fas fa-pen"></i>コメント<%= @smoothie.comments.count %>件
             <% end %>
           </div>

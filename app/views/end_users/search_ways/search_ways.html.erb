@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="page-title">
-        <h2>RECIPES SEARCH</h2>
+        <h2><span>RECIPES SEARCH</span></h2>
       </div>
     </div>
   </div>
@@ -27,17 +27,13 @@
           <% end %>
         </div>
         <div class="search-way-box">
-          <div class="box-header">
-            <p>検索</p>
-          </div>
-          <div class="search-form">
-            <%= form_with url: end_users_searches_recipe_search_path, class:"form-inline", local: true, method: :get do |f| %>
-              <div class="form-group">
-                <%= f.text_field :word, class:"form-control",placeholder: "ここに入力" %>
-                <%= f.submit "検索" %>
-              </div>
-            <% end %>
-          </div>
+          <%= form_with url: end_users_searches_recipe_search_path, local: true, method: :get do |f| %>
+            <div class="form-group">
+              <%= f.label :word, class: "sr-only" %>
+              <%= f.text_field :word, class: "form-control",placeholder: "キーワードで検索" %>
+            </div>
+              <%= f.submit "検索", class:"btn btn-success btn-block" %>
+          <% end %>
         </div>
         <div class="search-way-box">
           <%= link_to end_users_ingredients_path do %>

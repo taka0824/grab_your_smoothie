@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-3">
-      材料詳細編集画面
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h2><span>INGREDIENT</span></h2>
+      </div>
     </div>
   </div>
   <%= form_with model: @ingredient, url: admins_ingredient_path(@ingredient), local: true do |f| %>
     <div class="row">
-      <div class="col-xs-6">
-        <%= @ingredient.name %>100gあたりに含まれる栄養素一覧
-        <table class="table">
+      <div class="col-xs-6 col-xs-offset-3">
+        <table class="table admin-ingredient-table">
           <thead>
             <tr>
               <th>栄養素</th>
               <th>量</th>
-              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -83,15 +83,15 @@
             </tr>
           </tbody>
         </table>
-        <%= f.submit "更新" %>
+        <%= f.submit "更新", class:"submit-button" %>
       </div>
     </div>
   <% end %>
   <div class="row">
-    <div class="col-xs-2 col-xs-offset-5">
+    <div class="col-xs-6 col-xs-offset-3">
       <%= link_to admins_ingredient_path(@ingredient), method: :delete, data: {confirm: "削除しますか？"} do %>
         <btn class="btn btn-danger">削除</btn>
       <% end %>
     </div>
-</div>
+  </div>
 </div>

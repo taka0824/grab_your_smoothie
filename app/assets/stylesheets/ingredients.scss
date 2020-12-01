@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.ingredients-table, .ingredients-table th {
+  text-align: center;
+}
+
+.admin-ingredient-table th, .admin-ingredient-table label {
+  text-align: center;
+}
+
 .ingredients-boxes {
   display: flex;
   flex-wrap: wrap;
@@ -9,4 +17,18 @@
 
 .ingredient-box {
   margin:5px;
+}
+
+.add-ingredient-button {
+  display: flex;
+  justify-content: center;
+}
+
+.ingredient-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.last-confirm {
+  text-align: center;
 }

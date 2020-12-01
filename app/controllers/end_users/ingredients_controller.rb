@@ -13,6 +13,7 @@ class EndUsers::IngredientsController < ApplicationController
       @ingredients << a
     end
     @ingredients = @ingredients.uniq
+    @ingredients = Kaminari.paginate_array(@ingredients).page(params[:page]).per(15)
   end
 
   def show

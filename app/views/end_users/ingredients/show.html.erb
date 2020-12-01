@@ -1,13 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <h3><%= @ingredient.name %>100gあたりに含まれる栄養素一覧</h3>
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h3><span><%= @ingredient.name %>100gあたりに含まれる栄養素一覧</span></h3>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
       <table class="table">
         <thead>
           <tr>
             <th>栄養素</th>
             <th>量</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -65,14 +70,19 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
       <div class="form-to-add-juicer">
-        <%= form_with model: @juicer_ingredient, url: end_users_juicer_ingredients_path, local: true do |f| %>
+        <%= form_with model: @juicer_ingredient, url: end_users_juicer_ingredients_path, class:"form-inline", local: true do |f| %>
           <%= render partial: "layouts/error_message", locals: {model: f.object} %>
           <%= f.hidden_field :ingredient_id, :value => @ingredient.id %>
-          <%= f.text_field :amount %>グラム
-          <div class='add-btn'>
-            <%= f.submit "ジューサーに追加" %>
+          <div class="form-group">
+            <%= f.label :amount, class: "sr-only" %>
+            <%= f.text_field :amount, class: "form-control" %> g
           </div>
+          <%= f.submit "追加", class: "submit-button" %>
         <% end %>
       </div>
     </div>

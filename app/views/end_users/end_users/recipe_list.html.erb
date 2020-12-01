@@ -4,11 +4,13 @@
       <%= render partial: "end_users/end_users/mypage_sidebar", locals: { end_user: @end_user } %>
     </div>
     <% if @smoothies.empty? %>
-      <%= @end_user.name %>さんの投稿はありません
+      <div class="page-title">
+        <h2><span><%= @end_user.name %>さんのレシピ投稿はありません</span></h2>
+      </div>
     <% else %>
       <div class="col-xs-9">
         <div class="page-title">
-          <h2><%= @end_user.name %>'S RECIPES</h2>
+          <h2><span><%= @end_user.name %>'S RECIPES</span></h2>
         </div>
         <div class="smoothies">
           <%= render partial: "end_users/smoothies/smoothies_boxes", locals: { smoothies: @smoothies } %>

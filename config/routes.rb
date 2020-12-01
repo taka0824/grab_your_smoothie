@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root "homes#top"
-  get "/about" => "homes#about"
 
   devise_for :end_users, controllers: {
     sessions: "end_users/sessions",
@@ -26,7 +25,7 @@ Rails.application.routes.draw do
     end
     resources :smoothies, only: [:new, :create, :show, :destroy] do
       resource :favorites, only: [:create, :destroy]
-      resources :comments, only:[:new, :create, :destroy]
+      resources :comments, only:[:index, :create, :destroy]
       patch :is_recommended_update, on: :member
       get :new_smoothies, on: :collection
       get :smoothie_ranking, on: :collection

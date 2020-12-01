@@ -1,7 +1,7 @@
 class EndUsers::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   def index
-    @end_users = EndUser.all.where(is_deleted: false)
+    @end_users = EndUser.all.where(is_deleted: false).page(params[:page]).per(10)
   end
 
   def show
@@ -11,6 +11,9 @@ class EndUsers::EndUsersController < ApplicationController
 
   def edit
     @end_user = EndUser.find(params[:id])
+    if @end_user.id != current_end_user.id
+      redirect_to edit_end_users_end_user_path(current_end_user.id)
+    end
   end
 
   def update
@@ -24,13 +27,13 @@ class EndUsers::EndUsersController < ApplicationController
   end
 
   def recipe_list
-    @smoothies = Smoothie.where(end_user_id: params[:id])
+    @smoothies = Smoothie.where(end_user_id: params[:id]).page(params[:page]).per(9)
     @end_user = EndUser.find(params[:id])
   end
 
   def favorite_list
     @end_user = EndUser.find(params[:id])
-    @favorited_smoothies = @end_user.favorited_smoothies
+    @favorited_smoothies = @end_user.favorited_smoothies.page(params[:page]).per(9)
   end
 
   def destroy_confirm

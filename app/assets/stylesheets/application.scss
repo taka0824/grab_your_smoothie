@@ -24,12 +24,24 @@
 }
 
 body {
-  background-color: #E6FFE9;
+  background-color: #93FFAB;
 }
 
 ul {
   display: flex;
   justify-content: flex-end;
+}
+
+.notification-container {
+  position: relative;
+}
+
+.notification-circle {
+  color: red;
+  font-size: 0.5em;
+  position: absolute;
+  top: -1em;
+  right: -1em;
 }
 
 .page-title {
@@ -38,10 +50,27 @@ ul {
   font-family: 'Comic Sans MS';
 }
 
-// .page-title span {
-//   background-color: #98FB98;
-//   border-radius: 10px;
-// }
+.page-title span {
+  border-bottom: groove 5px #ffd700;
+  padding-bottom: 5px;
+}
+
+.table {
+  background-color: #EEEEEE	;
+  border-collapse: separate;
+  border: ridge 3px #00FA9A;
+  border-radius: 15px;
+
+}
+
+.table > tbody > tr:first-of-type > td {
+  border-top: 0;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+  text-align: center;
+}
 
 .sign-in-form-container, .sign-up-form-container {
   width: 100%;
@@ -66,4 +95,11 @@ ul {
 
 .about-text {
   text-align: center;
+}
+
+.paginate-container {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }

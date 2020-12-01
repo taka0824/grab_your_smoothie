@@ -1,8 +1,14 @@
 <div class="container">
+  <div class='row'>
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h2><span>CONFIRMATION</span></h2>
+      </div>
+    </div>
+  </div>
   <div class="row">
-    <div class="col-xs-4">
-      <h3>新規材料追加</h3>
-      <table class="table">
+    <div class="col-xs-6 col-xs-offset-3">
+      <table class="table confirm-table">
         <tbody>
           <tr>
             <th>材料名</th>
@@ -70,7 +76,7 @@
           </tr>
         </tbody>
       </table>
-      <h3>上記の内容で誤りはないですか？</h3>
+      <h3 class="last-confirm">上記の内容で誤りはないですか？</h3>
       <%= form_with model: @ingredient,url: end_users_ingredients_path, local: true do |f| %>
         <%= f.hidden_field :name, :value => @ingredient.name %>
         <%= f.hidden_field :edible_part_amount, :value => @ingredient.edible_part_amount %>

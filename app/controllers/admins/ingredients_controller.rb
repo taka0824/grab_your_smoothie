@@ -4,12 +4,12 @@ class Admins::IngredientsController < ApplicationController
   
 
   def index
-    @ingredients = Ingredient.all.order(created_at: "DESC")
+    @ingredients = Ingredient.all.order(created_at: "DESC").page(params[:page]).per(15)
   end
 
   def todays_ingredients
     range = Date.today.beginning_of_day..Date.today.end_of_day
-    @ingredients = Ingredient.where(created_at: range)
+    @ingredients = Ingredient.where(created_at: range).page(params[:page]).per(15)
   end
 
   def show

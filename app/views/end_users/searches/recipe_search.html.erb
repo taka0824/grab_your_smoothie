@@ -3,16 +3,16 @@
     <div class="col-xs-12">
       <div class="page-title">
         <% if @smoothies.empty? %>
-          <h2>NO SMOOTHIE FOUND RELATED TO "<%= @word %>"</h2>
+          <h2><span>NO SMOOTHIE FOUND RELATED TO "<%= @word %>"</span></h2>
         <% else %>
-          <h2>SMOOTHIES RELATED TO "<%= @word %>"</h2>
+          <h2><span>SMOOTHIES RELATED TO "<%= @word %>"</span></h2>
         <% end %>
       </div>
     </div>
   </div>
   <% if @smoothies.any? %>
     <div class="row">
-      <div class="col-xs-9">
+      <div class="col-xs-12">
         <div class="smoothies">
           <%= render partial: "end_users/smoothies/smoothies_boxes", locals: { smoothies: @smoothies } %>
         </div>

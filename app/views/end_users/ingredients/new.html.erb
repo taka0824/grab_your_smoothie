@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h2><span>CREATE NEW INGREDIENT RECORD</span></h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <%= form_with model: @ingredient,url: confirm_end_users_ingredients_path, method: :get, local: true do |f| %>
-      <div class="col-xs-9">
-        <div class="form-header">
-          <h4>
-            不明な箇所は0とご入力ください。
-          </h4>
-        </div>
+      <div class="col-xs-6 col-xs-offset-3">
         <table class="table">
           <tr>
             <th><%= f.label :name_hiragana, "材料名" %></th>
