@@ -13,7 +13,10 @@
           <% @notifications.each do |notification| %>
             <tr>
               <td>
-                <%= notification.visitor.name %>さんが
+                <%= link_to end_users_end_user_path(notification.visitor_id) do %>
+                  <%= notification.visitor.name %>
+                <% end %>
+                  さんが
                 <% case notification.action %>
                   <% when "comment" then %>
                     <% if notification.smoothie.end_user.id == current_end_user.id %>

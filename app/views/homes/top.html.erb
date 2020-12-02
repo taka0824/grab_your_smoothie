@@ -11,12 +11,13 @@
       <p>smoothie飲む人の画像</p>
     </div>
     <div class="col-xs-7">
-      <h3 class="about-text">
-        スムージーレシピの共有サイトです。<br>
-        材料から栄養価を計算しご自身のレシピを共有したり<br>
-        お気に入りのスムージーレシピを保存ができます。<br>
-        スムージーでお洒落で健康的な生活を目指しましょう！<br>
-      </h3>
+      <h4 class="about-text">
+        スムージーレシピの共有サイトです。<br><br>
+        材料から栄養価を計算しご自身のレシピを共有したり<br><br>
+        お気に入りのスムージーレシピの保存ができます。<br><br>
+        <%= link_to "コミュニティガイドライン", "#guideline-text" %>を守って<br><br>
+        お洒落で健康的な生活を目指しましょう！<br><br>
+      </h4>
     </div>
   </div>
   <div class="row">
@@ -44,7 +45,7 @@
               </div>
               <div class="smoothie-image">
                 <%= link_to end_users_smoothy_path(ranking) do %>
-                  <%= attachment_image_tag ranking, :image, :fill, 300, 300, class:"image-size", format:'jpeg', fallback: "no_image.jpg", size: "300x300" %>
+                  <%= attachment_image_tag ranking, :image, :fill, 300, 300, class:"image-frame", format:'jpeg', fallback: "no_image.jpg", size: "300x300" %>
                 <% end %>
               </div>
               <% lastFavorite = ranking.favorites.count %>
@@ -56,7 +57,7 @@
               </div>
               <div class="smoothie-image">
                 <%= link_to end_users_smoothy_path(ranking) do %>
-                  <%= attachment_image_tag ranking, :image, :fill, 300, 300, class:"image-size", format:'jpeg', fallback: "no_image.jpg", size: "300x300" %>
+                  <%= attachment_image_tag ranking, :image, :fill, 300, 300, class:"image-frame", format:'jpeg', fallback: "no_image.jpg", size: "300x300" %>
                 <% end %>
               </div>
             <% end %>
@@ -85,7 +86,7 @@
         <% @new_smoothies.each do |smoothie| %>
           <div class="smoothie-box">
             <%= link_to end_users_smoothy_path(smoothie) do  %>
-              <%= attachment_image_tag smoothie, :image, :fill, 300, 300, class:"image-size", format:'jpeg', fallback: "no_image.jpg", size: "300x300" %>
+              <%= attachment_image_tag smoothie, :image, :fill, 300, 300, class:"image-frame", format:'jpeg', fallback: "no_image.jpg", size: "300x300" %>
             <% end %>
           </div>
         <% end %>
@@ -98,5 +99,24 @@
         <p class="open-full-page">続きを見る</p>
       <% end %>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page-title">
+        <h2><span>COMMUNITY GUIDELINE</span></h2>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <h4 id="guideline-text", class="guideline-text">
+      gysでは皆さんに安全で楽しく利用していただくためにコミュニティガイドラインを設定しております。<br>
+      以下の規約を守って充実したスムージーライフをシェアしていきましょう！
+    </h4>
+    <ul class="guideline-list">
+      <li class="guideline-list-item">ご自身で撮影された写真を投稿しましょう</li>
+      <li class="guideline-list-item">人を中傷するようなコメントや投稿は禁止されています</li>
+      <li class="guideline-list-item">サイトの利便性を妨害するような投稿や不要な新規材料の追加はやめましょう</li>
+    </ul>
+    <h4 class="guideline-text">以上のルールを複数回に渡り違反する利用者にはアカウントの停止措置を行いますのでご了承ください</h4>
   </div>
 </div>

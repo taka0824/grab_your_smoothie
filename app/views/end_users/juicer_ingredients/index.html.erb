@@ -20,8 +20,8 @@
               <tr>
                 <td><%= ingredient.ingredient.name %></td>
                 <td>
-                  <%= form_with model: ingredient, url: end_users_juicer_ingredient_path(ingredient), local: true do |f| %>
-                    <%= f.text_field :amount %> グラム
+                  <%= form_with model: ingredient, url: end_users_juicer_ingredient_path(ingredient), class: "form-inline", local: true do |f| %>
+                    <%= f.text_field :amount, class: "form-control" %> グラム
                     <%= f.submit "変更", class:"btn btn-primary" %>
                   <% end %>
                 </td>

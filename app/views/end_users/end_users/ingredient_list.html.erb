@@ -1,18 +1,9 @@
-<div class="container">
   <div class="row">
     <div class="col-xs-12">
       <div class="page-title">
-        <h2><span>ALL INGREDIENTS</span></h2>
+        <h2><span><%= current_end_user.name %>さんが追加した材料</span></h2>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="add-ingredient-button">
-      <%= link_to new_admins_ingredient_path do %>
-        <btn class="btn btn-success center-block">新規材料追加</btn>
-      <% end %>
-    </div>
-  </div>
   <div class="row">
     <div class="admin-ingredient-table col-xs-offset-3 col-xs-6">
       <table class="table">
@@ -20,7 +11,6 @@
           <tr>
             <th>追加日</th>
             <th>材料名</th>
-            <th>追加者</th>
           </tr>
         </thead>
         <tbody>
@@ -28,15 +18,10 @@
             <tr>
               <td><%= ingredient.created_at.strftime('%Y/%m/%d') %></td>
               <td>
-                <%= link_to admins_ingredient_path(ingredient) do %>
+                <%= link_to edit_end_users_ingredient_path(ingredient) do %>
                   <%= ingredient.name %>
                 <% end %>
               </td>
-              <% if ingredient.created_by != nil %>
-                <td><%= ingredient.end_user.name %></td>
-              <% else %>
-                <td>管理者</td>
-              <% end %>
             </tr>
           <% end %>
         </tbody>
@@ -49,4 +34,3 @@
     </div>
   </div>
 </div>
-

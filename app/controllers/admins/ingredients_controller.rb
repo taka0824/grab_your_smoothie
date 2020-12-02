@@ -1,7 +1,7 @@
 class Admins::IngredientsController < ApplicationController
   before_action :authenticate_admin!
   before_action :convert_nutrients_to_gram_per_100_gram, only: [:create, :update]
-  
+
 
   def index
     @ingredients = Ingredient.all.order(created_at: "DESC").page(params[:page]).per(15)
@@ -21,8 +21,14 @@ class Admins::IngredientsController < ApplicationController
   end
 
   def confirm
+    redirect_to new_admins_ingredient_path and return if !params[:ingredient]
+    # urlで飛んできた時にフォームを入力していないとフォーム入力画面に飛ばす
     @ingredient = Ingredient.new(ingredient_params)
     @gram = params[:ingredient][:gram]
+    if params[:ingredient][:gram].to_f == 0.0 || params[:ingredient][:name] == ""
+      flash[:notice] = "材料名と〜グラムあたりの栄養素量欄は必ず入力してください"
+      redirect_to new_admins_ingredient_path
+    end
   end
 
   def create
@@ -34,14 +40,31 @@ class Admins::IngredientsController < ApplicationController
   end
 
   def destroy
-    if Ingredient.find(params[:id]).destroy
-      flash[:notice] = "材料を削除しました"
-      redirect_to admins_ingredients_path
+    ingredient = Ingredient.find(params[:id])
+    ingredient.destroy
+    if ingredient.created_by != nil
+      end_user = ingredient.end_user
+      end_user.rule_violation_number += 1
+      end_user.save
+      if end_user.rule_violation_number == 5
+        end_user.smoothies.destroy_all
+        end_user.comments.destroy_all
+        end_user.favorites.destroy_all
+        end_user.juicer_ingredients.destroy_all
+        end_user.active_notifications.destroy_all
+        end_user.update(is_deleted: true, name: "#{end_user.name}" + "(規約違反により退会)")
+      end
     end
+    flash[:notice] = "材料を削除しました"
+    redirect_to admins_ingredients_path
   end
 
   def update
     @ingredient = Ingredient.find(params[:id])
+    if params[:ingredient][:gram].to_f == 0.0 || params[:ingredient][:name] == ""
+      flash[:notice] = "材料名と〜グラムあたりの栄養素量欄は必ず入力してください"
+      redirect_to admins_ingredient_path(@ingredient) and return
+    end
     if @ingredient.update(ingredient_params)
       flash[:notice] = "材料情報を変更しました"
       redirect_to request.referer
@@ -50,7 +73,7 @@ class Admins::IngredientsController < ApplicationController
 
   private
   def ingredient_params
-    params.require(:ingredient).permit(:name,:edible_part_amount,:energy,:protein,:carb,:lipid,:vitamin_a,:vitamin_b1,:vitamin_b2,:vitamin_b6,:vitamin_b12,:vitamin_c,:vitamin_d,:vitamin_e,:vitamin_k)
+    params.require(:ingredient).permit(:name,:energy,:protein,:carb,:lipid,:vitamin_a,:vitamin_b1,:vitamin_b2,:vitamin_b6,:vitamin_b12,:vitamin_c,:vitamin_d,:vitamin_e,:vitamin_k)
   end
 
   def convert_nutrients_to_gram_per_100_gram

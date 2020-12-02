@@ -19,36 +19,39 @@
           </div>
         </div>
         <div class='col-xs-4'>
-          <%if @smoothie.end_user == current_end_user && @smoothie.is_recommended == false %>
-            <div class="update_is_recommended_button">
-              <%= link_to is_recommended_update_end_users_smoothy_path(@smoothie), method: :patch do %>
-                <button class="btn btn-primary center-block">おすすめレシピに登録する</button>
-              <% end %>
-            </div>
-          <% elsif @smoothie.end_user == current_end_user && @smoothie.is_recommended == true %>
-            <button class="btn btn-primary center-block"><%= @smoothie.end_user.name %>さんのおすすめレシピ</button>
-          <% end %>
+          <div id="show-recipe-buttons">
+            <%if @smoothie.end_user == current_end_user && @smoothie.is_recommended == false %>
+              <div class="update_is_recommended_button">
+                <%= link_to is_recommended_update_end_users_smoothy_path(@smoothie), method: :patch do %>
+                  <button id="is-recommended-button", class="btn btn-primary">おすすめレシピ登録</button>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
           <div class="smoothie_image show-page-smoothie-box">
-            <%= attachment_image_tag @smoothie, :image, :fill, 300, 300, class:"image-size", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
+            <%= attachment_image_tag @smoothie, :image, :fill, 300, 300, class:"image-frame", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
+          </div>
+          <div class="buttons">
+            <div id="favorite_buttons_<%= @smoothie.id %>", class="fovorite-buttons" >
+              <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: @smoothie } %>
+            </div>
+            <div class="comment">
+              <%= link_to end_users_smoothy_comments_path(@smoothie) do %>
+                <i class="fas fa-pen"></i>
+              <% end %>
+              <%= @smoothie.comments.count %>
+            </div>
+            <% if @smoothie.end_user == current_end_user %>
+              <div class="smoothie_delete_button">
+                <%= link_to end_users_smoothy_path(@smoothie), method: :delete, data: {confirm: "削除しますか？"} do %>
+                  <i class="fas fa-trash"></i>
+                <% end %>
+              </div>
+            <% end %>
           </div>
           <div class="introduction">
             <%= @smoothie.introduction %>
           </div>
-          <div id="favorite_buttons_<%= @smoothie.id %>">
-            <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: @smoothie } %>
-          </div>
-          <div class="comment">
-            <%= link_to end_users_smoothy_comments_path(@smoothie) do %>
-              <i class="fas fa-pen"></i>コメント<%= @smoothie.comments.count %>件
-            <% end %>
-          </div>
-          <% if @smoothie.end_user == current_end_user %>
-            <div class="smoothie_delete_button">
-              <%= link_to end_users_smoothy_path(@smoothie), method: :delete, data: {confirm: "削除しますか？"} do %>
-                <button class="btn btn-danger">削除</button>
-              <% end %>
-            </div>
-          <% end %>
         </div>
         <div class="col-xs-4">
           <div class="ingredients-table">

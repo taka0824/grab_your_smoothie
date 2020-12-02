@@ -7,9 +7,12 @@
     </div>
   </div>
   <div class="row">
-    <div class='col-xs-4'>
+    <div class='col-xs-3'>
       <div class="smoothie_image">
         <%= attachment_image_tag @smoothie, :image, :fill, 300, 300, class:"image-size", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
+      </div>
+      <div class="ingredients-table">
+        <%= render partial: "end_users/ingredients/total_ingredients_table", locals: {smoothie: @smoothie } %>
       </div>
       <div class="introduction">
         <%= @smoothie.introduction %>
@@ -20,14 +23,9 @@
         <% end %>
       </div>
     </div>
-    <div class="col-xs-4">
-      <div class="ingredients-table">
-        <%= render partial: "end_users/ingredients/total_ingredients_table", locals: {smoothie: @smoothie } %>
-      </div>
-    </div>
-    <div class='col-xs-4'>
-      <div class="nutrients-table">
-        <%= render partial: "end_users/smoothies/total_nutrients_table", locals: {smoothie_ingredients: @smoothie.smoothie_ingredients } %>
+    <div class='col-xs-9'>
+      <div class="admin-comment-table">
+        <%= render partial: "admins/comments/comment_table", locals: {comments: @smoothie.comments.order(created_at: "DESC").page(params[:page]).per(10)} %>
       </div>
     </div>
   </div>

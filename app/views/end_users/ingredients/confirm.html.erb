@@ -15,10 +15,6 @@
             <td><%= @ingredient.name %></td>
           </tr>
           <tr>
-            <th>1つあたりの可食部重量</th>
-            <td><%= @ingredient.edible_part_amount %> g</td>
-          </tr>
-          <tr>
             <th>〜グラムあたりの栄養栄養素量</th>
             <td><%= @gram %>gあたり</td>
           </tr>
@@ -79,7 +75,6 @@
       <h3 class="last-confirm">上記の内容で誤りはないですか？</h3>
       <%= form_with model: @ingredient,url: end_users_ingredients_path, local: true do |f| %>
         <%= f.hidden_field :name, :value => @ingredient.name %>
-        <%= f.hidden_field :edible_part_amount, :value => @ingredient.edible_part_amount %>
         <%= f.hidden_field :gram, :value => @gram %>
         <%= f.hidden_field :energy, :value => @ingredient.energy %>
         <%= f.hidden_field :protein, :value => @ingredient.protein %>
@@ -94,9 +89,11 @@
         <%= f.hidden_field :vitamin_d, :value => @ingredient.vitamin_d %>
         <%= f.hidden_field :vitamin_e, :value => @ingredient.vitamin_e %>
         <%= f.hidden_field :vitamin_k, :value => @ingredient.vitamin_k %>
-        <%= f.submit "はい" %>
+        <%= f.submit "はい", class: "btn btn-primary" %>
+        <%= link_to new_end_users_ingredient_path do %>
+          <button class="btn btn-success">修正が必要</button>
+        <% end %>
       <% end %>
-      <button class="btn btn-primay">修正が必要</button>
     </div>
   </div>
 </div>

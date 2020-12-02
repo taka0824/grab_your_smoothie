@@ -36,3 +36,15 @@
 .mypage-side-bar {
   text-align: center;
 }
+
+.link-to-edit {
+  border: solid 0.5px #808080;
+  color: #808080;
+  border-radius: 20%;
+  background-color: white;
+}
+
+.end-user-edit-buttons {
+  display: flex;
+  justify-content: space-around;
+}

@@ -33,7 +33,7 @@ class EndUsers::JuicerIngredientsController < ApplicationController
       redirect_to end_users_juicer_ingredients_path
     else
       if @juicer_ingredient.update(juicer_ingredient_params)
-        flash[:notice] = "個数を変更しました"
+        flash[:notice] = "数量を変更しました"
         redirect_to end_users_juicer_ingredients_path
       else
         @juicer_ingredients = current_end_user.juicer_ingredients

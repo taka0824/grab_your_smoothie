@@ -1,14 +1,17 @@
 <div class="mypage-side-bar">
-  <h4><%= end_user.name %>さんのマイページ</h4>
-  <br>
-  <% if end_user.id == current_end_user.id %>
-    <%= link_to  edit_end_users_end_user_path(end_user.id) do %>
-      <button class="btn btn-link"><i class="fas fa-cog"></i>アカウント編集</button>
+  <h4>
+    <%= end_user.name %>さんのマイページ
+    <% if end_user.id == current_end_user.id %>
+      <%= link_to edit_end_users_end_user_path(end_user.id) do %>
+        <span class="link-to-edit"><i class="fas fa-cog"></i></span>
+      <% end %>
     <% end %>
-  <% end %>
+  </h4>
   <br>
   <br>
   <p>レシピ投稿数  <%= link_to end_user.smoothies.count, recipe_list_end_users_end_user_path(end_user) %>件</p>
   <p>いいねしたレシピ数  <%= link_to end_user.favorites.count, favorite_list_end_users_end_user_path(end_user) %>件</p>
-  <br>
+  <% if end_user.id == current_end_user.id && end_user.ingredients.any? %>
+    <p>新規追加した材料　<%= link_to end_user.ingredients.count, ingredient_list_end_users_end_user_path(current_end_user) %>件</p>
+  <% end %>
 </div>

@@ -1,7 +1,7 @@
 class EndUsers::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   def index
-    @end_users = EndUser.all.where(is_deleted: false).page(params[:page]).per(10)
+    @end_users = EndUser.all.active.page(params[:page]).per(10)
   end
 
   def show
@@ -34,6 +34,10 @@ class EndUsers::EndUsersController < ApplicationController
   def favorite_list
     @end_user = EndUser.find(params[:id])
     @favorited_smoothies = @end_user.favorited_smoothies.page(params[:page]).per(9)
+  end
+  
+  def ingredient_list
+    @ingredients = current_end_user.ingredients.page(params[:page]).per(9)
   end
 
   def destroy_confirm

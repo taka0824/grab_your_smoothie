@@ -23,18 +23,21 @@
         <div class="row">
           <div class='col-xs-4'>
             <div class="smoothie_image">
-              <%= attachment_image_tag @smoothie, :image, :fill, 200, 200, class: "image-size", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
+              <%= attachment_image_tag @smoothie, :image, :fill, 200, 200, class: "image-frame", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
+            </div>
+            <div class="buttons">
+              <div id="favorite_buttons_<%= @smoothie.id %>">
+                <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: @smoothie } %>
+              </div>
+              <div class="comment_button">
+                <%= link_to end_users_smoothy_comments_path(@smoothie) do %>
+                  <i class="fas fa-pen"></i>
+                <% end %>
+                <%= @smoothie.comments.count %>
+              </div>
             </div>
             <div class="introduction">
               <%= @smoothie.introduction %>
-            </div>
-            <div id="favorite_buttons_<%= @smoothie.id %>">
-              <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: @smoothie } %>
-            </div>
-            <div class="comment_button">
-              <%= link_to end_users_smoothy_comments_path(@smoothie) do %>
-                <i class="fas fa-pen"></i>コメント<%= @smoothie.comments.count %>件
-              <% end %>
             </div>
           </div>
           <div class="col-xs-4">

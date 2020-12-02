@@ -1,21 +1,21 @@
 <table class="table">
   <thead>
-    <tr>
-      <th>コメント作成日時</th>
-      <th>スムージーID</th>
-      <th>コメントユーザーID</th>
-      <th>コメント内容</th>
-      <th>削除ボタン</th>
+    <tr class="row">
+      <th class="col-xs-3">作成日時</th>
+      <th class="col-xs-5">コメント内容</th>
+      <th class="col-xs-1">削除ボタン</th>
     </tr>
   </thead>
   <tbody>
     <% comments.each do |comment| %>
-      <tr>
-        <td><%= comment.created_at.to_s(:datetime_jp) %></td>
-        <td><%= comment.smoothie.end_user_id %></td>
-        <td><%= comment.end_user_id %></td>
-        <td><%= comment.content %></td>
-        <td>
+      <tr class="row">
+        <td class="col-xs-3"><%= comment.created_at.to_s(:datetime_jp) %></td>
+        <td class="col-xs-8">
+          <%= link_to admins_smoothy_path(comment.smoothie) do %>
+            <%= comment.content %>
+          <% end %>
+        </td>
+        <td class="col-xs-1">
           <%= link_to admins_comment_path(comment), method: :delete, data: {confirm: "削除しますか？"} do %>
             <button class="btn btn-danger">削除</button>
           <% end %>

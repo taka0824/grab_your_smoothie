@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get "searches/recipe_search" => "searches#recipe_search"
     get "searches/ingredient_search" => "searches#ingredient_search"
     resources :notifications, only: [:index]
-    resources :ingredients, only: [:index, :new, :create, :show] do
+    resources :ingredients, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
       get :confirm, on: :collection
     end
     resources :juicer_ingredients, only: [:create, :index, :destroy, :update] do
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       patch :is_deleted_update, on: :member
       get :favorite_list, on: :member
       get :recipe_list, on: :member
+      get :ingredient_list, on: :member
     end
     resources :smoothies, only: [:new, :create, :show, :destroy] do
       resource :favorites, only: [:create, :destroy]

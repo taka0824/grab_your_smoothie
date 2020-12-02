@@ -20,12 +20,13 @@
         <% end %>
       </div>
       <div class="row">
-        <div class="admin-ingredient-table col-xs-offset-4 col-xs-4">
+        <div class="admin-ingredient-table col-xs-offset-3 col-xs-6">
           <table class="table">
             <thead>
               <tr>
                 <th>追加日</th>
                 <th>材料名</th>
+                <th>追加者</th>
               </tr>
             </thead>
             <tbody>
@@ -37,6 +38,11 @@
                       <%= ingredient.name %>
                     <% end %>
                   </td>
+                  <% if ingredient.created_by != nil %>
+                    <td><%= ingredient.end_user.name %></td>
+                  <% else %>
+                    <td>管理者</td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>
