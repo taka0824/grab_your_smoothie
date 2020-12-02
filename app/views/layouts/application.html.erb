@@ -4,7 +4,6 @@
     <title>Gys</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <script src="https://kit.fontawesome.com/850f0b1727.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -113,6 +112,7 @@
   </header>
 
   <body>
+    <div class="flash-messages"></div>
     <% if flash[:notice] %>
     <div class="flash">
       <%= flash[:notice] %>

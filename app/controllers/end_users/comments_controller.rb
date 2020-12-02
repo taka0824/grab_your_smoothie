@@ -16,6 +16,7 @@ class EndUsers::CommentsController < ApplicationController
     # 非同期通信のrender先で必要な変数
     if @comment.save
       @smoothie.create_notification_comment(current_end_user, @comment.id)
+      flash.now[:success] = "コメントを投稿しました"
     end
   end
 
@@ -26,6 +27,7 @@ class EndUsers::CommentsController < ApplicationController
     @comments = @smoothie.comments.order(created_at: "DESC").page(params[:page]).per(10)
     # 非同期通信のrender先で必要な変数
     @comment.destroy
+    flash.now[:success] = "コメントを削除しました"
   end
 
   private

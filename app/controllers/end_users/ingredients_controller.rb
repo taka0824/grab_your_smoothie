@@ -62,7 +62,7 @@ class EndUsers::IngredientsController < ApplicationController
 
   def create
     @ingredient = current_end_user.ingredients.new(ingredient_params)
-    p @ingredient
+    # p @ingredient
     if @ingredient.save
       flash[:notice] = "材料を追加しました"
       redirect_to end_users_ingredient_path(@ingredient)

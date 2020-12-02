@@ -12,63 +12,63 @@
         <table class="table">
           <tr>
             <th><%= f.label :name_hiragana, "材料名" %></th>
-            <td><%= f.text_field :name %></td>
+            <td><%= f.text_field :name, value: params[:name] %></td>
           </tr>
           <tr>
             <th><%= f.label :gram, "〜グラムあたりの栄養素量" %></th>
-            <td><%= f.text_field :gram %> g</td>
+            <td><%= f.text_field :gram, value: params[:gram] %> g</td>
           </tr>
           <tr>
             <th><%= f.label :energy, "エネルギー" %></th>
-            <td><%= f.text_field :energy, value: "" %> kcal</td>
+            <td><%= f.text_field :energy, value: params[:energy] %> kcal</td>
           </tr>
           <tr>
             <th><%= f.label :protein, "タンパク質" %></th>
-            <td><%= f.text_field :protein, value: "" %> g</td>
+            <td><%= f.text_field :protein, value: params[:protein] %> g</td>
           </tr>
           <tr>
             <th><%= f.label :carb, "糖質" %></th>
-            <td><%= f.text_field :carb, value: "" %> g</td>
+            <td><%= f.text_field :carb, value: params[:carb] %> g</td>
           </tr>
           <tr>
             <th><%= f.label :lipid, "脂質" %></th>
-            <td><%= f.text_field :lipid, value: "" %> g</td>
+            <td><%= f.text_field :lipid, value: params[:lipid] %> g</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_a, "ビタミンA" %></th>
-            <td><%= f.text_field :vitamin_a, value: "" %> μgRAE</td>
+            <td><%= f.text_field :vitamin_a, value: params[:vitamin_a] %> μgRAE</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b1, "ビタミンB1" %></th>
-            <td><%= f.text_field :vitamin_b1, value: "" %> mg</td>
+            <td><%= f.text_field :vitamin_b1, value: params[:vitamin_b1] %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b2, "ビタミンB2" %></th>
-            <td><%= f.text_field :vitamin_b2, value: "" %> mg</td>
+            <td><%= f.text_field :vitamin_b2, value: params[:vitamin_b2] %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b6, "ビタミンB6" %></th>
-            <td><%= f.text_field :vitamin_b6, value: "" %> mg</td>
+            <td><%= f.text_field :vitamin_b6, value: params[:vitamin_b6] %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b12, "ビタミンB12" %></th>
-            <td><%= f.text_field :vitamin_b12, value: "" %> μg</td>
+            <td><%= f.text_field :vitamin_b12, value: params[:vitamin_b12] %> μg</td>
           </tr>
           <tr>
             <th> <%= f.label :vitamin_c, "ビタミンC" %></th>
-            <td><%= f.text_field :vitamin_c, value: "" %> mg</td>
+            <td><%= f.text_field :vitamin_c, value: params[:vitamin_c] %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_d, "ビタミンD" %></th>
-            <td><%= f.text_field :vitamin_d, value: "" %> μg</td>
+            <td><%= f.text_field :vitamin_d, value: params[:vitamin_d] %> μg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_e, "ビタミンE" %></th>
-            <td><%= f.text_field :vitamin_e, value: "" %> mg</td>
+            <td><%= f.text_field :vitamin_e, value: params[:vitamin_e] %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_k, "ビタミンK" %></th>
-            <td><%= f.text_field :vitamin_k, value: "" %> μg</td>
+            <td><%= f.text_field :vitamin_k, value: params[:vitamin_k] %> μg</td>
           </tr>
         </table>
         <%= f.submit "追加" %>

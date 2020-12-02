@@ -1,1 +1,2 @@
 $('#favorite_buttons_<%= @smoothie.id %>').html("<%= j(render partial: 'end_users/smoothies/favorite_button', locals: {smoothie: @smoothie}) %>");
+$(".flash-messages").html("<%= j(render partial: 'layouts/flash_messages') %>")

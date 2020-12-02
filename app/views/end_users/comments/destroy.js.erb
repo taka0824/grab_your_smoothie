@@ -1,2 +1,3 @@
 $(".comment_table").html("<%= j(render partial: 'end_users/comments/comment_table', locals: {comments: @comments, smoothie: @smoothie}) %>");
 $(".error-messages").html("<%= j(render partial: 'layouts/error_message', locals: { model: @comment}) %>");
+$(".flash-messages").html("<%= j(render partial: 'layouts/flash_messages') %>")
