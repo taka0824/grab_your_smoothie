@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      comment:
+        content: 'コメント内容'
+      end_user:
+        name: '名前'
+      smoothie:
+        introduction: '説明文'

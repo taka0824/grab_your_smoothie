@@ -8,117 +8,115 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
-    <div class="header-list">
-      <nav>
-        <ul class="">
-          <% if end_user_signed_in? %>
-            <li class="header-list-item btn">
-              <%= link_to root_path do %>
-                <i class="fas fa-home">トップ</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to end_users_end_user_path(current_end_user) do %>
-                <i class="fas fa-user">マイページ</i>
-              <% end %>
-            </li>
-            <% if current_end_user.passive_notifications.where(checked: false).any? %>
+  <body>
+    <header>
+      <div class="header-list">
+        <nav>
+          <ul class="">
+            <% if end_user_signed_in? %>
               <li class="header-list-item btn">
-                <%= link_to end_users_notifications_path do %>
-                  <span class="notification-container">
-                    <i class="fas fa-circle notification-circle"></i><i class="fas fa-bell">通知</i>
-                  </span>
+                <%= link_to root_path do %>
+                  <i class="fas fa-home">トップ</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to end_users_end_user_path(current_end_user) do %>
+                  <i class="fas fa-user">マイページ</i>
+                <% end %>
+              </li>
+              <% if current_end_user.passive_notifications.where(checked: false).any? %>
+                <li class="header-list-item btn">
+                  <%= link_to end_users_notifications_path do %>
+                    <span class="notification-container">
+                      <i class="fas fa-circle notification-circle"></i><i class="fas fa-bell">通知</i>
+                    </span>
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="header-list-item btn">
+                  <%= link_to end_users_notifications_path do %>
+                    <i class="fas fa-bell">通知</i>
+                  <% end %>
+                </li>
+              <% end %>
+              <li class="header-list-item btn">
+                <%= link_to end_users_end_users_path do %>
+                  <i class="fas fa-users">ユーザー一覧</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to end_users_search_ways_path do %>
+                  <i class="fas fa-apple-alt">レシピ</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to end_users_juicer_ingredients_path do %>
+                  <i class="fas fa-blender">ジューサー</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to destroy_end_user_session_path, method: :delete  do %>
+                  <i class="fas fa-sign-out-alt">ログアウト</i>
+                <% end %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li class="header-list-item btn">
+                <%= link_to admins_top_path do %>
+                  <i class="fas fa-home">トップ</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to admins_end_users_path do %>
+                  <i class="fas fa-users">会員</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to admins_ingredients_path do %>
+                  <i class="fas fa-apple-alt">材料</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to admins_comments_path do %>
+                  <i class="fas fa-comment">コメント</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to admins_smoothies_path do %>
+                  <i class="fas fa-blender">スムージー</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to destroy_admin_session_path, method: :delete  do %>
+                  <i class="fas fa-sign-out-alt">ログアウト</i>
                 <% end %>
               </li>
             <% else %>
               <li class="header-list-item btn">
-                <%= link_to end_users_notifications_path do %>
-                  <i class="fas fa-bell">通知</i>
+                <%= link_to root_path do %>
+                  <i class="fas fa-home">トップ</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to new_end_user_registration_path do %>
+                  <i class="fas fa-pen-alt">新規登録</i>
+                <% end %>
+              </li>
+              <li class="header-list-item btn">
+                <%= link_to new_end_user_session_path do %>
+                  <i class="fas fa-sign-in-alt">ログイン</i>
                 <% end %>
               </li>
             <% end %>
-            <li class="header-list-item btn">
-              <%= link_to end_users_end_users_path do %>
-                <i class="fas fa-users">ユーザー一覧</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to end_users_search_ways_path do %>
-                <i class="fas fa-apple-alt">レシピ</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to end_users_juicer_ingredients_path do %>
-                <i class="fas fa-blender">ジューサー</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to destroy_end_user_session_path, method: :delete  do %>
-                <i class="fas fa-sign-out-alt">ログアウト</i>
-              <% end %>
-            </li>
-          <% elsif admin_signed_in? %>
-            <li class="header-list-item btn">
-              <%= link_to admins_top_path do %>
-                <i class="fas fa-home">トップ</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to admins_end_users_path do %>
-                <i class="fas fa-users">会員</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to admins_ingredients_path do %>
-                <i class="fas fa-apple-alt">材料</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to admins_comments_path do %>
-                <i class="fas fa-comment">コメント</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to admins_smoothies_path do %>
-                <i class="fas fa-blender">スムージー</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to destroy_admin_session_path, method: :delete  do %>
-                <i class="fas fa-sign-out-alt">ログアウト</i>
-              <% end %>
-            </li>
-          <% else %>
-            <li class="header-list-item btn">
-              <%= link_to root_path do %>
-                <i class="fas fa-home">トップ</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to new_end_user_registration_path do %>
-                <i class="fas fa-pen-alt">新規登録</i>
-              <% end %>
-            </li>
-            <li class="header-list-item btn">
-              <%= link_to new_end_user_session_path do %>
-                <i class="fas fa-sign-in-alt">ログイン</i>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <body>
-    <div class="flash-messages"></div>
-    <% if flash[:notice] %>
-    <div class="flash">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-
-    <%= yield %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="flash-messages">
+        <%= render partial: 'layouts/flash_messages' %>
+      </div>
+      <%= yield %>
+    </main>
+    <footer></footer>
   </body>
 </html>

@@ -9,33 +9,16 @@
   <div class="row">
     <% if @juicer_ingredients.any? %>
       <div class="col-xs-6">
-        <%= render partial: "layouts/error_message", locals: {model: @juicer_ingredient} %>
+        <div class="error-messages">
+          <%= render partial: "layouts/error_message", locals: {model: @juicer_ingredient} %>
+        </div>
         <%= link_to destroy_all_end_users_juicer_ingredients_path, method: :delete, data: {confirm: "削除しますか？"} do %>
           <btn class="btn btn-danger">ジューサーを空にする</btn>
         <% end %>
         <br>
-        <table class="table">
-          <tbody>
-            <% @juicer_ingredients.each do |ingredient| %>
-              <tr>
-                <td><%= ingredient.ingredient.name %></td>
-                <td>
-                  <%= form_with model: ingredient, url: end_users_juicer_ingredient_path(ingredient), class: "form-inline", local: true do |f| %>
-                    <%= f.text_field :amount, class: "form-control" %> グラム
-                    <%= f.submit "変更", class:"btn btn-primary" %>
-                  <% end %>
-                </td>
-                <td>
-                  <%= link_to end_users_juicer_ingredient_path(ingredient), method: :delete, data: {confirm: "削除しますか？" } do %>
-                    <button class="btn btn-danger">削除</button>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <br>
-        <br>
+        <div class="juicer-ingredients-table">
+          <%= render partial: "end_users/juicer_ingredients/juicer_ingredients_table", locals: { juicer_ingredients: @juicer_ingredients } %>
+        </div>
         <%= link_to end_users_ingredients_path do %>
           <button class='btn btn-success'>材料を追加する</button>
         <% end %>

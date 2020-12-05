@@ -1,9 +1,9 @@
 <% if model.errors.any? %>
   <div id="error-explanation" class="alert alert-danger">
     <h2><%= model.errors.count %>件のエラーが発生しました</h2>
-    <ul>
+    <ul id="errors-list">
       <% model.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li id='error-reason'><%= message %></li>
       <% end %>
     </ul>
   </div>

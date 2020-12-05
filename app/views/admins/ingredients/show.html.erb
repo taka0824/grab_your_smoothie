@@ -7,8 +7,13 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-xs-12">
+      <p class="hankaku-caution">※数値は半角数字でご入力ください</p>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
-      <%= form_with model: @ingredient, url: admins_ingredient_path(@ingredient), local: true do |f| %>
+      <%= form_with model: @ingredient, url: admins_ingredient_path(@ingredient),class: "form-inline", local: true do |f| %>
         <table class="table admin-ingredient-table">
           <thead>
             <tr>
@@ -19,74 +24,72 @@
           <tbody>
             <tr>
               <th><%= f.label :name, "材料名" %></th>
-              <td><%= f.text_field :name, value: @ingredient.name %></td>
+              <td><%= f.text_field :name, value: @ingredient.name, class: "form-control" %></td>
             </tr>
             <tr>
               <th><%= f.label :gram, "〜グラムあたりの栄養素量" %></th>
-              <td><%= f.text_field :gram, value: "100" %> g</td>
+              <td><%= f.text_field :gram, value: "100", class: "form-control" %> g</td>
             </tr>
             <tr>
               <th><%= f.label :energy, "エネルギー" %></th>
-              <td><%= f.text_field :energy, value: @ingredient.energy.round(3) %>kcal</td>
+              <td><%= f.text_field :energy, value: @ingredient.energy.round(3), class: "form-control" %> kcal</td>
             </tr>
             <tr>
               <th><%= f.label :protein, "タンパク質" %></th>
-              <td><%= f.text_field :protein, value: @ingredient.protein.round(3) %>g</td>
+              <td><%= f.text_field :protein, value: @ingredient.protein.round(3), class: "form-control" %> g</td>
             </tr>
             <tr>
               <th><%= f.label :carb, "糖質" %></th>
-              <td><%= f.text_field :carb, value: @ingredient.carb.round(3) %>g</td>
+              <td><%= f.text_field :carb, value: @ingredient.carb.round(3), class: "form-control" %> g</td>
             </tr>
             <tr>
               <th><%= f.label :lipid, "脂質" %></th>
-              <td><%= f.text_field :lipid, value: @ingredient.lipid.round(3) %>g</td>
+              <td><%= f.text_field :lipid, value: @ingredient.lipid.round(3), class: "form-control" %> g</td>
             </tr>
             <tr>
               <th><%= f.label :vitamin_a, "ビタミンA" %></th>
-              <td><%= f.text_field :vitamin_a, value: @ingredient.convert_to_micro(@ingredient.vitamin_a) %>μg</td>
+              <td><%= f.text_field :vitamin_a, value: @ingredient.convert_to_micro(@ingredient.vitamin_a), class: "form-control" %> μg</td>
             </tr>
             <tr>
               <th><%= f.label :vitamin_b1, "ビタミンB1" %></th>
-              <td><%= f.text_field :vitamin_b1, value: @ingredient.convert_to_mili(@ingredient.vitamin_b1) %>mg</td>
+              <td><%= f.text_field :vitamin_b1, value: @ingredient.convert_to_mili(@ingredient.vitamin_b1), class: "form-control" %> mg</td>
             </tr>
             <tr>
               <th><%= f.label :vitamin_b2, "ビタミンB2" %></th>
-              <td><%= f.text_field :vitamin_b2, value: @ingredient.convert_to_mili(@ingredient.vitamin_b2) %>mg</td>
+              <td><%= f.text_field :vitamin_b2, value: @ingredient.convert_to_mili(@ingredient.vitamin_b2), class: "form-control" %> mg</td>
             </tr>
             <tr>
               <th><%= f.label :vitamin_b6, "ビタミンB6" %></th>
-              <td><%= f.text_field :vitamin_b6, value: @ingredient.convert_to_mili(@ingredient.vitamin_b6) %>mg</td>
+              <td><%= f.text_field :vitamin_b6, value: @ingredient.convert_to_mili(@ingredient.vitamin_b6), class: "form-control" %> mg</td>
             </tr>
             <tr>
               <th><%= f.label :vitamin_b12, "ビタミンB12" %></th>
-              <td><%= f.text_field :vitamin_b12, value: @ingredient.convert_to_micro(@ingredient.vitamin_b12) %>μg</td>
+              <td><%= f.text_field :vitamin_b12, value: @ingredient.convert_to_micro(@ingredient.vitamin_b12), class: "form-control" %> μg</td>
             </tr>
             <tr>
               <th> <%= f.label :vitamin_c, "ビタミンC" %></th>
-              <td><%= f.text_field :vitamin_c, value: @ingredient.convert_to_mili(@ingredient.vitamin_c) %>mg</td>
+              <td><%= f.text_field :vitamin_c, value: @ingredient.convert_to_mili(@ingredient.vitamin_c), class: "form-control" %> mg</td>
             </tr>
             <tr>
               <th><%= f.label :vitamin_d, "ビタミンD" %></th>
-              <td><%= f.text_field :vitamin_d, value: @ingredient.convert_to_micro(@ingredient.vitamin_d) %>μg</td>
+              <td><%= f.text_field :vitamin_d, value: @ingredient.convert_to_micro(@ingredient.vitamin_d), class: "form-control" %> μg</td>
             </tr>
             <tr>
               <th><%= f.label :vitamin_e, "ビタミンE" %></th>
-              <td><%= f.text_field :vitamin_e, value: @ingredient.convert_to_mili(@ingredient.vitamin_e) %>mg</td>
+              <td><%= f.text_field :vitamin_e, value: @ingredient.convert_to_mili(@ingredient.vitamin_e), class: "form-control" %> mg</td>
             </tr>
             <tr>
               <th><%= f.label :vitamin_k, "ビタミンK" %></th>
-              <td><%= f.text_field :vitamin_k, value: @ingredient.convert_to_micro(@ingredient.vitamin_k) %>μg</td>
+              <td><%= f.text_field :vitamin_k, value: @ingredient.convert_to_micro(@ingredient.vitamin_k), class: "form-control" %> μg</td>
             </tr>
           </tbody>
         </table>
-        <%= f.submit "更新", class:"submit-button" %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <%= link_to admins_ingredient_path(@ingredient), method: :delete, data: {confirm: "削除しますか？"} do %>
-        <btn class="btn btn-danger">削除</btn>
+        <div class="ingredient-edit-buttons">
+          <%= f.submit "更新", class:"btn btn-primary submit-button" %>
+          <%= link_to admins_ingredient_path(@ingredient), method: :delete, data: {confirm: "削除しますか？"} do %>
+            <btn class="btn btn-danger">削除</btn>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

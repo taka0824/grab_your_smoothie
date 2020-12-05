@@ -8,25 +8,9 @@
   </div>
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
-      <%= form_with model: @end_user, url: end_users_end_user_path(@end_user), local: true do |f| %>
-        <%= render partial: "layouts/error_message", locals: { model: f.object } %>
-        <table class="table">
-          <tr>
-            <th><%= f.label :name, "アカウント名" %></th>
-            <td><%= f.text_field :name %></td>
-          </tr>
-          <tr>
-            <th><%= f.label :email, :"メールアドレス" %></th>
-            <td><%= f.email_field :email %></td>
-          </tr>
-        </table>
-        <div class="end-user-edit-buttons">
-          <%= f.submit "変更する", class: "btn btn-primary" %>
-          <%= link_to destroy_confirm_end_users_end_users_path do %>
-            <button class="btn btn-danger">退会する</button>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="account-info-form">
+        <%= render partial: "end_users/end_users/account_info_form", locals: { end_user: @end_user } %>
+      </div>
     </div>
   </div>
 </div>

@@ -4,15 +4,19 @@ class EndUsers::JuicerIngredientsController < ApplicationController
   def create
     @juicer_ingredient = current_end_user.juicer_ingredients.new(juicer_ingredient_params)
     @ingredient = Ingredient.find(params[:juicer_ingredient][:ingredient_id])
+    if params[:juicer_ingredient][:amount].to_i == 0
+      flash[:warning] = "数量は半角数字でご入力ください"
+      redirect_to end_users_ingredient_path(@ingredient) and return
+    end
     if current_end_user.juicer_ingredients.find_by(ingredient_id: params[:juicer_ingredient][:ingredient_id]).present?
       juicer_ingredient = current_end_user.juicer_ingredients.find_by(ingredient_id: params[:juicer_ingredient][:ingredient_id])
       juicer_ingredient.amount += params[:juicer_ingredient][:amount].to_i
       juicer_ingredient.save
-      flash[:notice] = "材料を追加しました"
+      flash[:success] = "材料を追加しました"
       redirect_to end_users_juicer_ingredients_path
     else
       if @juicer_ingredient.save
-        flash[:notice] = "材料を追加しました"
+        flash[:success] = "材料を追加しました"
         redirect_to end_users_juicer_ingredients_path
       else
         render "end_users/ingredients/show"
@@ -27,30 +31,29 @@ class EndUsers::JuicerIngredientsController < ApplicationController
 
   def update
     @juicer_ingredient = JuicerIngredient.find(params[:id])
+    @juicer_ingredients = current_end_user.juicer_ingredients
+    # 非同期通信した際のビューで必要な変数
     if params[:juicer_ingredient][:amount] == "0"
       @juicer_ingredient.destroy
-      flash[:notice] = "材料を削除しました"
+      flash[:success] = "材料を削除しました"
       redirect_to end_users_juicer_ingredients_path
     else
-      if @juicer_ingredient.update(juicer_ingredient_params)
-        flash[:notice] = "数量を変更しました"
-        redirect_to end_users_juicer_ingredients_path
-      else
-        @juicer_ingredients = current_end_user.juicer_ingredients
-        render "end_users/juicer_ingredients/index"
-      end
+      # 0以外の数量に変更した時
+      @juicer_ingredient.update(juicer_ingredient_params)
+      flash.now[:success] = "数量を変更しました"
+      # jsファイルの中でエラーメッセージのエリアの更新も行っているのでvalidatesに引っかかったときのelseで条件分岐は必要ない
     end
   end
 
   def destroy
     JuicerIngredient.find(params[:id]).destroy
-    flash[:notice] = "材料を削除しました"
+    flash[:success] = "材料を削除しました"
     redirect_to end_users_juicer_ingredients_path
   end
 
   def destroy_all
     JuicerIngredient.where(end_user_id: current_end_user.id).destroy_all
-    flash[:notice] = '全ての材料を削除しました'
+    flash[:success] = '全ての材料を削除しました'
     redirect_to request.referer
   end
 

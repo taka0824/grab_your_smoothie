@@ -7,6 +7,8 @@ class Smoothie < ApplicationRecord
     has_many :notifications, dependent: :destroy
     attachment :image
 
+    validates :introduction, length: { maximum: 75 }
+
     def favorited_by?(end_user)
       favorites.where(end_user_id: end_user.id).exists?
     end

@@ -1,37 +1,27 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="link-to-index">
-        <h3>
-          本日のスムージー投稿数
-          <%= link_to todays_smoothies_admins_smoothies_path do %>
-            <%= @smoothies.count %>件
-          <% end %>
-        </h3>
-      </div>
+<div class="container admins-top">
+  <div class="todays-post-links">
+    <div class="link-to-index">
+      <h3>
+        本日のスムージー投稿数
+        <%= link_to todays_smoothies_admins_smoothies_path do %>
+          <%= @smoothies.count %>件
+        <% end %>
+      </h3>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="link-to-index">
-        <h3>
-          本日のコメント投稿数
-          <%= link_to todays_comments_admins_comments_path do %>
-            <%= @comments.count %>件
-          <% end %>
-        </h3>
-      </div>
+    <div class="link-to-index">
+      <h3>
+        本日のコメント投稿数
+        <%= link_to todays_comments_admins_comments_path do %>
+          <%= @comments.count %>件
+        <% end %>
+      </h3>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="link-to-index">
-        <h3>本日の材料追加数
-          <%= link_to todays_ingredients_admins_ingredients_path do %>
-            <%= @ingredients.count %>件
-          <% end %>
-        </h3>
-      </div>
+    <div class="link-to-index">
+      <h3>本日の材料追加数
+        <%= link_to todays_ingredients_admins_ingredients_path do %>
+          <%= @ingredients.count %>件
+        <% end %>
+      </h3>
     </div>
   </div>
 </div>

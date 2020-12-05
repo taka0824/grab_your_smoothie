@@ -1,0 +1,3 @@
+$(".account-info-form").html("<%= j(render partial: 'end_users/end_users/account_info_form', locals: {end_user: @end_user}) %>");
+$(".error-messages").html("<%= j(render partial: 'layouts/error_message', locals: { model: @end_user}) %>");
+$(".flash-messages").html("<%= j(render partial: 'layouts/flash_messages') %>")

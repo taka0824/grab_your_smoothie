@@ -28,7 +28,7 @@ class Admins::SmoothiesController < ApplicationController
       end_user.active_notifications.destroy_all
       end_user.update(is_deleted: true, name: "#{end_user.name}" + "(規約違反により退会)")
     end
-    flash[:notice] = "スムージー投稿を削除しました"
+    flash[:success] = "スムージー投稿を削除しました"
     redirect_to admins_smoothies_path
   end
 

@@ -1,0 +1,4 @@
+$(".juicer-ingredients-table").html("<%= j(render partial: 'end_users/juicer_ingredients/juicer_ingredients_table', locals: { juicer_ingredients: @juicer_ingredients}) %>");
+$(".juicer-ingredients-nutrient-table").html("<%= j(render partial: 'end_users/juicer_ingredients/total_juicer_ingredients_nutrients', locals: {juicer_ingredients: @juicer_ingredients}) %>");
+$(".error-messages").html("<%= j(render partial: 'layouts/error_message', locals: { model: @juicer_ingredient}) %>");
+$(".flash-messages").html("<%= j(render partial: 'layouts/flash_messages') %>");

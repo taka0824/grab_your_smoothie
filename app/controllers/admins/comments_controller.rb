@@ -24,6 +24,7 @@ class Admins::CommentsController < ApplicationController
       end_user.active_notifications.destroy_all
       end_user.update(is_deleted: true, name: "#{end_user.name}" + "(規約違反により退会)")
     end
+    flash[:success] = "コメントを削除しました"
     redirect_to admins_comments_path
   end
 

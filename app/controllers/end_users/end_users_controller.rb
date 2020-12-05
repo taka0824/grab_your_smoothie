@@ -19,10 +19,7 @@ class EndUsers::EndUsersController < ApplicationController
   def update
     @end_user = EndUser.find(params[:id])
     if @end_user.update(end_user_params)
-      flash[:notice] = "アカウント情報を更新しました"
-      redirect_to request.referer
-    else
-      render "end_users/end_users/edit"
+      flash.now[:success] = "アカウント情報を更新しました"
     end
   end
 
@@ -35,7 +32,7 @@ class EndUsers::EndUsersController < ApplicationController
     @end_user = EndUser.find(params[:id])
     @favorited_smoothies = @end_user.favorited_smoothies.page(params[:page]).per(9)
   end
-  
+
   def ingredient_list
     @ingredients = current_end_user.ingredients.page(params[:page]).per(9)
   end
@@ -45,7 +42,7 @@ class EndUsers::EndUsersController < ApplicationController
 
   def is_deleted_update
     EndUser.find(params[:id]).update(is_deleted: true)
-    flash[:notice] = "退会しました"
+    flash[:success] = "退会しました"
     redirect_to root_path
   end
 

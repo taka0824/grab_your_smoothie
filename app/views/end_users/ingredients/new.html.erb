@@ -7,71 +7,76 @@
     </div>
   </div>
   <div class="row">
-    <%= form_with model: @ingredient,url: confirm_end_users_ingredients_path, method: :get, local: true do |f| %>
+    <div class="col-xs-12">
+      <p class="hankaku-caution">※数値は半角数字でご入力ください</p>
+    </div>
+  </div>
+  <div class="row">
+    <%= form_with model: @ingredient,url: confirm_end_users_ingredients_path, class: "form-inline", method: :get, local: true do |f| %>
       <div class="col-xs-6 col-xs-offset-3">
         <table class="table">
           <tr>
             <th><%= f.label :name_hiragana, "材料名" %></th>
-            <td><%= f.text_field :name, value: params[:name] %></td>
+            <td><%= f.text_field :name, value: params[:name], class: "form-control" %></td>
           </tr>
           <tr>
             <th><%= f.label :gram, "〜グラムあたりの栄養素量" %></th>
-            <td><%= f.text_field :gram, value: params[:gram] %> g</td>
+            <td><%= f.text_field :gram, value: params[:gram], class: "form-control" %> g</td>
           </tr>
           <tr>
             <th><%= f.label :energy, "エネルギー" %></th>
-            <td><%= f.text_field :energy, value: params[:energy] %> kcal</td>
+            <td><%= f.text_field :energy, value: params[:energy], class: "form-control" %> kcal</td>
           </tr>
           <tr>
             <th><%= f.label :protein, "タンパク質" %></th>
-            <td><%= f.text_field :protein, value: params[:protein] %> g</td>
+            <td><%= f.text_field :protein, value: params[:protein], class: "form-control" %> g</td>
           </tr>
           <tr>
             <th><%= f.label :carb, "糖質" %></th>
-            <td><%= f.text_field :carb, value: params[:carb] %> g</td>
+            <td><%= f.text_field :carb, value: params[:carb], class: "form-control" %> g</td>
           </tr>
           <tr>
             <th><%= f.label :lipid, "脂質" %></th>
-            <td><%= f.text_field :lipid, value: params[:lipid] %> g</td>
+            <td><%= f.text_field :lipid, value: params[:lipid], class: "form-control" %> g</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_a, "ビタミンA" %></th>
-            <td><%= f.text_field :vitamin_a, value: params[:vitamin_a] %> μgRAE</td>
+            <td><%= f.text_field :vitamin_a, value: params[:vitamin_a], class: "form-control" %> μgRAE</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b1, "ビタミンB1" %></th>
-            <td><%= f.text_field :vitamin_b1, value: params[:vitamin_b1] %> mg</td>
+            <td><%= f.text_field :vitamin_b1, value: params[:vitamin_b1], class: "form-control" %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b2, "ビタミンB2" %></th>
-            <td><%= f.text_field :vitamin_b2, value: params[:vitamin_b2] %> mg</td>
+            <td><%= f.text_field :vitamin_b2, value: params[:vitamin_b2], class: "form-control" %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b6, "ビタミンB6" %></th>
-            <td><%= f.text_field :vitamin_b6, value: params[:vitamin_b6] %> mg</td>
+            <td><%= f.text_field :vitamin_b6, value: params[:vitamin_b6], class: "form-control" %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b12, "ビタミンB12" %></th>
-            <td><%= f.text_field :vitamin_b12, value: params[:vitamin_b12] %> μg</td>
+            <td><%= f.text_field :vitamin_b12, value: params[:vitamin_b12], class: "form-control" %> μg</td>
           </tr>
           <tr>
             <th> <%= f.label :vitamin_c, "ビタミンC" %></th>
-            <td><%= f.text_field :vitamin_c, value: params[:vitamin_c] %> mg</td>
+            <td><%= f.text_field :vitamin_c, value: params[:vitamin_c], class: "form-control" %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_d, "ビタミンD" %></th>
-            <td><%= f.text_field :vitamin_d, value: params[:vitamin_d] %> μg</td>
+            <td><%= f.text_field :vitamin_d, value: params[:vitamin_d], class: "form-control" %> μg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_e, "ビタミンE" %></th>
-            <td><%= f.text_field :vitamin_e, value: params[:vitamin_e] %> mg</td>
+            <td><%= f.text_field :vitamin_e, value: params[:vitamin_e], class: "form-control" %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_k, "ビタミンK" %></th>
-            <td><%= f.text_field :vitamin_k, value: params[:vitamin_k] %> μg</td>
+            <td><%= f.text_field :vitamin_k, value: params[:vitamin_k], class: "form-control" %> μg</td>
           </tr>
         </table>
-        <%= f.submit "追加" %>
+        <%= f.submit "追加", class: "btn btn-primary center-block" %>
       </div>
     <% end %>
   </div>

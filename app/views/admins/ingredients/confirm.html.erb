@@ -96,10 +96,12 @@
         <%= f.hidden_field :vitamin_d, :value => @ingredient.vitamin_d %>
         <%= f.hidden_field :vitamin_e, :value => @ingredient.vitamin_e %>
         <%= f.hidden_field :vitamin_k, :value => @ingredient.vitamin_k %>
-        <%= f.submit "はい", class: "btn btn-primary" %>
-        <%= link_to new_admins_ingredient_path name: @ingredient.name, gram: @gram, energy: @ingredient.energy, protein: @ingredient.protein, carb: @ingredient.carb, lipid: @ingredient.lipid, vitamin_a: @ingredient.vitamin_a, vitamin_b1: @ingredient.vitamin_b1, vitamin_b2: @ingredient.vitamin_b2, vitamin_b6: @ingredient.vitamin_b6, vitamin_b12: @ingredient.vitamin_b12, vitamin_c: @ingredient.vitamin_c, vitamin_d: @ingredient.vitamin_d, vitamin_e: @ingredient.vitamin_e, vitamin_k: @ingredient.vitamin_k do %>
-          <button class="btn btn-success">修正が必要</button>
-        <% end %>
+        <div class="confirm-buttons">
+          <%= f.submit "はい", class: "btn btn-primary" %>
+          <%= link_to new_admins_ingredient_path name: @ingredient.name, gram: @gram, energy: @ingredient.energy, protein: @ingredient.protein, carb: @ingredient.carb, lipid: @ingredient.lipid, vitamin_a: @ingredient.vitamin_a, vitamin_b1: @ingredient.vitamin_b1, vitamin_b2: @ingredient.vitamin_b2, vitamin_b6: @ingredient.vitamin_b6, vitamin_b12: @ingredient.vitamin_b12, vitamin_c: @ingredient.vitamin_c, vitamin_d: @ingredient.vitamin_d, vitamin_e: @ingredient.vitamin_e, vitamin_k: @ingredient.vitamin_k do %>
+            <button class="btn btn-success">修正が必要</button>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

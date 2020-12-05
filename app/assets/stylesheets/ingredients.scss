@@ -6,18 +6,22 @@
   text-align: center;
 }
 
+.admin-ingredient-table {
+  margin-top: 30px;
+}
+
 .admin-ingredient-table th, .admin-ingredient-table label {
   text-align: center;
 }
 
-.ingredients-boxes {
-  display: flex;
-  flex-wrap: wrap;
-}
+// .ingredients-boxes {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 
-.ingredient-box {
-  margin:5px;
-}
+// .ingredient-box {
+//   margin:5px;
+// }
 
 .add-ingredient-button {
   display: flex;
@@ -31,4 +35,23 @@
 
 .last-confirm {
   text-align: center;
+}
+
+// .caution {
+//   text-align: center;
+// }
+
+// .caution span {
+//   color: red;
+// }
+
+.hankaku-caution {
+  text-align: center;
+  color: red;
+  font-size: 16px;
+}
+
+.confirm-buttons, .ingredient-edit-buttons {
+  display: flex;
+  justify-content: space-around;
 }

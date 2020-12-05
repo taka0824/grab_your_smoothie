@@ -14,7 +14,7 @@ class EndUsers::SmoothiesController < ApplicationController
   end
 
   def smoothie_ranking
-    # @all_ranks = Smoothie.joins(:favorites).where(favorites: {created_at: Time.now.all_month}).group(:id).order('count(favorites.smoothie_id) desc').limit(9)
+    # @all_ranks = Smoothie.joins(:favorites).where("created_at between '30.days.ago.beginning_of_day' and 'Date.yesterday.end_of_day'").group(:id).order('count(favorites.smoothie_id) desc').limit(9)
     # 上の記述は今月分のいいねだけを対象
     @all_ranks = Smoothie.joins(:favorites).group(:id).order('count(favorites.smoothie_id) desc').limit(9)
   end
@@ -32,22 +32,26 @@ class EndUsers::SmoothiesController < ApplicationController
         smoothie.update(is_recommended: false)
       end
     end
-    @smoothie.save
-    current_end_user.juicer_ingredients.each do |smoothie_ingredient|
-      ingredient_id = smoothie_ingredient.ingredient.id
-      amount = smoothie_ingredient.amount
-      SmoothieIngredient.new(smoothie_id: @smoothie.id, ingredient_id: ingredient_id, amount: amount).save
+    if @smoothie.save
+      current_end_user.juicer_ingredients.each do |smoothie_ingredient|
+        ingredient_id = smoothie_ingredient.ingredient.id
+        amount = smoothie_ingredient.amount
+        SmoothieIngredient.new(smoothie_id: @smoothie.id, ingredient_id: ingredient_id, amount: amount).save
+      end
+      current_end_user.juicer_ingredients.destroy_all
+      flash[:success] = "スムージーレシピを投稿しました"
+      redirect_to root_path
+    else
+      @juicer_ingredients = JuicerIngredient.where(end_user_id: current_end_user)
+      render "end_users/smoothies/new"
     end
-    current_end_user.juicer_ingredients.destroy_all
-    flash[:notice] = "スムージーレシピを投稿しました"
-    redirect_to root_path
   end
 
   def destroy
     smoothie = Smoothie.find(params[:id])
     id = smoothie.end_user_id
     smoothie.destroy
-    flash[:notice] = "スムージー投稿を削除しました"
+    flash[:success] = "スムージー投稿を削除しました"
     redirect_to recipe_list_end_users_end_user_path(id)
   end
 
@@ -58,7 +62,7 @@ class EndUsers::SmoothiesController < ApplicationController
     end
     smoothie = Smoothie.find(params[:id])
     smoothie.update(is_recommended: true)
-    flash[:notice] = "おすすめレシピを変更しました"
+    flash[:success] = "おすすめレシピを変更しました"
     redirect_to request.referer
   end
 
