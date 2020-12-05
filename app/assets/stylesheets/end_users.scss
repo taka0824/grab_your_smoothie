@@ -37,11 +37,19 @@
   text-align: center;
 }
 
+.mypage-side-bar h4 {
+  margin-top: 50px;
+}
+
 .link-to-edit {
   border: solid 0.5px #808080;
   color: #808080;
   border-radius: 20%;
   background-color: white;
+}
+
+.link-to-edit:hover {
+  background-color:#DDDDDD;
 }
 
 .end-user-edit-buttons {

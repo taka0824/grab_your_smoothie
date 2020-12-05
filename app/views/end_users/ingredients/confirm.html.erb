@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col-xs-12">
       <div class="page-title">
-        <h2><span>CONFIRMATION</span></h2>
+        <h2><span>確認画面</span></h2>
       </div>
     </div>
   </div>
@@ -73,7 +73,6 @@
         </tbody>
       </table>
       <h3 class="last-confirm">上記の内容で誤りはないですか？</h3>
-      <h3 class="caution"><span><strong>空欄には0が入ります</strong></span></h3>
       <%= form_with model: @ingredient,url: end_users_ingredients_path, local: true do |f| %>
         <%= f.hidden_field :name, :value => @ingredient.name %>
         <%= f.hidden_field :gram, :value => @gram %>

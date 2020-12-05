@@ -10,7 +10,7 @@
     <% else %>
       <div class="col-xs-9">
         <div class="page-title">
-          <h2><span><%= @end_user.name %>'S RECIPES</span></h2>
+          <h2><span><%= @end_user.name %>さんの投稿レシピ</span></h2>
         </div>
         <div class="smoothies">
           <%= render partial: "end_users/smoothies/smoothies_boxes", locals: { smoothies: @smoothies } %>

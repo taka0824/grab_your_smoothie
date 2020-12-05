@@ -2,21 +2,21 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="page-title">
-        <h2><span>RECIPES SEARCH</span></h2>
+        <h2><span>レシピ検索</span></h2>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-6 col-xs-offset-3">
       <div class="search-way-boxes">
         <div class="search-way-box">
           <%= link_to new_smoothies_end_users_smoothies_path do %>
             <div class="box-header">
               <p>新着から</p>
             </div>
-            <div class="search-icon">
-              <i class="fab fa-hotjar"></i>
-            </div>
+            <!--<div class="search-icon">-->
+            <!--  <i class="fab fa-hotjar"></i>-->
+            <!--</div>-->
           <% end %>
         </div>
         <div class="search-way-box">
@@ -26,13 +26,15 @@
             </div>
           <% end %>
         </div>
+      </div>
+      <div class="search-way-boxes">
         <div class="search-way-box">
-          <%= form_with url: end_users_searches_recipe_search_path, local: true, method: :get do |f| %>
+          <%= form_with url: end_users_searches_recipe_search_path, class: "form-inline", local: true, method: :get do |f| %>
             <div class="form-group">
               <%= f.label :word, class: "sr-only" %>
-              <%= f.text_field :word, class: "form-control",placeholder: "キーワードで検索" %>
+              <%= f.text_field :word, class: "form-control",placeholder: "材料名 ホット etc..." %>
             </div>
-              <%= f.submit "検索", class:"btn btn-success btn-block" %>
+              <%= f.submit "検索", class:"btn btn-default" %>
           <% end %>
         </div>
         <div class="search-way-box">

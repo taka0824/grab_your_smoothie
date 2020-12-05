@@ -28,7 +28,9 @@
 // }
 
 body {
-  background-color: #93FFAB;
+  background-image: image-url('body-background.jpg');
+  // background-color: #CBFFD3;
+  font-family: Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
   display: flex;
   flex-flow: column;
   min-height: 100vh;
@@ -40,7 +42,7 @@ header {
   top: 0;
   width: 100%;
   height: 50px;
-  background-color: #DDDDDD;
+  background-color: #99FFCC;
   z-index: 1000;
 }
 
@@ -51,8 +53,17 @@ main {
 footer {
   width: 100%;
   height: 50px;
-  background-color: #DDDDDD;
+  background-color: #99FFCC;
   margin-top: 40px;
+}
+
+#error_explanation {
+  text-align: center;
+}
+
+.sign-up-errors-list {
+  display:block;
+  list-style: none;
 }
 
 .flash-messages {
@@ -93,6 +104,10 @@ ul {
   right: -1em;
 }
 
+.sign-in-form, .sign-up-form {
+  background-color:  #EEEEEE;
+}
+
 .page-title {
   text-align: center;
   margin-bottom: 50px;
@@ -100,14 +115,30 @@ ul {
 }
 
 .page-title span {
-  border-bottom: groove 5px #ffd700;
+  background-color: rgba(255,255,255,0.4);
+  // border-bottom: groove 5px #99FFCC;
   padding-bottom: 5px;
+}
+
+.main-visual {
+  height: 400px;
+  background-image: image-url('smoothies_for_top.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.main-visual-content {
+  width: 40%;
+  height: 100%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .table {
   background-color: #EEEEEE	;
   border-collapse: separate;
-  border: ridge 3px #00FA9A;
+  border: ridge 5px #DCC2FF;
+  // border: ridge 3px #00FA9A;
   border-radius: 15px;
 }
 
@@ -145,8 +176,22 @@ ul {
   text-align: right;
 }
 
+.about-text {
+  padding-top:100px;
+}
+
+.guideline-wrapper {
+  width: 100%;
+  padding: 20px 10% 20px 10%;
+  background-color: rgba(255,255,255,0.5);
+}
+
 .about-text, .guideline-text {
   text-align: center;
+}
+
+.guideline-text span {
+  color: red;
 }
 
 .paginate-container {
@@ -171,10 +216,40 @@ ul {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding-top: 100px;
+  margin-top: 100px;
 }
 
 #errors-list {
   display: flex;
   justify-content: flex-start;
+}
+
+.btn-primary {
+  background-color: #5D99FF;
+  border-color: #5D99FF	;
+}
+
+.btn-primary:hover {
+  background-color: #4689FF;
+  border-color: #4689FF;
+}
+
+.btn-danger {
+  background-color:#FF69A3;
+  border-color:#FF69A3;
+}
+
+.btn-danger:hover {
+  background-color:#FF5192;
+  border-color:#FF5192;
+}
+
+.btn-success {
+  background-color:#00AA00;
+  border-color:#00AA00;
+}
+
+.btn-success:hover {
+  background-color:#009900;
+  border-color:#009900;
 }

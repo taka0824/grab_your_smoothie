@@ -2,6 +2,6 @@
   <div class="error-messages">
     <%= render partial: "layouts/error_message", locals: { model: f.object } %>
   </div>
-  <%= f.text_area :content, placeholder:"コメントを入力" %><br>
+  <%= f.text_area :content, class:"form-control", placeholder:"コメントを入力" %><br>
   <%= f.submit "送信", class:"btn btn-primary" %>
 <% end %>
