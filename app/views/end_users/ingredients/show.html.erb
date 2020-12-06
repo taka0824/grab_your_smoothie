@@ -75,7 +75,7 @@
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
       <div class="form-to-add-juicer">
-        <%= form_with model: @juicer_ingredient, url: end_users_juicer_ingredients_path, class:"form-inline", local: true do |f| %>
+        <%= form_with model: @juicer_ingredient, url: end_users_juicer_ingredients_path, class:"form-inline end-users-ingredient-show-form", local: true do |f| %>
           <%= render partial: "layouts/error_message", locals: {model: f.object} %>
           <%= f.hidden_field :ingredient_id, :value => @ingredient.id %>
           <div class="form-group">

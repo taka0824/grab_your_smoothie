@@ -13,8 +13,8 @@ class EndUsers::SessionsController < Devise::SessionsController
         flash[:notice] = "退会済みです。"
         redirect_to new_end_user_session_path
       end
-    else
-      flash[:notice] = "必須項目を入力してください。"
+    # else
+    #   flash[:notice] = "必須項目を入力してください。"
     end
   end
 

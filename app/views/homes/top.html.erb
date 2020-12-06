@@ -40,9 +40,15 @@
             <% end %>
             <% if ranking.favorites.count != lastFavorite %>
               <% j = i %>
-              <div class="ranking-number">
-                第<%= j %>位<br>
-                <%= ranking.end_user.name %>さんのスムージー
+              <div class="ranking-image-header-wrapper">
+                <div class="ranking-image-header">
+                  <div class="ranking-number">
+                    第<%= j %>位
+                  </div>
+                  <div class="ranking-smoothie-maker">
+                    <%= ranking.end_user.name %>さんのスムージー
+                  </div>
+                </div>
               </div>
               <div class="smoothie-image">
                 <%= link_to end_users_smoothy_path(ranking) do %>
@@ -52,9 +58,15 @@
               <% lastFavorite = ranking.favorites.count %>
             <% else %>
               <% lastFavorite = ranking.favorites.count %>
-              <div class="ranking-number">
-                第<%= j %>位<br>
-                <%= ranking.end_user.name %>さんのスムージー
+              <div class="ranking-image-header-wrapper">
+                <div class="ranking-image-header">
+                  <div class="ranking-number">
+                    第<%= j %>位
+                  </div>
+                  <div class="ranking-smoothie-maker">
+                    <%= ranking.end_user.name %>さんのスムージー
+                  </div>
+                </div>
               </div>
               <div class="smoothie-image">
                 <%= link_to end_users_smoothy_path(ranking) do %>
@@ -115,11 +127,11 @@
         以下の規約を守って充実したスムージーライフをシェアしていきましょう！
       </h4>
       <ul class="guideline-list">
-        <li class="guideline-list-item">ご自身で撮影された写真を投稿しましょう</li>
-        <li class="guideline-list-item">人を中傷するようなコメントや投稿は禁止されています</li>
-        <li class="guideline-list-item">サイトの利便性を妨害するような投稿や不要な新規材料の追加はやめましょう</li>
+        <li class="guideline-list-item">ご自身で撮影された写真を投稿しましょう。</li>
+        <li class="guideline-list-item">人を中傷するようなコメントや投稿は禁止です。</li>
+        <li class="guideline-list-item">サイトの利便性を妨害するような投稿や不要な新規材料の追加はやめましょう。</li>
       </ul>
-      <h4 class="guideline-text">以上のルールを複数回に渡り違反する利用者にはアカウントの<span><strong>停止措置</strong></span>を行いますので予めご了承ください</h4>
+      <h4 class="guideline-text">以上のルールを複数回に渡り違反する利用者にはアカウントの<span><strong>停止措置</strong></span>を行いますので予めご了承ください。</h4>
     </div>
   </div>
 </div>

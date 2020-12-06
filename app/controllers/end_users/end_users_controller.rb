@@ -1,7 +1,18 @@
 class EndUsers::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   def index
-    @end_users = EndUser.all.active.page(params[:page]).per(10)
+    # @end_users = EndUser.all.active.page(params[:page]).per(10)
+    end_users_with_post = EndUser.active.joins(:smoothies).group(:id).order('count(id) desc')
+    end_users_without_post = EndUser.active
+    @end_users = []
+    end_users_with_post.each do |w|
+      @end_users <<  w
+    end
+    end_users_without_post.each do |wo|
+      @end_users << wo
+    end
+    @end_users = @end_users.uniq
+    @end_users = Kaminari.paginate_array(@end_users).page(params[:page]).per(10)
   end
 
   def show
@@ -24,13 +35,18 @@ class EndUsers::EndUsersController < ApplicationController
   end
 
   def recipe_list
-    @smoothies = Smoothie.where(end_user_id: params[:id]).page(params[:page]).per(9)
+    @smoothies = Smoothie.where(end_user_id: params[:id]).order(created_at: "DESC").page(params[:page]).per(9)
     @end_user = EndUser.find(params[:id])
   end
 
   def favorite_list
     @end_user = EndUser.find(params[:id])
-    @favorited_smoothies = @end_user.favorited_smoothies.page(params[:page]).per(9)
+    @favorited_smoothies = @end_user.favorited_smoothies.joins(:favorites).distinct.order("favorites.created_at desc").page(params[:page]).per(9)
+    # joinsを使用する場合はdistinctの記述が必要
+    # @favorited_smoothies = @end_user.favorited_smoothies.includes(:favorites).order("favorites.created_at desc").page(params[:page]).per(9)
+    # includesの場合はdistinctが不要
+    # @favorited_smoothies = @end_user.favorited_smoothies.page(params[:page]).per(9)
+    # モデルにorderを指定する場合はコントローラでの記述は不要
   end
 
   def ingredient_list

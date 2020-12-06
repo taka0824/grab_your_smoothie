@@ -7,7 +7,8 @@ class EndUser < ApplicationRecord
   has_many :juicer_ingredients, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_smoothies, through: :favorites, source: :smoothie
-  # エンドユーザーからfavoriteしたsmoothie一覧を持ってくる時に必要な記述
+  # has_many :favorited_smoothies, -> { order('favorites.created_at DESC') }, through: :favorites, source: :smoothie
+  # 上記の記述の場合end_userから呼び出すfavorited_smoothiesが全て指定したorder順となる
   has_many :smoothies, class_name: 'Smoothie', dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :in_juicer_ingredients, through: :juicer_ingredients, source: :ingredient

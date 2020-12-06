@@ -57,8 +57,18 @@ footer {
   margin-top: 40px;
 }
 
+.error-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 #error_explanation {
+  width: 60%;
+  padding: 10px 0 10px 0;
   text-align: center;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
 }
 
 .sign-up-errors-list {
@@ -84,8 +94,6 @@ footer {
   border-color: #faebcc;
   color: #8a6d3b;
 }
-
-
 
 ul {
   display: flex;
@@ -116,8 +124,8 @@ ul {
 
 .page-title span {
   background-color: rgba(255,255,255,0.4);
-  // border-bottom: groove 5px #99FFCC;
   padding-bottom: 5px;
+  border-radius: 15px;
 }
 
 .main-visual {
@@ -220,8 +228,8 @@ ul {
 }
 
 #errors-list {
-  display: flex;
-  justify-content: flex-start;
+  display: block;
+  // justify-content: flex-start;
 }
 
 .btn-primary {

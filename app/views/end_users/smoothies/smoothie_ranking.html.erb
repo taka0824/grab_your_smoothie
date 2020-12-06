@@ -18,11 +18,15 @@
             <% end %>
             <% if ranking.favorites.count != lastFavorite %>
               <% j = i %>
-              <div class="ranking-number">
-                第<%= j %>位
-              </div>
-              <div class="ranking-favorite-number">
-                いいね数：<%= ranking.favorites.count %>
+              <div class="ranking-image-header-wrapper">
+                <div class="ranking-image-header">
+                  <div class="ranking-number">
+                    第<%= j %>位
+                  </div>
+                  <div class="ranking-favorite-number">
+                    いいね数：<%= ranking.favorites.count %>
+                  </div>
+                </div>
               </div>
               <div class="smoothie-image">
                 <%= link_to end_users_smoothy_path(ranking) do %>
@@ -32,11 +36,15 @@
               <% lastFavorite = ranking.favorites.count %>
             <% else %>
               <% lastFavorite = ranking.favorites.count %>
-              <div class="ranking-number">
-                第<%= j %>位
-              </div>
-              <div class="ranking-favorite-number">
-                いいね数：<%= ranking.favorites.count %>
+              <div class="ranking-image-header-wrapper">
+                <div class="ranking-image-header">
+                  <div class="ranking-number">
+                    第<%= j %>位
+                  </div>
+                  <div class="ranking-favorite-number">
+                    いいね数：<%= ranking.favorites.count %>
+                  </div>
+                </div>
               </div>
               <div class="smoothie-image">
                 <%= link_to end_users_smoothy_path(ranking) do %>

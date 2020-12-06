@@ -29,7 +29,7 @@
       </div>
       <div class="search-way-boxes">
         <div class="search-way-box">
-          <%= form_with url: end_users_searches_recipe_search_path, class: "form-inline", local: true, method: :get do |f| %>
+          <%= form_with url: end_users_searches_recipe_search_path, class: "form-inline end-users-search-ways-form", local: true, method: :get do |f| %>
             <div class="form-group">
               <%= f.label :word, class: "sr-only" %>
               <%= f.text_field :word, class: "form-control",placeholder: "材料名 ホット etc..." %>

@@ -42,10 +42,21 @@ class Smoothie < ApplicationRecord
         comment_id: comment_id,
         visited_id: visited_id,
         action:  "comment"
-        )
-        if notification.visitor_id == notification.visited_id
-          notification.checked = true
-        end
-        notification.save
+      )
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save
     end
+    
+    def how_long_ago
+      if (Time.now - self.created_at) <= 60 * 60
+        ((Time.now - self.created_at) / 60).to_i.to_s + "分前"
+      elsif (Time.now - self.created_at) <= 60 * 60 * 24
+        ((Time.now - self.created_at) / 3600).to_i.to_s + "時間前"
+      elsif (Date.today - self.created_at.to_date) <= 30
+        (Date.today - self.created_at.to_date).to_i.to_s + "日前"
+      end
+    end
+    
 end

@@ -7,3 +7,5 @@ ja:
         name: '名前'
       smoothie:
         introduction: '説明文'
+      juicer_ingredient:
+        amount: '数量'
