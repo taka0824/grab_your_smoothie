@@ -1,5 +1,0 @@
-class RemoveImageIdFromIngredients < ActiveRecord::Migration[5.2]
-  def change
-    remove_column :ingredients, :image_id, :string
-  end
-end

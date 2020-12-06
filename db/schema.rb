@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_084740) do
+ActiveRecord::Schema.define(version: 2020_11_29_092813) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_084740) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
-    t.decimal "energy", precision: 12, scale: 9, default: "0.0", null: false
+    t.decimal "energy", precision: 12, scale: 9, default: "0.0"
     t.decimal "protein", precision: 12, scale: 9, default: "0.0"
     t.decimal "carb", precision: 12, scale: 9, default: "0.0"
     t.decimal "lipid", precision: 12, scale: 9, default: "0.0"
@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(version: 2020_12_01_084740) do
     t.decimal "vitamin_d", precision: 12, scale: 9, default: "0.0"
     t.decimal "vitamin_e", precision: 12, scale: 9, default: "0.0"
     t.decimal "vitamin_k", precision: 12, scale: 9, default: "0.0"
+    t.integer "created_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "created_by"
   end
 
   create_table "juicer_ingredients", force: :cascade do |t|
@@ -89,14 +89,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_084740) do
     t.integer "comment_id"
     t.string "action", default: "", null: false
     t.boolean "checked", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "nutrients", force: :cascade do |t|
-    t.string "name"
-    t.text "effect"
-    t.decimal "recommended_amount", precision: 12, scale: 9
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
