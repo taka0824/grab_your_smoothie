@@ -5,11 +5,11 @@
   <table class="table">
     <tr>
       <th><%= f.label :name, "アカウント名" %></th>
-      <td><%= f.text_field :name %></td>
+      <td><%= f.text_field :name, class: "form-control" %></td>
     </tr>
     <tr>
       <th><%= f.label :email, :"メールアドレス" %></th>
-      <td><%= f.email_field :email %></td>
+      <td><%= f.email_field :email, class: "form-control" %></td>
     </tr>
   </table>
   <div class="end-user-edit-buttons">

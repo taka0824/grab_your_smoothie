@@ -42,7 +42,7 @@
         <%= f.label :introduction, "スムージー説明文", class: "sr-only" %><br>
         <%= f.text_area :introduction ,class: "form-control",placeholder: "スムージー説明文" %><br>
         マイページのおすすめレシピに登録しますか？<br>
-        <%= f.radio_button :is_recommended, :true %>
+        <%= f.radio_button :is_recommended, :true, {:checked => true} %>
         <%= f.label :is_recommended, "Yes" %><br>
         <%= f.radio_button :is_recommended, :false %>
         <%= f.label :is_recommended, "No" %><br>
