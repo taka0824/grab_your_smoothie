@@ -26,6 +26,9 @@
               <%= attachment_image_tag @smoothie, :image, :fill, 200, 200, class: "image-frame", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
             </div>
             <div class="buttons">
+              <div class="created-at">
+                <p><%= @smoothie.how_long_ago %></p>
+              </div>
               <div id="favorite_buttons_<%= @smoothie.id %>">
                 <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: @smoothie } %>
               </div>
