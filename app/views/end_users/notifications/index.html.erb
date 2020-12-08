@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="page-title">
-        <h2><span>通知一覧</span></h2>
+  <% if @notifications.exists? %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-title">
+          <h2><span>通知一覧</span></h2>
+        </div>
       </div>
     </div>
-  </div>
-  <% if @notifications.exists? %>
     <div class="row">
       <div class="activity-list col-xs-6 col-xs-offset-3">
         <table class="table notification-table">
@@ -49,9 +49,11 @@
       </div>
     </div>
   <% else %>
-    <div class="row">
+   <div class="row">
       <div class="col-xs-12">
-        <h2>通知はありません</h2>
+        <div class="page-title">
+          <h2><span>通知はありません</span></h2>
+        </div>
       </div>
     </div>
   <% end %>

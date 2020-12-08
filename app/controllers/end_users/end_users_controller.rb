@@ -57,7 +57,14 @@ class EndUsers::EndUsersController < ApplicationController
   end
 
   def is_deleted_update
-    EndUser.find(params[:id]).update(is_deleted: true)
+    end_user = EndUser.find(params[:id])
+    end_user.update(is_deleted: true)
+    end_user.smoothies.destroy_all
+    end_user.comments.destroy_all
+    end_user.favorites.destroy_all
+    end_user.juicer_ingredients.destroy_all
+    end_user.active_notifications.destroy_all
+    end_user.passive_notifications.destroy_all
     flash[:success] = "退会しました"
     redirect_to root_path
   end

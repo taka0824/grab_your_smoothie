@@ -2,7 +2,8 @@
   <thead>
     <tr class="row">
       <th class="col-xs-3">作成日時</th>
-      <th class="col-xs-5">コメント内容</th>
+      <th class="col-xs-3">投稿者</th>
+      <th class="col-xs-5">内容</th>
       <th class="col-xs-1"></th>
     </tr>
   </thead>
@@ -10,7 +11,8 @@
     <% comments.each do |comment| %>
       <tr class="row">
         <td class="col-xs-3"><%= comment.created_at.to_s(:datetime_jp) %></td>
-        <td class="col-xs-8">
+        <td class="col-xs-3"><%= comment.end_user.name %></td>
+        <td class="col-xs-5">
           <%= link_to admins_smoothy_path(comment.smoothie) do %>
             <%= comment.content %>
           <% end %>
