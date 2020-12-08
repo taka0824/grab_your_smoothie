@@ -1,4 +1,5 @@
 class Notification < ApplicationRecord
+  
   default_scope -> { order(created_at: "DESC") }
   belongs_to :smoothie, optional: true
   belongs_to :comment, optional: true
