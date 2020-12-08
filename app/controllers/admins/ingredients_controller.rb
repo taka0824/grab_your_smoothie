@@ -38,7 +38,7 @@ class Admins::IngredientsController < ApplicationController
     @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
       flash[:success]  = "材料を作成しました"
-      redirect_to admins_ingredient_path(@ingredient)
+      redirect_to admins_ingredients_path
     end
   end
 
@@ -161,7 +161,7 @@ class Admins::IngredientsController < ApplicationController
       redirect_to request.referer and return
     end
   end
-  
+
   # def exclude_string
   #   if params[:ingredient][:energy] != "0" && params[:ingredient][:energy] != "0.0" && params[:ingredient][:energy] != "" && params[:ingredient][:energy].to_f == 0.0
   #     flash[:warning] = "数値は半角数字でご入力ください"
