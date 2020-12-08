@@ -1,7 +1,6 @@
 class EndUsers::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   def index
-    # @end_users = EndUser.all.active.page(params[:page]).per(10)
     end_users_with_post = EndUser.active.joins(:smoothies).group(:id).order('count(end_users.id) desc')
     end_users_without_post = EndUser.active
     @end_users = []
