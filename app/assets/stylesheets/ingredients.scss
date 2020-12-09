@@ -59,3 +59,22 @@
 .end-users-ingredient-show-form {
   text-align: center;
 }
+
+.ingredient-actions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.ingredient-search {
+  margin-bottom: 30px;
+}
+
+#no-item-form {
+  width: 290px;
+}
+
+.ingredient-search-no-item {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
