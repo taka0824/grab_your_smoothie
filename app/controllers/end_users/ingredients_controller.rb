@@ -54,13 +54,13 @@ class EndUsers::IngredientsController < ApplicationController
 
   def confirm
     redirect_to new_end_users_ingredient_path and return if !params[:ingredient]
+    @ingredient = Ingredient.new(ingredient_params)
     @gram = params[:ingredient][:gram]
     if (/\A[1-9]\d{0,3}((\.)([1-9]|\d[1-9]|\d{2}[1-9]))?\z/ =~ params[:ingredient][:gram]) != 0 || params[:ingredient][:name] == ""
       flash.now[:warning] = "材料名と〜グラムあたりの栄養素量欄(半角数字)を必ず入力してください"
       @ingredient = Ingredient.new(ingredient_params)
       render "end_users/ingredients/new"
     end
-    @ingredient = Ingredient.new(ingredient_params)
   end
 
   def create
