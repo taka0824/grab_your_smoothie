@@ -78,150 +78,26 @@ class EndUsers::IngredientsController < ApplicationController
     params.require(:ingredient).permit(:name,:energy,:protein,:carb,:lipid,:vitamin_a,:vitamin_b1,:vitamin_b2,:vitamin_b6,:vitamin_b12,:vitamin_c,:vitamin_d,:vitamin_e,:vitamin_k)
   end
 
+  def exclude_string(nutrient)
+    (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ nutrient) != 0
+    # stringを弾くメソッドを作成
+  end
+
   def check_data_type
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:energy]) != 0
-      if params[:confirm] == "追加"
-        # ingredientのconfirmアクションからcheck_data_type通るときは、入力した数値が正規表現に合わない時に入力した数値をそのままフォームに返して再入力させる
-        # updateで通るときは、フォームの初期値にテーブルから取り出した数値をそれぞれの栄養素に合わせた単位に変える処理をしているので、入力した数値をフォームに返すと余計な計算処理も加えられてしまう
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:protein]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:carb]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:lipid]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:vitamin_a]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:vitamin_b1]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:vitamin_b2]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:vitamin_b6]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:vitamin_b12]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:vitamin_c]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:vitamin_d]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:vitamin_e]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
-      end
-    end
-    if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:vitamin_k]) != 0
-      if params[:confirm] == "追加"
-        flash.now[:warning] = "数値は半角数字でご入力ください"
-        @ingredient = current_end_user.ingredients.new(ingredient_params)
-        @gram = params[:ingredient][:gram]
-        return render "end_users/ingredients/new"
-      else
-        flash[:warning] = "数値は半角数字でご入力ください"
-        redirect_to request.referer
+    nutrients = params[:ingredient].select {|nut| ['energy', 'protein', 'carb', 'lipid', 'vitamin_a', 'vitamin_b1', 'vitamin_b2','vitamin_b6','vitamin_b12', 'vitamin_c', 'vitamin_d', 'vitamin_e', 'vitamin_k'].any? {|v| v == nut }}
+    # parameterで受け取った値の中でeach文で使いたい値を配列にしている
+    nutrients.each do |nutrient|
+      if exclude_string(nutrient[1])
+        # stringだった時下を通る　nutrientはこの時点で配列であるため、配列nutrientの中のどの値を使うのか[] で指定している。配列は左から0,1,2,,,
+        if params[:confirm] == "追加"
+          @ingredient = current_end_user.ingredients.new(ingredient_params)
+          @gram = params[:ingredient][:gram]
+          flash.now[:warning] = "数値は半角数字でご入力ください"
+          return render "end_users/ingredients/new"
+        else
+          flash[:warning] = "数値は半角数字でご入力ください"
+          redirect_to request.referer
+        end
       end
     end
   end

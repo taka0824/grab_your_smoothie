@@ -1,4 +1,3 @@
-require "refile/mini_magick"
 Refile::MiniMagick.prepend Module.new {
   [:limit, :fit, :fill, :pad].each do |action|
     define_method(action) do |img, *args|
@@ -6,4 +5,5 @@ Refile::MiniMagick.prepend Module.new {
     end
   end
 }
+
 # image auto orientationの機能
