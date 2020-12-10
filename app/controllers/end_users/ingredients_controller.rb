@@ -67,7 +67,7 @@ class EndUsers::IngredientsController < ApplicationController
     @ingredient = current_end_user.ingredients.new(ingredient_params)
     # p @ingredient
     if @ingredient.save
-      flash[:success] = "材料を追加しました"
+      flash[:success] = "材料を追加しました。追加した材料はマイページから確認できます。"
       redirect_to end_users_ingredient_path(@ingredient)
     end
   end
@@ -81,6 +81,8 @@ class EndUsers::IngredientsController < ApplicationController
   def check_data_type
     if (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ params[:ingredient][:energy]) != 0
       if params[:confirm] == "追加"
+        # ingredientのconfirmアクションからcheck_data_type通るときは、入力した数値が正規表現に合わない時に入力した数値をそのままフォームに返して再入力させる
+        # updateで通るときは、フォームの初期値にテーブルから取り出した数値をそれぞれの栄養素に合わせた単位に変える処理をしているので、入力した数値をフォームに返すと余計な計算処理も加えられてしまう
         flash.now[:warning] = "数値は半角数字でご入力ください"
         @ingredient = current_end_user.ingredients.new(ingredient_params)
         @gram = params[:ingredient][:gram]
