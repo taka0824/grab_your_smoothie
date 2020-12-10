@@ -32,7 +32,7 @@
   width: 100%;
   height: auto;
   border-radius: 15px;
-  border: ridge 5px #DCC2FF
+  border: ridge 2px #DCC2FF
 }
 
 .smoothie-box {
@@ -40,20 +40,20 @@
 }
 
 .smoothie-box:nth-of-type(odd) .image-frame {
-  border: ridge 5px #DCC2FF;
+  border: ridge 2px #DCC2FF;
 }
 
 .smoothie-box:nth-of-type(even) .image-frame {
-  border: ridge 5px #FFBEDA;
+  border: ridge 2px #FFBEDA;
 }
 
 .user-record:nth-of-type(odd) .user-index-image {
-  border: ridge 3px #DCC2FF;
+  border: ridge 2px #DCC2FF;
   border-radius: 15px;
 }
 
 .user-record:nth-of-type(even) .user-index-image {
-  border: ridge 3px #FFBEDA;
+  border: ridge 2px #FFBEDA;
   border-radius: 15px;
 }
 

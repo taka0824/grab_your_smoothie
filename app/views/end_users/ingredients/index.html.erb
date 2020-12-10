@@ -12,7 +12,7 @@
         <div class="ingredient-search">
           <div class="search-form">
             <%= form_with url: end_users_searches_ingredient_search_path, class: "form-inline", method: :get, local: true do |f| %>
-              <%= f.text_field :word, class: "form-control", placeholder: "材料名" %>
+              <%= f.text_field :word, class: "form-control", placeholder: "材料名で検索" %>
               <%= f.submit "検索", class: "btn btn-default" %>
             <% end %>
           </div>
