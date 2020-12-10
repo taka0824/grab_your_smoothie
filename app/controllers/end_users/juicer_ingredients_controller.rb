@@ -39,8 +39,7 @@ class EndUsers::JuicerIngredientsController < ApplicationController
       redirect_to end_users_juicer_ingredients_path
     else
       # 0以外の数量に変更した時
-      @juicer_ingredient.update(juicer_ingredient_params)
-      flash.now[:success] = "数量を変更しました"
+      flash.now[:success] = "数量を変更しました" if @juicer_ingredient.update(juicer_ingredient_params)
       # jsファイルの中でエラーメッセージのエリアの更新も行っているのでvalidatesに引っかかったときのelseで条件分岐は必要ない
     end
   end
