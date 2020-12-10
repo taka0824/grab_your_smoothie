@@ -1,7 +1,7 @@
 Refile::MiniMagick.prepend Module.new {
   [:limit, :fit, :fill, :pad].each do |action|
     define_method(action) do |img, *args|
-      super(img, *args) { |cmd| cmd.auto_orient }
+      super(img, *args)
     end
   end
 }
