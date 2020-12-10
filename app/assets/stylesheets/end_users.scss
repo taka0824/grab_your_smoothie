@@ -33,14 +33,6 @@
   margin: 10px;
 }
 
-.mypage-side-bar {
-  text-align: center;
-}
-
-.mypage-side-bar h4 {
-  margin-top: 50px;
-}
-
 .link-to-edit {
   border: solid 0.5px #808080;
   color: #808080;
@@ -55,4 +47,13 @@
 .end-user-edit-buttons {
   display: flex;
   justify-content: space-around;
+}
+
+.mypage-side-bar {
+  background-color: #EEEEEE;
+  margin-top: 103px;
+  padding: 15px 0 15px 0;
+  border-radius: 15px;
+  border: ridge 5px #DCC2FF;
+  text-align: center;
 }

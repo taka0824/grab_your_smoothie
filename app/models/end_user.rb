@@ -4,6 +4,10 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def remember_me
+    true
+  end
+
   has_many :juicer_ingredients, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_smoothies, through: :favorites, source: :smoothie
