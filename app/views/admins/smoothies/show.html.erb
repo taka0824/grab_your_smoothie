@@ -11,21 +11,21 @@
       <div class="smoothie_image">
         <%= attachment_image_tag @smoothie, :image, :fill, 300, 300, class:"image-frame", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
       </div>
-      <div class="buttons">
+      <div class="buttons admins-smoothie-show-buttons">
         <div class="created-at">
           <p><%= @smoothie.how_long_ago %></p>
         </div>
+        <div class="delete-btn">
+        <%= link_to admins_smoothy_path(@smoothie), method: :delete, data: {confirm: "削除しますか？"} do %>
+          <button class="btn btn-danger">削除する</button>
+        <% end %>
+      </div>
       </div>
       <div class="ingredients-table end_user-smoothie-show-table">
         <%= render partial: "end_users/ingredients/total_ingredients_table", locals: {smoothie: @smoothie } %>
       </div>
       <div class="introduction">
         <%= @smoothie.introduction %>
-      </div>
-      <div class="delete-btn">
-        <%= link_to admins_smoothy_path(@smoothie), method: :delete, data: {confirm: "削除しますか？"} do %>
-          <button class="btn btn-danger">削除する</button>
-        <% end %>
       </div>
     </div>
     <% if @smoothie.comments.exists? %>
