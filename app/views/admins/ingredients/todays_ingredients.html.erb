@@ -14,40 +14,42 @@
           <h2><span>本日追加された材料一覧</span></h2>
         </div>
       </div>
-      <div class="row">
+    </div>
+    <div class="row">
+      <div class="add-ingredient-button">
         <%= link_to new_admins_ingredient_path do %>
           <btn class="btn btn-success">新規材料追加</btn>
         <% end %>
       </div>
-      <div class="row">
-        <div class="admin-ingredient-table col-xs-offset-3 col-xs-6">
-          <table class="table">
-            <thead>
+    </div>
+    <div class="row">
+      <div class="admin-ingredient-table col-xs-offset-3 col-xs-6">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>追加日</th>
+              <th>材料名</th>
+              <th>追加者</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @ingredients.each do |ingredient| %>
               <tr>
-                <th>追加日</th>
-                <th>材料名</th>
-                <th>追加者</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @ingredients.each do |ingredient| %>
-                <tr>
-                  <td><%= ingredient.created_at.strftime('%Y/%m/%d') %></td>
-                  <td>
-                    <%= link_to admins_ingredient_path(ingredient) do %>
-                      <%= ingredient.name %>
-                    <% end %>
-                  </td>
-                  <% if ingredient.created_by != nil %>
-                    <td><%= ingredient.end_user.name %></td>
-                  <% else %>
-                    <td>管理者</td>
+                <td><%= ingredient.created_at.strftime('%Y/%m/%d') %></td>
+                <td>
+                  <%= link_to admins_ingredient_path(ingredient) do %>
+                    <%= ingredient.name %>
                   <% end %>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
+                </td>
+                <% if ingredient.created_by != nil %>
+                  <td><%= ingredient.end_user.name %></td>
+                <% else %>
+                  <td>管理者</td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   <% end %>
