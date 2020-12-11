@@ -404,4 +404,31 @@ footer {
     width: 50px;
     height: 50px;
   }
+
+  .main-visual {
+    height: 190px;
+  }
+
+  .main-visual-content {
+    height: 190px;
+    width: 100%;
+  }
+
+  .about-text {
+    padding-top: 30px;
+    font-size: 14px;
+  }
+
+  .ranking-image-header-wrapper {
+    display: none;
+  }
+
+  .guideline-text {
+    font-size: 13px;
+  }
+  
+  .guideline-list {
+    font-size: 12px;
+    padding: 20px 0 20px 0;
+  }
 }
