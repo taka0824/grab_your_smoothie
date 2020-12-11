@@ -12,8 +12,14 @@
     <header>
       <div class="logo">
         <h2 class="logo-word">Grab Your Smoothie</h2>
-        <%= link_to root_path, class: "link-to-root" do %>
-          <div class="logo-image"></div>
+        <% if admin_signed_in? %>
+          <%= link_to admins_top_path, class: "link-to-root" do %>
+            <div class="logo-image"></div>
+          <% end %>
+        <% else %>
+          <%= link_to root_path, class: "link-to-root" do %>
+            <div class="logo-image"></div>
+          <% end %>
         <% end %>
       </div>
       <div class="hamburger">
