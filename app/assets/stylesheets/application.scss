@@ -55,6 +55,7 @@ header {
 .logo {
   display: flex;
   justify-content: center;
+  align-items:center;
   height: 100px;
 }
 
@@ -392,4 +393,15 @@ footer {
 .btn-success:hover {
   background-color:#009900;
   border-color:#009900;
+}
+
+@media screen and (max-width:425px) {
+  .logo-word {
+    font-size: 20px;
+  }
+
+  .logo-image {
+    width: 50px;
+    height: 50px;
+  }
 }
