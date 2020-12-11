@@ -10,25 +10,33 @@
   </head>
   <body>
     <header>
-      <%= link_to root_path do %>
-        <div class="logo">
-        </div>
-      <% end %>
-      <nav>
+      <div class="logo">
+        <%= link_to root_path, class: "link-to-root" do %>
+          <div class="logo-word"></div>
+          <div class="logo-image"></div>
+        <% end %>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="globalMenuSp">
         <ul>
           <% if end_user_signed_in? %>
-            <li class="btn">
+            <li>
               <%= link_to root_path do %>
                 <i class="fas fa-home">トップ</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to end_users_end_user_path(current_end_user) do %>
                 <i class="fas fa-user">マイページ</i>
               <% end %>
             </li>
             <% if current_end_user.passive_notifications.where(checked: false).any? %>
-              <li class="btn">
+              <li>
                 <%= link_to end_users_notifications_path do %>
                   <span class="notification-container">
                     <i class="fas fa-circle notification-circle"></i><i class="fas fa-bell">通知</i>
@@ -36,75 +44,75 @@
                 <% end %>
               </li>
             <% else %>
-              <li class="btn">
+              <li>
                 <%= link_to end_users_notifications_path do %>
                   <i class="fas fa-bell">通知</i>
                 <% end %>
               </li>
             <% end %>
-            <li class="btn">
+            <li>
               <%= link_to end_users_end_users_path do %>
                 <i class="fas fa-users">ユーザー一覧</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to end_users_search_ways_path do %>
                 <i class="fas fa-apple-alt">レシピ</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to end_users_juicer_ingredients_path do %>
                 <i class="fas fa-blender">ジューサー</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to destroy_end_user_session_path, method: :delete  do %>
                 <i class="fas fa-sign-out-alt">ログアウト</i>
               <% end %>
             </li>
           <% elsif admin_signed_in? %>
-            <li class="btn">
+            <li>
               <%= link_to admins_top_path do %>
                 <i class="fas fa-home">トップ</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to admins_end_users_path do %>
                 <i class="fas fa-users">会員</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to admins_ingredients_path do %>
                 <i class="fas fa-apple-alt">材料</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to admins_comments_path do %>
                 <i class="fas fa-comment">コメント</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to admins_smoothies_path do %>
                 <i class="fas fa-blender">スムージー</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to destroy_admin_session_path, method: :delete  do %>
                 <i class="fas fa-sign-out-alt">ログアウト</i>
               <% end %>
             </li>
           <% else %>
-            <li class="btn">
+            <li>
               <%= link_to root_path do %>
                 <i class="fas fa-home">トップ</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to new_end_user_registration_path do %>
                 <i class="fas fa-pen-alt">新規登録</i>
               <% end %>
             </li>
-            <li class="btn">
+            <li>
               <%= link_to new_end_user_session_path do %>
                 <i class="fas fa-sign-in-alt">ログイン</i>
               <% end %>

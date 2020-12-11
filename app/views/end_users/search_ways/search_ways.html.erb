@@ -14,10 +14,10 @@
             <div class="box-header">
               <p>新着から</p>
             </div>
-            <!--<div class="search-icon">-->
-            <!--  <i class="fab fa-hotjar"></i>-->
-            <!--</div>-->
           <% end %>
+          <div class="search-way-image-container">
+            <%#= image_tag 'new_logo.jpg', class: "search-way-image" %>
+          </div>
         </div>
         <div class="search-way-box">
           <%= link_to  smoothie_ranking_end_users_smoothies_path do %>
@@ -25,6 +25,9 @@
               <p>ランキングから</p>
             </div>
           <% end %>
+          <div class="search-way-image-container">
+            <%#= image_tag 'ranking_logo.jpg', class: "search-way-image" %>
+          </div>
         </div>
       </div>
       <div class="search-way-boxes">
@@ -36,6 +39,9 @@
             </div>
               <%= f.submit "検索", class:"btn btn-default" %>
           <% end %>
+          <div class="search-way-image-container">
+            <%#= image_tag 'search_logo.jpg', class: "search-way-image" %>
+          </div>
         </div>
         <div class="search-way-box">
           <%= link_to end_users_ingredients_path do %>
@@ -43,6 +49,9 @@
               <p>自分で作る</p>
             </div>
           <% end %>
+          <div class="search-way-image-container">
+            <%#= image_tag 'juicer_logo.jpg', class: "search-way-image" %>
+          </div>
         </div>
       </div>
     </div>

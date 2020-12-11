@@ -55,11 +55,40 @@
   line-height: 34px;
 }
 
-.search-icon {
-  text-align: center;
+// .search-icon {
+//   text-align: center;
+// }
+
+// .fa-hotjar {
+//   font-size: 70px;
+//   margin-top: 30px;
+// }
+
+.search-way-image-container {
+  height: 156px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.fa-hotjar {
-  font-size: 70px;
-  margin-top: 30px;
+.search-way-image {
+  width: 40%;
+  height: 40%;
 }
+
+// .new-image {
+//   background-image: image-url('new_logo.jpg');
+//   background-size: cover;
+// }
+
+// .ranking-image {
+//   background-image: image-url('ranking_logo.jpg');
+// }
+
+// .search-image {
+//   background-image: image-url('search_logo.jpg');
+// }
+
+// .juicer-image {
+//   background-image: image-url('juicer_logo.jpg');
+// }
