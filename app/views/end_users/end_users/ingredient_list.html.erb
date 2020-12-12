@@ -1,18 +1,18 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col-sm-3">
       <%= render partial: "end_users/end_users/mypage_sidebar", locals: { end_user: current_end_user } %>
     </div>
-    <div class="col-xs-9">
+    <div class="col-sm-9">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-sm-12">
           <div class="page-title">
             <h2><span><%= current_end_user.name %>さんが追加した材料</span></h2>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-offset-1 col-xs-10">
+        <div class="col-sm-offset-1 col-sm-10">
           <table class="table">
             <thead>
               <tr>

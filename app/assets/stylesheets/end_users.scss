@@ -59,7 +59,19 @@
 }
 
 @media screen and (max-width:425px) {
-  .col-xs-3 {
-    float: none;
+  .mypage-side-bar {
+    margin-top: 50px;
+  }
+
+  .end-users-table td span  {
+    display: none;
+  }
+
+  .ingredient-actions {
+    display: block;
+  }
+
+  .form-control {
+    display: inline-block;
   }
 }

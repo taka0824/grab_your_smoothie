@@ -1,14 +1,14 @@
 <div class="container-fluid">
   <% if @notifications.exists? %>
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-sm-12">
         <div class="page-title">
           <h2><span>通知一覧</span></h2>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="activity-list col-xs-6 col-xs-offset-3">
+      <div class="activity-list col-sm-6 col-sm-offset-3">
         <table class="table notification-table">
           <% @notifications.each do |notification| %>
             <tr>
@@ -50,7 +50,7 @@
     </div>
   <% else %>
    <div class="row">
-      <div class="col-xs-12">
+      <div class="col-sm-12">
         <div class="page-title">
           <h2><span>通知はありません</span></h2>
         </div>

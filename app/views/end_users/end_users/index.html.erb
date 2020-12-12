@@ -1,19 +1,19 @@
 <div class="container-fluid">
   <div class="row">
-    <div class='col-xs-12'>
+    <div class='col-sm-12'>
       <div class="page-title">
         <h2><span>ユーザー一覧</span></h2>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
       <table class='table end-users-table'>
         <thead>
           <tr>
             <th>ユーザー名</th>
-            <th>スムージー投稿</th>
-            <th>いいねした投稿</th>
+            <th>投稿</th>
+            <th>いいね</th>
           </tr>
         </thead>
         <tbody>
@@ -26,10 +26,10 @@
                 <% end %>
               </td>
               <td>
-                <%= link_to end_user.smoothies.count, recipe_list_end_users_end_user_path(end_user) %>レシピ
+                <%= link_to end_user.smoothies.count, recipe_list_end_users_end_user_path(end_user) %><span>レシピ</span>
               </td>
               <td>
-                <%= link_to end_user.favorites.count, favorite_list_end_users_end_user_path(end_user) %>レシピ
+                <%= link_to end_user.favorites.count, favorite_list_end_users_end_user_path(end_user) %><span>レシピ</span>
               </td>
             </tr>
           <% end %>

@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <div class="page-title">
-        <h3><span><%= @ingredient.name %>100gあたりに含まれる栄養素一覧</span></h3>
+        <h2><span><%= @ingredient.name %>100gあたりに含まれる栄養素一覧</span></h2>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-xs-offset-4">
+    <div class="col-sm-4 col-sm-offset-4">
       <table class="table">
         <thead>
           <tr>
@@ -73,7 +73,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-xs-offset-4">
+    <div class="col-sm-4 col-sm-offset-4 col-xs-12">
       <div class="form-to-add-juicer">
         <%= form_with model: @juicer_ingredient, url: end_users_juicer_ingredients_path, class:"form-inline end-users-ingredient-show-form", local: true do |f| %>
           <%= render partial: "layouts/error_message", locals: {model: f.object} %>
