@@ -143,7 +143,7 @@ nav.globalMenuSp {
   width: 100%;
   opacity: 0;
   transition: opacity .6s ease, visibility .6s ease;
-  display: none;
+  visibility: hidden;
 }
 
 nav.globalMenuSp ul {
@@ -174,7 +174,7 @@ nav.globalMenuSp ul li a {
 
 /* このクラスを、jQueryで付与・削除する */
 nav.globalMenuSp.active {
-  display: block;
+  visibility: visible;
   opacity: 100;
 
 }
@@ -396,6 +396,10 @@ footer {
 }
 
 @media screen and (max-width:425px) {
+  body {
+    background-position: 0%;
+  }
+
   .logo-word {
     font-size: 20px;
   }
@@ -426,7 +430,7 @@ footer {
   .guideline-text {
     font-size: 13px;
   }
-  
+
   .guideline-list {
     font-size: 12px;
     padding: 20px 0 20px 0;
