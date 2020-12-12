@@ -58,8 +58,8 @@
   text-align: center;
 }
 
-// @media screen and (max-width:425px) {
-//   #mypage-sidebar-wrapper {
-//     float: none;
-//   }
-// }
+@media screen and (max-width:425px) {
+  .col-xs-3 {
+    float: none;
+  }
+}

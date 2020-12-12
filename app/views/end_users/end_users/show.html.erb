@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-3", id="mypage-sidebar-wrapper">
+    <div class="col-sm-3">
       <%= render partial: "end_users/end_users/mypage_sidebar", locals: { end_user: @end_user } %>
     </div>
-    <div class="col-xs-9">
+    <div class="col-sm-9">
       <% if @smoothie == nil %>
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-sm-12">
             <div class="page-title">
               <h3><span>おすすめスムージはまだ登録されていません</span></h3>
             </div>
@@ -14,14 +14,14 @@
         </div>
       <% else %>
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-sm-12">
             <div class="page-title">
               <h2><span><%= @end_user.name %>さんおすすめレシピ</span></h2>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class='col-xs-4'>
+          <div class='col-sm-4'>
             <div class="smoothie_image">
               <%= attachment_image_tag @smoothie, :image, :fill, 200, 200, class: "image-frame", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
             </div>
@@ -43,12 +43,12 @@
               <%= @smoothie.introduction %>
             </div>
           </div>
-          <div class="col-xs-4">
+          <div class="col-sm-4">
             <div class="ingredients-table">
               <%= render partial: "end_users/ingredients/total_ingredients_table", locals: { smoothie: @smoothie } %>
             </div>
           </div>
-          <div class='col-xs-4'>
+          <div class='col-sm-4'>
             <div class="nutrients-table">
               <%= render partial: "end_users/smoothies/total_nutrients_table", locals: { smoothie_ingredients: @smoothie.smoothie_ingredients} %>
             </div>
