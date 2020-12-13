@@ -62,6 +62,10 @@
   justify-content: center;
 }
 
+.add-ingredient-button {
+  text-align: center;
+}
+
 @media screen and (max-width:425px) {
   #ingredient-show-form-control {
     display: inline-block;
