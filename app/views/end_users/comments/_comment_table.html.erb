@@ -4,19 +4,19 @@
   <table class="table">
     <thead>
       <tr class="row">
-        <th class="col-xs-3">作成日時</th>
-        <th class="col-xs-2">ユーザー名</th>
-        <th class="col-xs-6">コメント</th>
-        <th class="col-xs-1"></th>
+        <th class="col-sm-3">作成日時</th>
+        <th class="col-sm-2">ユーザー名</th>
+        <th class="col-sm-6">コメント</th>
+        <th class="col-sm-1"></th>
       </tr>
     </thead>
     <tbody>
       <% comments.each do |comment| %>
         <tr class="row">
-          <td class="col-xs-3"><%= comment.created_at.to_s(:datetime_jp) %></td>
-          <td class="col-xs-2"><%= comment.end_user.name %></td>
-          <td class="col-xs-6"><%= comment.content %></td>
-          <td class="col-xs-1">
+          <td class="col-sm-3"><%= comment.created_at.to_s(:datetime_jp) %></td>
+          <td class="col-sm-2"><%= comment.end_user.name %></td>
+          <td class="col-sm-6"><%= comment.content %></td>
+          <td class="col-sm-1">
             <% if current_end_user == comment.end_user %>
               <%= link_to end_users_smoothy_comment_path(smoothie, comment), remote: true, method: :delete, data: {confirm: "削除しますか？"} do %>
                 <button class="btn btn-danger">削除</button>

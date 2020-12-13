@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <div class='page-title'>
         <h2><span>ジューサーの中身</span></h2>
       </div>
@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <% if @juicer_ingredients.any? %>
-      <div class="col-xs-6">
+      <div class="col-sm-6">
         <div class="error-messages">
           <%= render partial: "layouts/error_message", locals: {model: @juicer_ingredient} %>
         </div>
@@ -18,17 +18,18 @@
         </div>
         <div class="buttons-below-ingredient-table">
           <%= link_to end_users_ingredients_path do %>
-            <button class='btn btn-success'>材料を追加する</button>
+            <button class="btn btn-success", id="ingredient-juicer-button">材料を追加する</button>
           <% end %>
-          <%= link_to new_end_users_smoothy_path, data: {"turbolinks" => false} do %>
-            <button class="btn btn-primary">レシピ保存画面へ</button>
+          <%#= link_to new_end_users_smoothy_path, data: {"turbolinks" => false} do %>
+          <%= link_to new_end_users_smoothy_path do %>
+            <button class="btn btn-primary", id="ingredient-juicer-button">レシピ保存画面へ</button>
           <% end %>
           <%= link_to destroy_all_end_users_juicer_ingredients_path, method: :delete, data: {confirm: "削除しますか？"} do %>
-            <btn class="btn btn-danger">ジューサーを空にする</btn>
+            <btn class="btn btn-danger", id="ingredient-juicer-button">ジューサーを空にする</btn>
           <% end %>
         </div>
       </div>
-      <div class="col-xs-6">
+      <div class="col-sm-6">
         <div class="juicer-ingredients-nutrient-table">
           <%= render partial: "end_users/juicer_ingredients/total_juicer_ingredients_nutrients", locals: { juicer_ingredients: @juicer_ingredients } %>
         </div>

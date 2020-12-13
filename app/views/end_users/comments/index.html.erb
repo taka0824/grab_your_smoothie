@@ -1,23 +1,23 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <div class="page-title">
         <h2><span>コメント一覧</span></h2>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col-sm-3">
       <div class="comment-image">
         <%= attachment_image_tag @smoothie, :image, :fill, 400, 400, class: "image-frame", format:'jpeg',fallback:"no_image.jpg",size:"400x400"%>
       </div>
       <%= @smoothie.introduction %><br>
     </div>
-    <div class="col-xs-9">
-      <div class='comment_table'>
+    <div class="col-sm-9">
+      <div class='comment-table'>
         <%= render partial: "end_users/comments/comment_table", locals: { comments: @comments, smoothie: @smoothie} %>
       </div>
-      <div class="comment_form">
+      <div class="comment-form">
         <%= render partial: "end_users/comments/comment_form", locals: { smoothie: @smoothie, comment: @comment } %>
       </div>
     </div>

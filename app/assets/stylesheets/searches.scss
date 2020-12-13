@@ -1,3 +1,19 @@
 // Place all the styles related to the searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ingredient-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+#ingredient-search-no-item-form {
+  width: 290px;
+}
+
+@media screen and (max-width:425px) {
+  #ingredient-search-no-item-form-button {
+    display: block;
+    width: 100%;
+  }
+}

@@ -6,7 +6,7 @@
           <td class="col-xs-4"><%= ingredient.ingredient.name %></td>
           <td class="col-xs-7">
             <%= form_with model: ingredient, url: end_users_juicer_ingredient_path(ingredient), class: "form-inline", remote: true do |f| %>
-              <%= f.text_field :amount, class: "form-control" %> グラム
+              <%= f.text_field :amount, class: "form-control", id: "juicer-ingredients-show-form-control" %> g
               <%= f.submit "変更", class:"btn btn-primary" %>
             <% end %>
           </td>

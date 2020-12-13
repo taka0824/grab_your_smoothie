@@ -1,79 +1,79 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <div class="page-title">
         <h2><span>材料新規登録</span></h2>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
-      <p class="hankaku-caution">※数値は半角数字でご入力ください<br>※材料名と~グラムあたりの栄養素量欄は必ずご記入ください(それ以外の空欄には自動で0が入ります)</p>
+    <div class="col-sm-12">
+      <p class="hankaku-caution">※数値は半角数字でご入力ください<br>※材料名と~グラムあたりの栄養素量欄は必ずご記入ください<br>(それ以外の空欄には自動で0が入ります)</p>
     </div>
   </div>
   <div class="row">
     <%= form_with model: @ingredient,url: confirm_end_users_ingredients_path, class: "form-inline", method: :get, local: true do |f| %>
-      <div class="col-xs-6 col-xs-offset-3">
+      <div class="col-sm-6 col-sm-offset-3">
         <table class="table">
           <tr>
             <th><%= f.label :name_hiragana, "材料名" %></th>
-            <td><%= f.text_field :name, class: "form-control" %></td>
+            <td><%= f.text_field :name, class: "form-control",id: "ingredient-new-form-control" %></td>
           </tr>
           <tr>
             <th><%= f.label :gram, "〜グラムあたりの栄養素量" %></th>
-            <td><%= f.text_field :gram, value: @gram, class: "form-control" %> g</td>
+            <td><%= f.text_field :gram, value: @gram, class: "form-control",id: "ingredient-new-form-control" %> g</td>
           </tr>
           <tr>
             <th><%= f.label :energy, "エネルギー" %></th>
-            <td><%= f.text_field :energy, class: "form-control" %> kcal</td>
+            <td><%= f.text_field :energy, class: "form-control",id: "ingredient-new-form-control" %> kcal</td>
           </tr>
           <tr>
             <th><%= f.label :protein, "タンパク質" %></th>
-            <td><%= f.text_field :protein, class: "form-control" %> g</td>
+            <td><%= f.text_field :protein, class: "form-control",id: "ingredient-new-form-control" %> g</td>
           </tr>
           <tr>
             <th><%= f.label :carb, "糖質" %></th>
-            <td><%= f.text_field :carb, class: "form-control" %> g</td>
+            <td><%= f.text_field :carb, class: "form-control",id: "ingredient-new-form-control" %> g</td>
           </tr>
           <tr>
             <th><%= f.label :lipid, "脂質" %></th>
-            <td><%= f.text_field :lipid, class: "form-control" %> g</td>
+            <td><%= f.text_field :lipid, class: "form-control",id: "ingredient-new-form-control" %> g</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_a, "ビタミンA" %></th>
-            <td><%= f.text_field :vitamin_a,class: "form-control" %> μgRAE</td>
+            <td><%= f.text_field :vitamin_a,class: "form-control",id: "ingredient-new-form-control" %> μgRAE</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b1, "ビタミンB1" %></th>
-            <td><%= f.text_field :vitamin_b1,class: "form-control" %> mg</td>
+            <td><%= f.text_field :vitamin_b1,class: "form-control",id: "ingredient-new-form-control" %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b2, "ビタミンB2" %></th>
-            <td><%= f.text_field :vitamin_b2,class: "form-control" %> mg</td>
+            <td><%= f.text_field :vitamin_b2,class: "form-control",id: "ingredient-new-form-control" %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b6, "ビタミンB6" %></th>
-            <td><%= f.text_field :vitamin_b6,class: "form-control" %> mg</td>
+            <td><%= f.text_field :vitamin_b6,class: "form-control",id: "ingredient-new-form-control" %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_b12, "ビタミンB12" %></th>
-            <td><%= f.text_field :vitamin_b12,class: "form-control" %> μg</td>
+            <td><%= f.text_field :vitamin_b12,class: "form-control",id: "ingredient-new-form-control" %> μg</td>
           </tr>
           <tr>
             <th> <%= f.label :vitamin_c, "ビタミンC" %></th>
-            <td><%= f.text_field :vitamin_c,class: "form-control" %> mg</td>
+            <td><%= f.text_field :vitamin_c,class: "form-control",id: "ingredient-new-form-control" %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_d, "ビタミンD" %></th>
-            <td><%= f.text_field :vitamin_d,class: "form-control" %> μg</td>
+            <td><%= f.text_field :vitamin_d,class: "form-control",id: "ingredient-new-form-control" %> μg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_e, "ビタミンE" %></th>
-            <td><%= f.text_field :vitamin_e,class: "form-control" %> mg</td>
+            <td><%= f.text_field :vitamin_e,class: "form-control",id: "ingredient-new-form-control" %> mg</td>
           </tr>
           <tr>
             <th><%= f.label :vitamin_k, "ビタミンK" %></th>
-            <td><%= f.text_field :vitamin_k,class: "form-control" %> μg</td>
+            <td><%= f.text_field :vitamin_k,class: "form-control",id: "ingredient-new-form-control" %> μg</td>
           </tr>
         </table>
         <%= f.submit "追加", name: "confirm", class: "btn btn-primary center-block" %>

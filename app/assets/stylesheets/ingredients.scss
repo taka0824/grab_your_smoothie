@@ -23,16 +23,6 @@
 //   margin:5px;
 // }
 
-.add-ingredient-button {
-  display: flex;
-  justify-content: center;
-}
-
-.ingredient-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
 .last-confirm {
   text-align: center;
 }
@@ -63,18 +53,43 @@
 .ingredient-actions {
   display: flex;
   justify-content: space-around;
-}
-
-.ingredient-search {
   margin-bottom: 30px;
-}
-
-#no-item-form {
-  width: 290px;
 }
 
 .ingredient-search-no-item {
   margin-bottom: 30px;
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width:425px) {
+  #ingredient-show-form-control {
+    display: inline-block;
+    width: auto;
+    margin-bottom: 0;
+  }
+
+  #ingredient-index-form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+  }
+
+  .ingredient-actions {
+    display: block;
+    text-align: center;
+  }
+
+  .ingredient-action {
+    margin: 0 auto 15px auto;
+  }
+
+  #ingredient-new-form-control, #ingredient-edit-form-control {
+    width: 70%;
+    display: inline-block;
+  }
+
+  .hankaku-caution {
+    font-size: 10px;
+  }
 }

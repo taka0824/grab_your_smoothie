@@ -1,24 +1,24 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col-sm-3">
       <%= render partial: "end_users/end_users/mypage_sidebar", locals: { end_user: @smoothie.end_user } %>
     </div>
-    <div class="col-xs-9">
+    <div class="col-sm-9">
        <% if @smoothie == nil %>
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-sm-12">
             <h3>スムージはまだ投稿されていません</h3>
           </div>
         </div>
       <% else %>
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-sm-12">
             <div class="page-title">
               <h2><span>スムージー詳細</span></h2>
             </div>
           </div>
         </div>
-        <div class='col-xs-4'>
+        <div class='col-sm-4'>
           <div id="show-recipe-buttons">
             <%if @smoothie.end_user == current_end_user && @smoothie.is_recommended == false %>
               <div class="update_is_recommended_button">
@@ -56,12 +56,12 @@
             <%= @smoothie.introduction %>
           </div>
         </div>
-        <div class="col-xs-4">
+        <div class="col-sm-4">
           <div class="ingredients-table">
             <%= render partial: "end_users/ingredients/total_ingredients_table", locals: {smoothie: @smoothie } %>
           </div>
         </div>
-        <div class='col-xs-4'>
+        <div class='col-sm-4'>
           <div class="nutrients-table">
             <%= render partial: "end_users/smoothies/total_nutrients_table", locals: {smoothie_ingredients: @smoothie.smoothie_ingredients } %>
           </div>

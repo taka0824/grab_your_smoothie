@@ -393,6 +393,10 @@ footer {
   border-color:#009900;
 }
 
+.unit {
+  display: inline;
+}
+
 @media screen and (max-width:425px) {
   body {
     background-position: 0%;
@@ -417,7 +421,7 @@ footer {
   }
 
   .page-title h2 {
-    font-size: 20px;
+    font-size: 15px;
   }
 
   .about-text {
@@ -425,7 +429,7 @@ footer {
     font-size: 14px;
   }
 
-  .ranking-image-header-wrapper {
+  .top-ranking-image-header-wrapper {
     display: none;
   }
 
@@ -437,4 +441,5 @@ footer {
     font-size: 12px;
     padding: 20px 0 20px 0;
   }
+
 }

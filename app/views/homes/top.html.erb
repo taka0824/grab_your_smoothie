@@ -40,7 +40,7 @@
             <% end %>
             <% if ranking.favorites.count != lastFavorite %>
               <% j = i %>
-              <div class="ranking-image-header-wrapper">
+              <div class="top-ranking-image-header-wrapper">
                 <div class="ranking-image-header">
                   <div class="ranking-number">
                     第<%= j %>位
@@ -58,7 +58,7 @@
               <% lastFavorite = ranking.favorites.count %>
             <% else %>
               <% lastFavorite = ranking.favorites.count %>
-              <div class="ranking-image-header-wrapper">
+              <div class="top-ranking-image-header-wrapper">
                 <div class="ranking-image-header">
                   <div class="ranking-number">
                     第<%= j %>位

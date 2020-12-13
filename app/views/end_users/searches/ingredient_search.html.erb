@@ -1,19 +1,19 @@
 <div class="container-fluid">
   <% if @ingredients.any? %>
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-sm-12">
         <div class="page-title">
           <h2><span>「<%= @word %>」に関連した材料一覧</span></h2>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="ingredients-table col-xs-offset-4 col-xs-4">
+      <div class="ingredients-table col-sm-offset-2 col-sm-8">
         <%= render partial: "end_users/ingredients/ingredients_table", locals: {ingredients: @ingredients } %>
       </div>
     </div>
     <div class="row">
-      <div class="ingredient-buttons col-xs-offset-4 col-xs-4">
+      <div class="ingredient-buttons col-sm-offset-2 col-sm-8">
         <div class="add-ingredient-btn">
           <%= link_to new_end_users_ingredient_path do %>
             <btn class="btn btn-primary">新しく材料を作成する</btn>
@@ -28,24 +28,24 @@
     </div>
   <% else %>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <div class="page-title">
         <h2><span>「<%= @word %>」に関連した材料はありません</span></h2>
       </div>
       <div class="row">
-        <div class="col-xs-offset-4 col-xs-4">
+        <div class="col-sm-offset-2 col-sm-8">
           <div class="ingredient-search ingredient-search-no-item">
             <div class="search-form search-form-no-item">
               <%= form_with url: end_users_searches_ingredient_search_path, class: "form-inline", method: :get, local: true do |f| %>
-                <%= f.text_field :word, id: "no-item-form", class: "form-control", placeholder: "ひらがな/カタカナ/漢字で検索してみよう" %>
-                <%= f.submit "検索", class: "btn btn-default" %>
+                <%= f.text_field :word, id: "ingredient-search-no-item-form", class: "form-control", placeholder: "ひらがな/カタカナ/漢字で検索してみよう" %>
+                <%= f.submit "検索", class: "btn btn-default", id: "ingredient-search-no-item-form-button" %>
               <% end %>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="ingredient-buttons col-xs-offset-4 col-xs-4">
+        <div class="ingredient-buttons col-sm-offset-2 col-sm-8">
           <div class="add-ingredient-btn">
             <%= link_to new_end_users_ingredient_path do %>
               <btn class="btn btn-primary">新しく材料を作成する</btn>

@@ -78,10 +78,8 @@
         <%= form_with model: @juicer_ingredient, url: end_users_juicer_ingredients_path, class:"form-inline end-users-ingredient-show-form", local: true do |f| %>
           <%= render partial: "layouts/error_message", locals: {model: f.object} %>
           <%= f.hidden_field :ingredient_id, :value => @ingredient.id %>
-          <div class="form-group">
             <%= f.label :amount, class: "sr-only" %>
-            <%= f.text_field :amount, class: "form-control" %> g
-          </div>
+            <%= f.text_field :amount, class: "form-control", id:"ingredient-show-form-control" %><p class="unit"> g</p>
           <%= f.submit "追加", class: "submit-button" %>
         <% end %>
       </div>
