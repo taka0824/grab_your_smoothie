@@ -1,6 +1,6 @@
 <div class="mypage-side-bar">
   <h4>
-    <%= end_user.name %>さんのマイページ
+    <%= link_to end_user.name, end_users_end_user_path(end_user) %>さんのマイページ
     <% if end_user.id == current_end_user.id %>
       <%= link_to edit_end_users_end_user_path(end_user.id) do %>
         <span class="link-to-edit"><i class="fas fa-cog"></i></span>
