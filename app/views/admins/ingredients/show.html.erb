@@ -1,20 +1,20 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <div class="page-title">
         <h2><span>材料詳細</span></h2>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <p class="hankaku-caution">※数値は半角数字でご入力ください</p>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <%= form_with model: @ingredient, url: admins_ingredient_path(@ingredient),class: "form-inline", local: true do |f| %>
-        <table class="table admin-ingredient-table">
+    <div class="col-sm-6 col-sm-offset-3">
+      <%= form_with model: @ingredient, url: admins_ingredient_path(@ingredient), local: true do |f| %>
+        <table class="table ingredient-form">
           <thead>
             <tr>
               <th>栄養素</th>

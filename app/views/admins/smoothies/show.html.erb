@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <div class="page-title">
         <h2><span>スムージー詳細</span></h2>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class='col-xs-3'>
+    <div class='col-sm-3'>
       <div class="smoothie_image">
         <%= attachment_image_tag @smoothie, :image, :fill, 300, 300, class:"image-frame", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
       </div>
@@ -29,13 +29,13 @@
       </div>
     </div>
     <% if @smoothie.comments.exists? %>
-      <div class='col-xs-9'>
+      <div class='col-sm-9'>
         <div class="admin-comment-table">
           <%= render partial: "admins/comments/comment_table", locals: {comments: @smoothie.comments.order(created_at: "DESC").page(params[:page]).per(10)} %>
         </div>
       </div>
     <% else %>
-      <div class="col-xs-9">
+      <div class="col-sm-9">
         <h3 class="admins-smoothie-show-comment-title">コメントはありません</h3>
       </div>
     <% end %>

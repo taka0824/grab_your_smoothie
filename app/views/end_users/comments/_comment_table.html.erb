@@ -14,7 +14,7 @@
       <% comments.each do |comment| %>
         <tr class="row">
           <td class="col-sm-3"><%= comment.created_at.to_s(:datetime_jp) %></td>
-          <td class="col-sm-2"><%= comment.end_user.name %></td>
+          <td class="col-sm-2"><%= link_to comment.end_user.name, end_users_end_user_path(comment.end_user) %></td>
           <td class="col-sm-6"><%= comment.content %></td>
           <td class="col-sm-1">
             <% if current_end_user == comment.end_user %>

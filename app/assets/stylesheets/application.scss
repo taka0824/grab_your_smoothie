@@ -280,11 +280,15 @@ footer {
   text-align: center;
 }
 
-.table > tbody > tr:first-of-type > td {
+.table tbody tr:first-of-type td {
   border-top: 0;
 }
 
-.table > tbody > tr > td {
+.table tbody tr td {
+  vertical-align: middle;
+}
+
+.table td {
   vertical-align: middle;
   text-align: center;
 }
@@ -440,6 +444,10 @@ footer {
   .guideline-list {
     font-size: 12px;
     padding: 20px 0 20px 0;
+  }
+
+  .todays-post-links {
+    width: 100%;
   }
 
 }

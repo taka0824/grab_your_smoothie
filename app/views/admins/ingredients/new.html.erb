@@ -1,20 +1,20 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <div class="page-title">
         <h2><span>材料を追加する</span></h2>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-sm-12">
       <p class="hankaku-caution">※数値は半角数字でご入力ください<br>※材料名と~グラムあたりの栄養素量欄は必ずご記入ください(それ以外の空欄には自動で0が入ります)</p>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
-      <%= form_with model: @ingredient,url: confirm_admins_ingredients_path, class: "form-inline", method: :get, local: true do |f| %>
-        <table class="table">
+    <div class="col-sm-6 col-sm-offset-3">
+      <%= form_with model: @ingredient,url: confirm_admins_ingredients_path, method: :get, local: true do |f| %>
+        <table class="table ingredient-form">
           <tr>
             <th><%= f.label :name_hiragana, "材料名" %></th>
             <td><%= f.text_field :name,class: "form-control" %></td>

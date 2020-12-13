@@ -14,26 +14,9 @@
   text-align: center;
 }
 
-// .ingredients-boxes {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
-
-// .ingredient-box {
-//   margin:5px;
-// }
-
 .last-confirm {
   text-align: center;
 }
-
-// .caution {
-//   text-align: center;
-// }
-
-// .caution span {
-//   color: red;
-// }
 
 .hankaku-caution {
   text-align: center;
@@ -50,7 +33,7 @@
   text-align: center;
 }
 
-.ingredient-actions {
+.end-user-ingredient-index-actions {
   display: flex;
   justify-content: space-around;
   margin-bottom: 30px;
@@ -66,31 +49,29 @@
   text-align: center;
 }
 
-@media screen and (max-width:425px) {
-  #ingredient-show-form-control {
-    display: inline-block;
-    width: auto;
-    margin-bottom: 0;
-  }
+.ingredient-form .form-control {
+  display: inline-block;
+  width: 70%;
+}
 
-  #ingredient-index-form-control {
+.ingredient-form tr td {
+  text-align: left;
+}
+
+@media screen and (max-width:425px) {
+  .end-user-ingredient-index-action .form-control {
     display: inline-block;
     width: auto;
     vertical-align: middle;
   }
 
-  .ingredient-actions {
+  .end-user-ingredient-index-actions {
     display: block;
     text-align: center;
   }
 
-  .ingredient-action {
+  .end-user-ingredient-index-action {
     margin: 0 auto 15px auto;
-  }
-
-  #ingredient-new-form-control, #ingredient-edit-form-control {
-    width: 70%;
-    display: inline-block;
   }
 
   .hankaku-caution {
