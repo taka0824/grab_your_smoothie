@@ -19,15 +19,13 @@
           </div>
         </div>
         <div class='col-sm-4'>
-          <div id="show-recipe-buttons">
-            <%if @smoothie.end_user == current_end_user && @smoothie.is_recommended == false %>
-              <div class="update_is_recommended_button">
-                <%= link_to is_recommended_update_end_users_smoothy_path(@smoothie), method: :patch do %>
-                  <button id="is-recommended-button", class="btn btn-primary">おすすめレシピ登録</button>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
+          <%if @smoothie.end_user == current_end_user && @smoothie.is_recommended == false %>
+            <div class="update-is-recommended-button">
+              <%= link_to is_recommended_update_end_users_smoothy_path(@smoothie), method: :patch do %>
+                <button id="is-recommended-button", class="is-recommended-button btn btn-primary">おすすめレシピ登録</button>
+              <% end %>
+            </div>
+          <% end %>
           <div class="smoothie_image show-page-smoothie-box">
             <%= attachment_image_tag @smoothie, :image, :fill, 300, 300, class:"image-frame", format:'jpeg',fallback:"no_image.jpg",size:"200x200"%>
           </div>

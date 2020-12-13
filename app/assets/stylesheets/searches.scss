@@ -7,12 +7,13 @@
   justify-content: space-around;
 }
 
-#ingredient-search-no-item-form {
+// #ingredient-search-no-item-form {
+.ingredient-search .search-form-no-item .form-control {
   width: 290px;
 }
 
 @media screen and (max-width:425px) {
-  #ingredient-search-no-item-form-button {
+  .ingredient-search-no-item-form-button {
     display: block;
     width: 100%;
   }

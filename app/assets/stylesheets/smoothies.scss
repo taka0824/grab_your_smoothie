@@ -72,14 +72,13 @@
   justify-content: center;
 }
 
-#is-recommended-button {
-  margin-bottom : 20px;
+.update-is-recommended-button {
+  display: flex;
+  justify-content: center;
 }
 
-#show-recipe-buttons {
-  display: flex;
-  justify-content: space-around;
-  font-size: 10px;
+.update-is-recommended-button .is-recommended-button {
+  margin-bottom : 20px;
 }
 
 .nutrients-table, .nutrients-table th  {

@@ -59,7 +59,7 @@
 }
 
 @media screen and (max-width:425px) {
-  .end-user-ingredient-index-action .form-control {
+  .end-user-ingredient-index-action .form-control, .form-to-add-juicer .form-control {
     display: inline-block;
     width: auto;
     vertical-align: middle;
@@ -77,4 +77,5 @@
   .hankaku-caution {
     font-size: 10px;
   }
+
 }

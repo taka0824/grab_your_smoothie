@@ -37,8 +37,8 @@
           <div class="ingredient-search ingredient-search-no-item">
             <div class="search-form search-form-no-item">
               <%= form_with url: end_users_searches_ingredient_search_path, class: "form-inline", method: :get, local: true do |f| %>
-                <%= f.text_field :word, id: "ingredient-search-no-item-form", class: "form-control", placeholder: "ひらがな/カタカナ/漢字で検索してみよう" %>
-                <%= f.submit "検索", class: "btn btn-default", id: "ingredient-search-no-item-form-button" %>
+                <%= f.text_field :word, class: "form-control", placeholder: "ひらがな/カタカナ/漢字で検索してみよう" %>
+                <%= f.submit "検索", class: "btn btn-default ingredient-search-no-item-form-button" %>
               <% end %>
             </div>
           </div>

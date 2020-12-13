@@ -6,22 +6,22 @@
   text-align: center;
 }
 
-.buttons-below-ingredient-table {
+.buttons-below-nutrient-table {
   display: flex;
   justify-content:space-around;
 }
 
 @media screen and (max-width:425px) {
-  #juicer-ingredients-show-form-control {
+  .amount-edit-form .form-inline .form-control {
     width: 33%;
     display: inline-block;
   }
 
-  .buttons-below-ingredient-table {
+  .buttons-below-nutrient-table {
     display: block;
   }
 
-  #ingredient-juicer-button {
+  .buttons-below-nutrient-table .ingredient-juicer-button {
     display: block;
     width: 50%;
     margin: 0 auto 15px;

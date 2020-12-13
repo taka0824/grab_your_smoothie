@@ -79,7 +79,7 @@
           <%= render partial: "layouts/error_message", locals: {model: f.object} %>
           <%= f.hidden_field :ingredient_id, :value => @ingredient.id %>
             <%= f.label :amount, class: "sr-only" %>
-            <%= f.text_field :amount, class: "form-control", id:"ingredient-show-form-control" %><p class="unit"> g</p>
+            <%= f.text_field :amount, class: "form-control" %><p class="unit"> g</p>
           <%= f.submit "追加", class: "submit-button" %>
         <% end %>
       </div>
