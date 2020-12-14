@@ -4,7 +4,7 @@
       <% smoothies.each do |smoothie| %>
         <div class="smoothie-box">
           <%= link_to end_users_smoothy_path(smoothie) do %>
-            <%= attachment_image_tag smoothie, :image, :fill, 400, 400, class: "image-frame", format:'jpeg', fallback: "no_image.jpg" %>
+            <%= attachment_image_tag smoothie, :image, :fill, 400, 400, class: "image-frame", format:'jpeg', fallback: "white_logo.jpg" %>
           <% end %>
           <div class="buttons">
             <div id="favorite_buttons_<%= smoothie.id %>", class="favorite-button">
@@ -24,7 +24,7 @@
         <div class="smoothie-box">
           <div class="smoothie-image">
             <%= link_to admins_smoothy_path(smoothie) do %>
-              <%= attachment_image_tag smoothie, :image, :fill, 400, 400, class: "image-frame", format:'jpeg', fallback: "no_image.jpg", size: "400x400" %>
+              <%= attachment_image_tag smoothie, :image, :fill, 400, 400, class: "image-frame", format:'jpeg', fallback: "white_logo.jpg", size: "400x400" %>
             <% end %>
           </div>
         </div>
