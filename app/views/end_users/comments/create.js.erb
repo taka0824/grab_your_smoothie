@@ -1,4 +1,7 @@
 $(".comment-table").html("<%= j(render partial: 'end_users/comments/comment_table', locals: {comments: @comments, smoothie: @smoothie}) %>");
-$("textarea").val('');
 $(".error-messages").html("<%= j(render partial: 'layouts/error_message', locals: { model: @comment}) %>");
 $(".flash-messages").html("<%= j(render partial: 'layouts/flash_messages') %>");
+<% if @comment.errors.full_messages.count == 0 %>
+    $("textarea").val('');
+<% end %>
+<!--エラーがなかった場合はテキストエリアを空にするアクションも通す-->
