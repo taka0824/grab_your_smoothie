@@ -1,6 +1,6 @@
 <%= form_with model: [smoothie, comment], url: end_users_smoothy_comments_path(smoothie), remote: true do |f| %>
   <div class="error-messages">
-    <%= render partial: "layouts/error_message", locals: { model: f.object } %>
+    <%= render partial: "layouts/error_message", locals: { model: comment } %>
   </div>
   <%= f.text_area :content, class:"form-control", placeholder:"コメントを入力" %><br>
   <%= f.submit "送信", class:"btn btn-primary" %>

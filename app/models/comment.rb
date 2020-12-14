@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   validates :content, presence: true
-  validates :content, length: { maximum: 30 }
+  validates :content, length: { maximum: 100 }
 
 end
 
