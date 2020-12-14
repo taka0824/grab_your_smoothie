@@ -26,7 +26,7 @@ class Admins::CommentsController < ApplicationController
       end_user.passive_notifications.destroy_all
     end
     flash[:success] = "コメントを削除しました"
-    redirect_to admins_comments_path
+    redirect_to request.referer
   end
 
 end
