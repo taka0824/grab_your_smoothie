@@ -6,3 +6,4 @@ Refile::MiniMagick.prepend Module.new {
   end
 }
 # image auto orientationの機能
+Refile.backends['store'] = Refile::Backend::FileSystem.new('public/uploads/')

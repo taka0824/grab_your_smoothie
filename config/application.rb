@@ -10,6 +10,7 @@ module Gys
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.paths.add 'lib', eager_load: true # 追加
     config.i18n.default_locale = :ja
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # Settings in config/environments/* take precedence over those specified here.
