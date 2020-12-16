@@ -5,5 +5,4 @@ Refile::MiniMagick.prepend Module.new {
     end
   end
 }
-
 # image auto orientationの機能
