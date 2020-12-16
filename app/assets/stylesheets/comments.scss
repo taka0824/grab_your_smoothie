@@ -7,6 +7,14 @@
   height: 50px;
 }
 
+.comment-emotion {
+  font-size: 25px;
+}
+
+.tr-comment-negative {
+  background-color: #FFB6C1;
+}
+
 @media screen and (max-width:425px) {
   .comment-table thead, .comment-table tbody td:nth-of-type(1) {
     display: none;
