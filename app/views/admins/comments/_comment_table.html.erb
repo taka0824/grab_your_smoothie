@@ -18,7 +18,7 @@
             <%= comment.content %>
           <% end %>
         </td>
-        <td><span><%= comment.score %></span></td>
+        <td class="col-xs-1"><span><%= comment.score %></span></td>
         <td class="col-xs-1">
           <%= link_to admins_comment_path(comment), method: :delete, data: {confirm: "削除しますか？"} do %>
             <button class="btn btn-danger">削除</button>
