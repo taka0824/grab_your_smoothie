@@ -14,7 +14,7 @@ class EndUsers::CommentsController < ApplicationController
     @comment.smoothie_id = @smoothie.id
     @comments = @smoothie.comments.order(created_at: "DESC").page(params[:page]).per(10)
     # 非同期通信のrender先で必要な変数
-    # @comment.score = Language.get_data(comment_params[:content])
+    @comment.score = Language.get_data(comment_params[:content])
     if @comment.save
       @smoothie.create_notification_comment(current_end_user, @comment.id)
       flash.now[:success] = "コメントを投稿しました"
