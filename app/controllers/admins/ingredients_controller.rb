@@ -44,17 +44,19 @@ class Admins::IngredientsController < ApplicationController
     ingredient = Ingredient.find(params[:id])
     ingredient.destroy
     if ingredient.created_by != nil
-      end_user = ingredient.end_user
-      end_user.rule_violation_number += 1
-      end_user.save
-      if end_user.rule_violation_number == 5
-        end_user.update(is_deleted: true, name: "#{end_user.name}" + "(規約違反により退会)")
-        end_user.smoothies.destroy_all
-        end_user.comments.destroy_all
-        end_user.favorites.destroy_all
-        end_user.juicer_ingredients.destroy_all
-        end_user.active_notifications.destroy_all
-        end_user.passive_notifications.destroy_all
+      @end_user = ingredient.end_user
+      NotificationMailer.send_when_rule_violation(@end_user).deliver
+      @end_user.rule_violation_number += 1
+      @end_user.save
+      if @end_user.rule_violation_number == 5
+        NotificationMailer.send_when_rule_violation_resign(@end_user).deliver
+        @end_user.update(is_deleted: true, name: "#{@end_user.name}" + "(規約違反により退会)")
+        @end_user.smoothies.destroy_all
+        @end_user.comments.destroy_all
+        @end_user.favorites.destroy_all
+        @end_user.juicer_ingredients.destroy_all
+        @end_user.active_notifications.destroy_all
+        @end_user.passive_notifications.destroy_all
       end
     end
     flash[:success] = "材料を削除しました"

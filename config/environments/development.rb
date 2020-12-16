@@ -1,5 +1,5 @@
 Rails.application.configure do
-  
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -33,19 +33,20 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true  #falseからtrueに変更
-  config.action_mailer.delivery_method = :smtp 
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     domain: 'smtp.gmail.com',
     port: 587,
     # user_name: Rails.application.credentials.gmail[:user_name],
+    # 上の記述はcredential.ymlファイルに環境変数（アドレス・パスワード）を置いたときの書き方。今回は.envに記述しているため下記の記述
     user_name: ENV['MAIL_USER_NAME'],
     password: ENV['MAIL_PASSWORD'],
     authentication: 'login',
     enable_starttls_auto: true
   }
-  # config.action_mailer.perform_caching = false
-  # mailerの上記コピペした際にコメントアウト
+  config.action_mailer.perform_caching = false
+  # 上一行は元々あった記述
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -70,5 +71,5 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  
+
 end
