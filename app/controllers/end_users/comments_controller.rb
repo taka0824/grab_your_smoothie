@@ -15,7 +15,7 @@ class EndUsers::CommentsController < ApplicationController
     @comments = @smoothie.comments.order(created_at: "DESC").page(params[:page]).per(10)
     # 非同期通信のrender先で必要な変数
     @comment.score = Language.get_data(comment_params[:content])
-    if @comment.score <= -0.5
+    if @comment.score.to_f <= -0.5
       flash.now[:warning] = "コミュニティガイド違反と判断され投稿できませんでした。"
       render "end_users/comments/create.js" and return
     end
