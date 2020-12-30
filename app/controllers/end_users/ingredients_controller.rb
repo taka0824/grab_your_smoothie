@@ -4,17 +4,20 @@ class EndUsers::IngredientsController < ApplicationController
   before_action :convert_nutrients_to_gram_per_100_gram, only: [:create, :update]
 
   def index
-    frequent_ingredients = Ingredient.joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
-    all_ingredients = Ingredient.all
-    @ingredients = []
-    frequent_ingredients.each do |f|
-      @ingredients << f
-    end
-    all_ingredients.each do |a|
-      @ingredients << a
-    end
-    @ingredients = @ingredients.uniq
-    @ingredients = Kaminari.paginate_array(@ingredients).page(params[:page]).per(15)
+    # if params[:created_by_self] == "0" && params[:created_by_other_end_user] == "0" && params[created_by_admin] == "0"
+      frequent_ingredients = Ingredient.joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
+      all_ingredients = Ingredient.all
+      @ingredients = []
+      frequent_ingredients.each do |f|
+        @ingredients << f
+      end
+      all_ingredients.each do |a|
+        @ingredients << a
+      end
+      @ingredients = @ingredients.uniq
+      @ingredients = Kaminari.paginate_array(@ingredients).page(params[:page]).per(15)
+    # else
+    # end
   end
 
   def show
