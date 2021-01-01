@@ -11,16 +11,16 @@
       <div>
         <%= form_with url:end_users_ingredients_path, method: :get, local: true do |f| %>
           <div class="field">
-            <%= f.check_box(:created_by_self) %>
-            <%= f.label(:created_by_self, "自分が作成した材料") %>
+            <%= f.check_box :created_by_self %>
+            <%= f.label :created_by_self, "自分が作成した材料" %>
           </div>
           <div class="field">
-            <%= f.check_box(:created_by_other_end_user) %>
-            <%= f.label(:created_by_other_end_user, "他ユーザーが追加した材料") %>
+            <%= f.check_box :created_by_other_end_user  %>
+            <%= f.label :created_by_other_end_user, "他ユーザーが追加した材料"  %>
           </div>
           <div class="field">
-            <%= f.check_box(:created_by_admin) %>
-            <%= f.label(:created_by_admin, "管理者が追加した材料") %>
+            <%= f.check_box :created_by_admin  %>
+            <%= f.label :created_by_admin, "管理者が追加した材料"  %>
           </div>
           <div class="action">
             <%= f.submit "絞り込み" %>

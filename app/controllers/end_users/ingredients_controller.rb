@@ -4,20 +4,32 @@ class EndUsers::IngredientsController < ApplicationController
   before_action :convert_nutrients_to_gram_per_100_gram, only: [:create, :update]
 
   def index
-    # if params[:created_by_self] == "0" && params[:created_by_other_end_user] == "0" && params[created_by_admin] == "0"
-      frequent_ingredients = Ingredient.joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
-      all_ingredients = Ingredient.all
-      @ingredients = []
-      frequent_ingredients.each do |f|
-        @ingredients << f
-      end
-      all_ingredients.each do |a|
-        @ingredients << a
-      end
-      @ingredients = @ingredients.uniq
-      @ingredients = Kaminari.paginate_array(@ingredients).page(params[:page]).per(15)
-    # else
+
+    frequent_ingredients = Ingredient.joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
+    all_ingredients = Ingredient.all
+
+    # if params[:created_by_self] == "0"
+    #   frequent_ingredients = frequent_ingredients.where.not(created_by: current_end_user)
+    #   all_ingredients = all_ingredients.where.not(created_by: current_end_user)
+    # elsif params[:created_by_admin] == "0"
+    #   frequent_ingredients = frequent_ingredients.where.not(created_by: nil)
+    #   all_ingredients = all_ingredients.where.not(created_by: nil)
+    # elsif params[:created_by_other_end_user] == "0"
+    #   other_users = EndUser.where.not(id: current_end_user)
+    #   frequent_ingredients = frequent_ingredients.where.not(created_by: other_users)
+    #   all_ingredients = all_ingredients.where.not(created_by: other_users)
     # end
+
+    @ingredients = []
+    frequent_ingredients.each do |f|
+      @ingredients << f
+    end
+    all_ingredients.each do |a|
+      @ingredients << a
+    end
+
+    @ingredients = @ingredients.uniq
+    @ingredients = Kaminari.paginate_array(@ingredients).page(params[:page]).per(15)
   end
 
   def show
@@ -91,7 +103,7 @@ class EndUsers::IngredientsController < ApplicationController
     # parameterで受け取った値の中でeach文で使いたい値を配列にしている
     nutrients.each do |nutrient|
       if exclude_string(nutrient[1])
-        # stringだった時下を通る　nutrientはこの時点で配列であるため、配列nutrientの中のどの値を使うのか[] で指定している。配列は左から0,1,2,,,
+        # stringだった時下を通る　eachに渡すnutrientの値はこの時点で配列（配列の中に配列）であるため、配列nutrientの中のどの値を使うのか[] で指定している。配列は左から0,1,2,,,
         if params[:confirm] == "追加"
           @ingredient = current_end_user.ingredients.new(ingredient_params)
           @gram = params[:ingredient][:gram]
