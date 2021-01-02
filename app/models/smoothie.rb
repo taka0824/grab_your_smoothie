@@ -3,6 +3,8 @@ class Smoothie < ApplicationRecord
     has_many :smoothie_ingredients, dependent: :destroy
     has_many :comments, dependent: :destroy
     belongs_to :end_user
+    include Discard::Model
+    default_scope -> { joins(:end_user).merge(EndUser.kept) }
     has_many :ingredients, through: :smoothie_ingredients, source: :ingredient
     has_many :notifications, dependent: :destroy
     attachment :image

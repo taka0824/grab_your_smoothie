@@ -1,10 +1,14 @@
 class Notification < ApplicationRecord
-  
+
   default_scope -> { order(created_at: "DESC") }
   belongs_to :smoothie, optional: true
   belongs_to :comment, optional: true
   belongs_to :visitor, class_name: "EndUser", foreign_key: "visitor_id"
   belongs_to :visited, class_name: "EndUser", foreign_key: "visited_id"
+  include Discard::Model
+  default_scope -> { joins(:visitor).merge(EndUser.kept) }
+  include Discard::Model
+  default_scope -> { joins(:visited).merge(EndUser.kept) }
 
   def how_long_ago
     if (Time.now - self.created_at) <= 60 * 60

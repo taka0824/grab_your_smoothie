@@ -24,7 +24,7 @@
               <td><%= end_user.name %></td>
               <td><%= end_user.rule_violation_number %> 回</td>
               <td>
-                <% if end_user.is_deleted == true %>
+                <% if end_user.discarded_at != nil %>
                   退会済み
                 <% else %>
                   有効
