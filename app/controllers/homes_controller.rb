@@ -6,5 +6,4 @@ class HomesController < ApplicationController
     @all_ranks = Smoothie.joins(:favorites).group(:id).order('count(favorites.smoothie_id) desc').limit(3)
     @new_smoothies = Smoothie.all.order(created_at: "DESC").limit(6)
   end
-  
 end

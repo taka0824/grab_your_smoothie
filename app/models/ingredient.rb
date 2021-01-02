@@ -4,7 +4,6 @@ class Ingredient < ApplicationRecord
   has_many :smoothies, through: :smoothie_ingredients, source: :smoothie
   belongs_to :end_user, foreign_key: "created_by",optional: true
   
-
   validates :name, presence: true
 
   def convert_to_mili(vitamin)

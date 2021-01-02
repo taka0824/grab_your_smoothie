@@ -1,10 +1,12 @@
 class Smoothie < ApplicationRecord
+
+    include Discard::Model
+    default_scope -> { joins(:end_user).merge(EndUser.kept) }
+
     has_many :favorites, dependent: :destroy
     has_many :smoothie_ingredients, dependent: :destroy
     has_many :comments, dependent: :destroy
     belongs_to :end_user
-    include Discard::Model
-    default_scope -> { joins(:end_user).merge(EndUser.kept) }
     has_many :ingredients, through: :smoothie_ingredients, source: :ingredient
     has_many :notifications, dependent: :destroy
     attachment :image
@@ -50,7 +52,7 @@ class Smoothie < ApplicationRecord
       end
       notification.save
     end
-    
+
     def how_long_ago
       if (Time.now - self.created_at) <= 60 * 60
         ((Time.now - self.created_at) / 60).to_i.to_s + "分前"
@@ -60,5 +62,5 @@ class Smoothie < ApplicationRecord
         (Date.today - self.created_at.to_date).to_i.to_s + "日前"
       end
     end
-    
+
 end
