@@ -20,7 +20,7 @@
       <%= link_to root_path do %>
         <button class="btn btn-primary">退会しない</button>
       <% end %>
-      <%= link_to is_deleted_update_end_users_end_user_path(current_end_user), method: :patch do %>
+      <%= link_to discard_end_users_end_user_path(current_end_user), method: :patch do %>
         <button class="btn btn-danger">退会する</button>
       <% end %>
     </div>

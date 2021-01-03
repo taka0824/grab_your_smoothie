@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
     resources :end_users, only: [:show, :index, :destroy, :edit, :update] do
       get :destroy_confirm, on: :collection
-      patch :is_deleted_update, on: :member
+      patch :discard, on: :member
       get :favorite_list, on: :member
       get :recipe_list, on: :member
       get :ingredient_list, on: :member
@@ -42,9 +42,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :destroy] do
       get :todays_comments, on: :collection
     end
-    resources :end_users, only: [:index, :destroy] do
-      patch :is_deleted_update, on: :member
-    end
+    resources :end_users, only: [:index]
     resources :ingredients, only: [:create, :show, :update, :destroy, :index, :new] do
       get :confirm, on: :collection
       get :todays_ingredients, on: :collection

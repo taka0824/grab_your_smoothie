@@ -4,14 +4,12 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  include Discard::Model
+  default_scope -> { kept }
+
   def remember_me
     true
   end
-  
-  scope :active, -> { where(is_deleted:false) }
-  
-  include Discard::Model
-    default_scope -> { kept }
 
   has_many :juicer_ingredients, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -24,13 +22,11 @@ class EndUser < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
   has_many :ingredients, foreign_key: "created_by", dependent: :destroy
-  
-  
-  
+
   validates :name, presence: true
 
   def active_for_authentication?
-    super && (self.is_deleted == false)
+    super && (self.discarded_at == nil)
   end
 
 end

@@ -1,8 +1,8 @@
 class EndUsers::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   def index
-    end_users_with_post = EndUser.active.joins(:smoothies).group(:id).order('count(end_users.id) desc')
-    end_users_without_post = EndUser.active
+    end_users_with_post = EndUser.joins(:smoothies).group(:id).order('count(end_users.id) desc')
+    end_users_without_post = EndUser.all
     @end_users = []
     end_users_with_post.each do |w|
       @end_users <<  w
@@ -55,17 +55,7 @@ class EndUsers::EndUsersController < ApplicationController
   def destroy_confirm
   end
 
-  def is_deleted_update
-    # end_user = EndUser.find(params[:id])
-    # end_user.update(is_deleted: true)
-    # end_user.smoothies.destroy_all
-    # end_user.comments.destroy_all
-    # end_user.favorites.destroy_all
-    # end_user.juicer_ingredients.destroy_all
-    # end_user.active_notifications.destroy_all
-    # end_user.passive_notifications.destroy_all
-    # flash[:success] = "退会しました"
-    # redirect_to root_path
+  def discard
     end_user = EndUser.find(params[:id])
     end_user.discard
     flash[:success] = "退会しました"

@@ -20,13 +20,6 @@ class Admins::CommentsController < ApplicationController
     if @end_user.rule_violation_number == 5
       NotificationMailer.send_when_rule_violation_resign(@end_user).deliver
       @end_user.discard
-      # @end_user.update(is_deleted: true, name: "#{@end_user.name}" + "(規約違反により退会)")
-      # @end_user.smoothies.destroy_all
-      # @end_user.comments.destroy_all
-      # @end_user.favorites.destroy_all
-      # @end_user.juicer_ingredients.destroy_all
-      # @end_user.active_notifications.destroy_all
-      # @end_user.passive_notifications.destroy_all
     end
     flash[:success] = "コメントを削除しました"
     redirect_to request.referer

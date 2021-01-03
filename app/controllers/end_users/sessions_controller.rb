@@ -7,7 +7,7 @@ class EndUsers::SessionsController < Devise::SessionsController
   protected
 
   def reject_end_user
-    @end_user = EndUser.find_by(email: params[:end_user][:email].downcase)
+    @end_user = EndUser.with_discarded.discarded.find_by(email: params[:end_user][:email].downcase)
     if @end_user
       if (@end_user.valid_password?(params[:end_user][:password]) && (@end_user.active_for_authentication? == false))
         flash[:notice] = "退会済みです。"
