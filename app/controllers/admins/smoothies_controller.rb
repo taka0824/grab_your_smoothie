@@ -18,9 +18,11 @@ class Admins::SmoothiesController < ApplicationController
     smoothie = Smoothie.find(params[:id])
     @end_user = smoothie.end_user
     smoothie.destroy
-    NotificationMailer.send_when_rule_violation(@end_user).deliver
-    @end_user.rule_violation_number += 1
-    @end_user.save
+    if @end_user.rule_violation_number < 4
+      NotificationMailer.send_when_rule_violation(@end_user).deliver
+      @end_user.rule_violation_number += 1
+      @end_user.save
+    end
     if @end_user.rule_violation_number == 5
       NotificationMailer.send_when_rule_violation_resign(@end_user).deliver
       @end_user.discard

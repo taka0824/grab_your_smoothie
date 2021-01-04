@@ -3,7 +3,6 @@ class Notification < ApplicationRecord
   default_scope -> { order(created_at: "DESC") }
   include Discard::Model
   default_scope -> { joins(:visitor).merge(EndUser.kept) }
-  include Discard::Model
   default_scope -> { joins(:visited).merge(EndUser.kept) }
 
   belongs_to :smoothie, optional: true
