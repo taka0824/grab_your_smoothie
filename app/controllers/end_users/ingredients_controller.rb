@@ -7,19 +7,6 @@ class EndUsers::IngredientsController < ApplicationController
 
     frequent_ingredients = Ingredient.joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
     all_ingredients = Ingredient.all
-
-    # if params[:created_by_self] == "0"
-    #   frequent_ingredients = frequent_ingredients.where.not(created_by: current_end_user)
-    #   all_ingredients = all_ingredients.where.not(created_by: current_end_user)
-    # elsif params[:created_by_admin] == "0"
-    #   frequent_ingredients = frequent_ingredients.where.not(created_by: nil)
-    #   all_ingredients = all_ingredients.where.not(created_by: nil)
-    # elsif params[:created_by_other_end_user] == "0"
-    #   other_users = EndUser.where.not(id: current_end_user)
-    #   frequent_ingredients = frequent_ingredients.where.not(created_by: other_users)
-    #   all_ingredients = all_ingredients.where.not(created_by: other_users)
-    # end
-
     @ingredients = []
     frequent_ingredients.each do |f|
       @ingredients << f
@@ -27,8 +14,17 @@ class EndUsers::IngredientsController < ApplicationController
     all_ingredients.each do |a|
       @ingredients << a
     end
-
     @ingredients = @ingredients.uniq
+
+    if params[:created_by_self] == "0"
+      @ingredients = @ingredients.select {|v| v.created_by != current_end_user.id}
+    end
+    if params[:created_by_other_end_user] == "0"
+      @ingredients = @ingredients.select {|v| v.created_by == current_end_user.id || v.created_by == nil}
+    end
+    if params[:created_by_admin] == "0"
+      @ingredients = @ingredients.select {|v| v.created_by != nil}
+    end
     @ingredients = Kaminari.paginate_array(@ingredients).page(params[:page]).per(15)
   end
 
