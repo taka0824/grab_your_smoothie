@@ -15,16 +15,6 @@ class EndUsers::IngredientsController < ApplicationController
       @ingredients << a
     end
     @ingredients = @ingredients.uniq
-
-    if params[:created_by_self] == "0"
-      @ingredients = @ingredients.select {|v| v.created_by != current_end_user.id}
-    end
-    if params[:created_by_other_end_user] == "0"
-      @ingredients = @ingredients.select {|v| v.created_by == current_end_user.id || v.created_by == nil}
-    end
-    if params[:created_by_admin] == "0"
-      @ingredients = @ingredients.select {|v| v.created_by != nil}
-    end
     @ingredients = Kaminari.paginate_array(@ingredients).page(params[:page]).per(15)
   end
 
