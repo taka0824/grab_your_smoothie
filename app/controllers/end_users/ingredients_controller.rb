@@ -4,7 +4,6 @@ class EndUsers::IngredientsController < ApplicationController
   before_action :convert_nutrients_to_gram_per_100_gram, only: [:create, :update]
 
   def index
-
     frequent_ingredients = Ingredient.joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
     all_ingredients = Ingredient.all
     @ingredients = []
@@ -15,7 +14,7 @@ class EndUsers::IngredientsController < ApplicationController
       @ingredients << a
     end
     @ingredients = @ingredients.uniq
-
+    
     if params[:created_by_self] == "0"
       @ingredients = @ingredients.select {|v| v.created_by != current_end_user.id}
     end

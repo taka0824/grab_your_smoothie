@@ -8,18 +8,18 @@
   </div>
   <div class="row">
     <div class="col-sm-3">
-      <div>
+      <div class="ingredient-sort-form">
         <%= form_with url:end_users_ingredients_path, method: :get, local: true do |f| %>
           <div class="field">
-            <%= f.check_box :created_by_self %>
-            <%= f.label :created_by_self, "自分が作成した材料" %>
+              <%= f.check_box :created_by_self, {checked: params[:created_by_self] != "0"} %>
+            <%= f.label :created_by_self, "自分が追加した材料" %>
           </div>
           <div class="field">
-            <%= f.check_box :created_by_other_end_user  %>
+            <%= f.check_box :created_by_other_end_user, {checked: params[:created_by_other_end_user] != "0"}   %>
             <%= f.label :created_by_other_end_user, "他ユーザーが追加した材料"  %>
           </div>
           <div class="field">
-            <%= f.check_box :created_by_admin  %>
+            <%= f.check_box :created_by_admin, {checked: params[:created_by_admin] != "0"}   %>
             <%= f.label :created_by_admin, "管理者が追加した材料"  %>
           </div>
           <div class="action">

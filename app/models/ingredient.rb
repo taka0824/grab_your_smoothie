@@ -6,6 +6,8 @@ class Ingredient < ApplicationRecord
 
   validates :name, presence: true
 
+
+
   def convert_to_mili(vitamin)
     (vitamin.to_f * 1000).round(3)
   end

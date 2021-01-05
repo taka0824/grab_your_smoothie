@@ -58,6 +58,12 @@
   text-align: left;
 }
 
+.ingredient-sort-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
 @media screen and (max-width:425px) {
   .end-user-ingredient-index-action .form-control, .form-to-add-juicer .form-control {
     display: inline-block;
