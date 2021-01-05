@@ -14,7 +14,6 @@ class EndUsers::IngredientsController < ApplicationController
       @ingredients << a
     end
     @ingredients = @ingredients.uniq
-    
     if params[:created_by_self] == "0"
       @ingredients = @ingredients.select {|v| v.created_by != current_end_user.id}
     end
@@ -40,11 +39,11 @@ class EndUsers::IngredientsController < ApplicationController
     @ingredient = Ingredient.find(params[:id])
     if (/\A[1-9]\d{0,3}((\.)([1-9]|\d[1-9]|\d{2}[1-9]))?\z/ =~ params[:ingredient][:gram]) != 0 || params[:ingredient][:name] == ""
       flash[:warning] = "材料名と〜グラムあたりの栄養素量欄(半角数字)は必ず入力してください"
-      redirect_to edit_end_users_ingredient_path(@ingredient) and return
+      redirect_to edit_ingredient_path(@ingredient) and return
     end
     if @ingredient.update(ingredient_params)
       flash[:success] = "材料情報を変更しました"
-      redirect_to edit_end_users_ingredient_path(@ingredient)
+      redirect_to edit_ingredient_path(@ingredient)
     end
   end
 
@@ -52,9 +51,9 @@ class EndUsers::IngredientsController < ApplicationController
     Ingredient.find(params[:id]).destroy
     flash[:success] = "材料を削除しました"
     if current_end_user.ingredients.any?
-      redirect_to ingredient_list_end_users_end_user_path(current_end_user)
+      redirect_to ingredient_list_end_user_path(current_end_user)
     else
-      redirect_to end_users_end_user_path(current_end_user)
+      redirect_to end_user_path(current_end_user)
     end
   end
 
@@ -63,7 +62,7 @@ class EndUsers::IngredientsController < ApplicationController
   end
 
   def confirm
-    redirect_to new_end_users_ingredient_path and return if !params[:ingredient]
+    redirect_to new_ingredient_path and return if !params[:ingredient]
     @ingredient = Ingredient.new(ingredient_params)
     @gram = params[:ingredient][:gram]
     if (/\A[1-9]\d{0,3}((\.)([1-9]|\d[1-9]|\d{2}[1-9]))?\z/ =~ params[:ingredient][:gram]) != 0 || params[:ingredient][:name] == ""
@@ -78,7 +77,7 @@ class EndUsers::IngredientsController < ApplicationController
     # p @ingredient
     if @ingredient.save
       flash[:success] = "材料を追加しました。追加した材料はマイページから確認できます。"
-      redirect_to end_users_ingredient_path(@ingredient)
+      redirect_to ingredient_path(@ingredient)
     end
   end
 

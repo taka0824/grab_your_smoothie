@@ -10,7 +10,7 @@
     <div class="col-sm-6 col-sm-offset-3">
       <div class="search-way-boxes">
         <div class="search-way-box">
-          <%= link_to new_smoothies_end_users_smoothies_path do %>
+          <%= link_to new_smoothies_smoothies_path do %>
             <div class="box-header">
               <p>新着から</p>
             </div>
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="search-way-box">
-          <%= link_to  smoothie_ranking_end_users_smoothies_path do %>
+          <%= link_to  smoothie_ranking_smoothies_path do %>
             <div class="box-header">
               <p>ランキングから</p>
             </div>
@@ -32,7 +32,7 @@
       </div>
       <div class="search-way-boxes">
         <div class="search-way-box">
-          <%= form_with url: end_users_searches_recipe_search_path, class: "form-inline end-users-search-ways-form", local: true, method: :get do |f| %>
+          <%= form_with url: searches_recipe_search_path, class: "form-inline end-users-search-ways-form", local: true, method: :get do |f| %>
             <div class="form-group">
               <%= f.label :word, class: "sr-only" %>
               <%= f.text_field :word, class: "form-control",placeholder: "材料名 ホット etc..." %>
@@ -44,7 +44,7 @@
           </div>
         </div>
         <div class="search-way-box">
-          <%= link_to end_users_ingredients_path do %>
+          <%= link_to ingredients_path do %>
             <div class="box-header">
               <p>自分で作る</p>
             </div>

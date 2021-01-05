@@ -22,21 +22,20 @@
           <%= render partial: "end_users/juicer_ingredients/total_juicer_ingredients_nutrients", locals: { juicer_ingredients: @juicer_ingredients } %>
         </div>
         <div class="buttons-below-nutrient-table">
-          <%= link_to end_users_ingredients_path do %>
+          <%= link_to ingredients_path do %>
             <button class="btn btn-success ingredient-juicer-button">材料を追加する</button>
           <% end %>
-          <%#= link_to new_end_users_smoothy_path, data: {"turbolinks" => false} do %>
-          <%= link_to new_end_users_smoothy_path do %>
+          <%= link_to new_smoothy_path do %>
             <button class="btn btn-primary ingredient-juicer-button">レシピ保存画面へ</button>
           <% end %>
-          <%= link_to destroy_all_end_users_juicer_ingredients_path, method: :delete, data: {confirm: "削除しますか？"} do %>
+          <%= link_to destroy_all_juicer_ingredients_path, method: :delete, data: {confirm: "削除しますか？"} do %>
             <btn class="btn btn-danger ingredient-juicer-button">ジューサーを空にする</btn>
           <% end %>
         </div>
       </div>
     <% else %>
       <h3 class="no-ingredient">材料が入っていません</h3>
-      <%= link_to end_users_ingredients_path do %>
+      <%= link_to ingredients_path do %>
         <button class='btn btn-success center-block'>材料を追加する</button>
       <% end %>
     <% end %>

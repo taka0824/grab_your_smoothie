@@ -25,6 +25,17 @@ class EndUser < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
+  
+  def rule_violation_delete_process
+    NotificationMailer.send_when_rule_violation_resign(self).deliver
+    self.update(is_deleted: true, name: "#{self.name}" + "(規約違反により退会)")
+    self.smoothies.destroy_all
+    self.comments.destroy_all
+    self.favorites.destroy_all
+    self.juicer_ingredients.destroy_all
+    self.active_notifications.destroy_all
+    self.passive_notifications.destroy_all
+  end
 
   scope :active, -> { where(is_deleted:false) }
 
