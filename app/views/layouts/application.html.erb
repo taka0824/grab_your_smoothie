@@ -39,7 +39,7 @@
             </li>
             <% if current_end_user.passive_notifications.where(checked: false).any? %>
               <li>
-                <%= link_to end_users_notifications_path do %>
+                <%= link_to notifications_path do %>
                   <span class="notification-container">
                     <i class="fas fa-circle notification-circle"></i><i class="fas fa-bell">通知</i>
                   </span>
@@ -47,28 +47,28 @@
               </li>
             <% else %>
               <li>
-                <%= link_to end_users_notifications_path do %>
+                <%= link_to notifications_path do %>
                   <i class="fas fa-bell">通知</i>
                 <% end %>
               </li>
             <% end %>
             <li>
-              <%= link_to end_users_end_user_path(current_end_user) do %>
+              <%= link_to end_user_path(current_end_user) do %>
                 <i class="fas fa-user">マイページ</i>
               <% end %>
             </li>
             <li>
-              <%= link_to end_users_end_users_path do %>
+              <%= link_to end_users_path do %>
                 <i class="fas fa-users">ユーザー一覧</i>
               <% end %>
             </li>
             <li>
-              <%= link_to end_users_search_ways_path do %>
+              <%= link_to search_ways_path do %>
                 <i class="fas fa-apple-alt">レシピ</i>
               <% end %>
             </li>
             <li>
-              <%= link_to end_users_juicer_ingredients_path do %>
+              <%= link_to juicer_ingredients_path do %>
                 <i class="fas fa-blender">ジューサー</i>
               <% end %>
             </li>
@@ -78,7 +78,7 @@
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_confirm_end_users_end_users_path do %>
+              <%= link_to destroy_confirm_end_users_path do %>
                 <i class="fas fa-door-open resign-button">退会</i>
               <% end %>
             </li>

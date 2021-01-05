@@ -3,7 +3,7 @@
     <% if end_user_signed_in? %>
       <% smoothies.each do |smoothie| %>
         <div class="smoothie-box">
-          <%= link_to end_users_smoothy_path(smoothie) do %>
+          <%= link_to smoothy_path(smoothie) do %>
             <%= attachment_image_tag smoothie, :image, :fill, 400, 400, class: "image-frame", format:'jpeg', fallback: "white_logo.jpg" %>
           <% end %>
           <div class="buttons">
@@ -11,7 +11,7 @@
               <%= render partial: "end_users/smoothies/favorite_button", locals: { smoothie: smoothie } %>
             </div>
             <div class="comment-button">
-              <%= link_to end_users_smoothy_comments_path(smoothie) do %>
+              <%= link_to smoothy_comments_path(smoothie) do %>
                 <i class="fas fa-comment"></i>
               <% end %>
               <%= smoothie.comments.count %>

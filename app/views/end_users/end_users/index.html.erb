@@ -20,16 +20,16 @@
           <% @end_users.each do |end_user| %>
             <tr class="user-record">
               <td>
-                <%= link_to end_users_end_user_path(end_user) do %>
+                <%= link_to end_user_path(end_user) do %>
                   <%= attachment_image_tag end_user.smoothies.find_by(is_recommended: true), :image, :fill, 100, 100, class: "user-index-image", format:'jpeg', fallback: "white_logo.jpg", size: "100x100" %><br>
                   <%= end_user.name %>
                 <% end %>
               </td>
               <td>
-                <%= link_to end_user.smoothies.count, recipe_list_end_users_end_user_path(end_user) %><span>レシピ</span>
+                <%= link_to end_user.smoothies.count, recipe_list_end_user_path(end_user) %><span>レシピ</span>
               </td>
               <td>
-                <%= link_to end_user.favorites.count, favorite_list_end_users_end_user_path(end_user) %><span>レシピ</span>
+                <%= link_to end_user.favorites.count, favorite_list_end_user_path(end_user) %><span>レシピ</span>
               </td>
             </tr>
           <% end %>
