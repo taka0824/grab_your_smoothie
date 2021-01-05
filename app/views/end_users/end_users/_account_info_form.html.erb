@@ -1,4 +1,4 @@
-<%= form_with model: end_user, url: end_users_end_user_path(end_user), remote: true do |f| %>
+<%= form_with model: end_user, url: end_user_path(end_user), remote: true do |f| %>
   <div class="error-messages">
      <%= render partial: "layouts/error_message", locals: { model: f.object } %>
   </div>

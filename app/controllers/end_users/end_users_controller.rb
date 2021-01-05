@@ -22,7 +22,7 @@ class EndUsers::EndUsersController < ApplicationController
   def edit
     @end_user = EndUser.find(params[:id])
     if @end_user.id != current_end_user.id
-      redirect_to edit_end_users_end_user_path(current_end_user.id)
+      redirect_to edit_end_user_path(current_end_user.id)
     end
   end
 

@@ -6,18 +6,18 @@ class EndUsers::JuicerIngredientsController < ApplicationController
     @ingredient = Ingredient.find(params[:juicer_ingredient][:ingredient_id])
     if params[:juicer_ingredient][:amount].to_i == 0
       flash[:warning] = "数量は半角数字でご入力ください"
-      redirect_to end_users_ingredient_path(@ingredient) and return
+      redirect_to ingredient_path(@ingredient) and return
     end
     if current_end_user.juicer_ingredients.find_by(ingredient_id: params[:juicer_ingredient][:ingredient_id]).present?
       juicer_ingredient = current_end_user.juicer_ingredients.find_by(ingredient_id: params[:juicer_ingredient][:ingredient_id])
       juicer_ingredient.amount += params[:juicer_ingredient][:amount].to_i
       juicer_ingredient.save
       flash[:success] = "材料を追加しました"
-      redirect_to end_users_juicer_ingredients_path
+      redirect_to juicer_ingredients_path
     else
       if @juicer_ingredient.save
         flash[:success] = "材料を追加しました"
-        redirect_to end_users_juicer_ingredients_path
+        redirect_to juicer_ingredients_path
       else
         render "end_users/ingredients/show"
       end
@@ -36,7 +36,7 @@ class EndUsers::JuicerIngredientsController < ApplicationController
     if params[:juicer_ingredient][:amount] == "0"
       @juicer_ingredient.destroy
       flash[:success] = "材料を削除しました"
-      redirect_to end_users_juicer_ingredients_path
+      redirect_to juicer_ingredients_path
     else
       # 0以外の数量に変更した時
       flash.now[:success] = "数量を変更しました" if @juicer_ingredient.update(juicer_ingredient_params)
@@ -47,7 +47,7 @@ class EndUsers::JuicerIngredientsController < ApplicationController
   def destroy
     JuicerIngredient.find(params[:id]).destroy
     flash[:success] = "材料を削除しました"
-    redirect_to end_users_juicer_ingredients_path
+    redirect_to juicer_ingredients_path
   end
 
   def destroy_all

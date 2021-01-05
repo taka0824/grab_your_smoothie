@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     sessions: "end_users/sessions",
     registrations: "end_users/registrations"
   }
-  namespace :end_users do
+  scope module: :end_users do
     get "search_ways" => "search_ways#search_ways"
     get "searches/recipe_search" => "searches#recipe_search"
     get "searches/ingredient_search" => "searches#ingredient_search"

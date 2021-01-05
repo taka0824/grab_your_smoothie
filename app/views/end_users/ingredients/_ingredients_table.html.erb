@@ -9,7 +9,7 @@
     <% ingredients.each do |ingredient| %>
       <tr>
         <td>
-          <%= link_to end_users_ingredient_path(ingredient) do %>
+          <%= link_to ingredient_path(ingredient) do %>
             <%= ingredient.name %>
           <% end %>
         </td>

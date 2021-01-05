@@ -73,7 +73,7 @@
         </tbody>
       </table>
       <h3 class="last-confirm">上記の内容で誤りはないですか？</h3>
-      <%= form_with model: @ingredient,url: end_users_ingredients_path, local: true do |f| %>
+      <%= form_with model: @ingredient,url: ingredients_path, local: true do |f| %>
         <%= f.hidden_field :name, :value => @ingredient.name %>
         <%= f.hidden_field :gram, :value => @gram %>
         <%= f.hidden_field :energy, :value => @ingredient.energy %>

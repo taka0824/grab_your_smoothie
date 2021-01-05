@@ -3,7 +3,7 @@ class EndUsers::SmoothiesController < ApplicationController
 
   def new
     if JuicerIngredient.where(end_user_id: current_end_user.id).empty?
-      redirect_to end_users_juicer_ingredients_path
+      redirect_to juicer_ingredients_path
     end
     @smoothie = Smoothie.new
     @juicer_ingredients = JuicerIngredient.where(end_user_id: current_end_user)
@@ -53,7 +53,7 @@ class EndUsers::SmoothiesController < ApplicationController
     id = smoothie.end_user_id
     smoothie.destroy
     flash[:success] = "スムージー投稿を削除しました"
-    redirect_to recipe_list_end_users_end_user_path(id)
+    redirect_to recipe_list_end_user_path(id)
   end
 
   def is_recommended_update
@@ -68,7 +68,7 @@ class EndUsers::SmoothiesController < ApplicationController
   end
 
   private
-  
+
   def smoothie_params
     params.require(:smoothie).permit(:image, :introduction, :is_recommended)
   end

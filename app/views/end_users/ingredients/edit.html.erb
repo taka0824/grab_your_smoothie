@@ -13,7 +13,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <%= form_with model: @ingredient, url: end_users_ingredient_path(@ingredient), local: true do |f| %>
+      <%= form_with model: @ingredient, url: ingredient_path(@ingredient), local: true do |f| %>
         <table class="table ingredient-form">
           <thead>
             <tr>
@@ -86,7 +86,7 @@
         </table>
         <div class="ingredient-edit-buttons">
           <%= f.submit "更新", class:"btn btn-primary submit-button" %>
-          <%= link_to end_users_ingredient_path(@ingredient), method: :delete, data: {confirm: "削除しますか？"} do %>
+          <%= link_to ingredient_path(@ingredient), method: :delete, data: {confirm: "削除しますか？"} do %>
             <btn class="btn btn-danger">削除</btn>
           <% end %>
         </div>

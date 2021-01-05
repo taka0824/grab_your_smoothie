@@ -15,12 +15,12 @@
     <div class="row">
       <div class="ingredient-buttons col-sm-offset-2 col-sm-8">
         <div class="add-ingredient-btn">
-          <%= link_to new_end_users_ingredient_path do %>
+          <%= link_to new_ingredient_path do %>
             <btn class="btn btn-primary">新しく材料を作成する</btn>
           <% end %>
         </div>
         <div class="ingredient-index-btn">
-          <%= link_to end_users_ingredients_path do %>
+          <%= link_to ingredients_path do %>
             <btn class="btn btn-success">材料一覧に戻る</btn>
           <% end %>
         </div>
@@ -36,7 +36,7 @@
         <div class="col-sm-offset-2 col-sm-8">
           <div class="ingredient-search ingredient-search-no-item">
             <div class="search-form search-form-no-item">
-              <%= form_with url: end_users_searches_ingredient_search_path, class: "form-inline", method: :get, local: true do |f| %>
+              <%= form_with url: searches_ingredient_search_path, class: "form-inline", method: :get, local: true do |f| %>
                 <%= f.text_field :word, class: "form-control", placeholder: "ひらがな/カタカナ/漢字で検索してみよう" %>
                 <%= f.submit "検索", class: "btn btn-default ingredient-search-no-item-form-button" %>
               <% end %>
@@ -47,12 +47,12 @@
       <div class="row">
         <div class="ingredient-buttons col-sm-offset-2 col-sm-8">
           <div class="add-ingredient-btn">
-            <%= link_to new_end_users_ingredient_path do %>
+            <%= link_to new_ingredient_path do %>
               <btn class="btn btn-primary">新しく材料を作成する</btn>
             <% end %>
           </div>
           <div class="ingredient-index-btn">
-            <%= link_to end_users_ingredients_path do %>
+            <%= link_to ingredients_path do %>
               <btn class="btn btn-success">材料一覧に戻る</btn>
             <% end %>
           </div>
