@@ -6,17 +6,7 @@ class EndUsers::SearchesController < ApplicationController
       redirect_to request.referer
     else
       @word = params[:word]
-      frequent_ingredients_word_included = Ingredient.where('name like ?',"%#{@word}%").joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
-      ingredients_word_included = Ingredient.where('name like ?',"%#{@word}%")
-
-      @ingredients = []
-      frequent_ingredients_word_included.each do |fw|
-        @ingredients << fw
-      end
-      ingredients_word_included.each do |i|
-        @ingredients << i
-      end
-      @ingredients = @ingredients.uniq
+      @ingredients = Ingredient.where('name like ?',"%#{@word}%").left_joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
       @ingredients = Kaminari.paginate_array(@ingredients).page(params[:page]).per(15)
     end
   end
