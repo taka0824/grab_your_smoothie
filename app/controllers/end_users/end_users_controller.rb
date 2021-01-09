@@ -1,16 +1,7 @@
 class EndUsers::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   def index
-    end_users_with_post = EndUser.active.joins(:smoothies).group(:id).order('count(end_users.id) desc')
-    end_users_without_post = EndUser.active
-    @end_users = []
-    end_users_with_post.each do |w|
-      @end_users <<  w
-    end
-    end_users_without_post.each do |wo|
-      @end_users << wo
-    end
-    @end_users = @end_users.uniq
+    @end_users = EndUser.active.left_joins(:smoothies).group(:id).order('count(end_users.id) desc')
     @end_users = Kaminari.paginate_array(@end_users).page(params[:page]).per(10)
   end
 
@@ -57,13 +48,7 @@ class EndUsers::EndUsersController < ApplicationController
 
   def is_deleted_update
     end_user = EndUser.find(params[:id])
-    end_user.update(is_deleted: true)
-    end_user.smoothies.destroy_all
-    end_user.comments.destroy_all
-    end_user.favorites.destroy_all
-    end_user.juicer_ingredients.destroy_all
-    end_user.active_notifications.destroy_all
-    end_user.passive_notifications.destroy_all
+    end_user.resign_process
     flash[:success] = "退会しました"
     redirect_to root_path
   end

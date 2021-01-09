@@ -4,9 +4,7 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def remember_me
-    true
-  end
+  scope :active, -> { where(is_deleted:false) }
 
   has_many :juicer_ingredients, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -26,6 +24,20 @@ class EndUser < ApplicationRecord
     super && (self.is_deleted == false)
   end
 
+  def remember_me
+    true
+  end
+  
+  def resign_process
+    self.update(is_deleted: true)
+    self.smoothies.destroy_all
+    self.comments.destroy_all
+    self.favorites.destroy_all
+    self.juicer_ingredients.destroy_all
+    self.active_notifications.destroy_all
+    self.passive_notifications.destroy_all
+  end
+
   def rule_violation_delete_process
     NotificationMailer.send_when_rule_violation_resign(self).deliver
     self.update(is_deleted: true, name: "#{self.name}" + "(規約違反により退会)")
@@ -36,7 +48,5 @@ class EndUser < ApplicationRecord
     self.active_notifications.destroy_all
     self.passive_notifications.destroy_all
   end
-
-  scope :active, -> { where(is_deleted:false) }
 
 end
