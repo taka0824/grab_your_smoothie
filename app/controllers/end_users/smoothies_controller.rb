@@ -16,7 +16,15 @@ class EndUsers::SmoothiesController < ApplicationController
   def smoothie_ranking
     # @all_ranks = Smoothie.joins(:favorites).where("created_at between '30.days.ago.beginning_of_day' and 'Date.yesterday.end_of_day'").group(:id).order('count(favorites.smoothie_id) desc').limit(9)
     # 上の記述は今月分のいいねだけを対象
-    @all_ranks = Smoothie.joins(:favorites).group(:id).order('count(favorites.smoothie_id) desc').limit(9)
+    @all_ranks = Smoothie.rank_with_favorite.limit(9)
+    # @all_ranks = Smoothie.joins(:favorites).group(:id).order('count(favorites.smoothie_id) desc').limit(9)
+    # ランキング方法２
+    # @all_ranks = Smoothie.find(Favorite.group(:smoothie_id).order('count(smoothie_id) desc').limit(3).pluck(:smoothie_id)
+    # Favorite.group(:smoothie_id)⇨いいねテーブルをsmoothie_idでグループ化する
+    # order('count(smoothie_id) desc')⇨smoothie_idの数で降順に並べ替え
+    # limit(3).pluck(:smoothie_id)⇨　上から3つだけ取り出して、smoothie_idのみを取り出した配列作成
+    # find(pluckで作成した配列)⇨idで検索
+
   end
 
   def show

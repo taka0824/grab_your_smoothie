@@ -9,6 +9,11 @@ class Smoothie < ApplicationRecord
 
     validates :introduction, length: { maximum: 75 }
 
+    def self.rank_with_favorite
+      joins(:favorites).group(:id).order("count(favorites.smoothie_id) desc")
+    end
+
+
     def favorited_by?(end_user)
       favorites.where(end_user_id: end_user.id).exists?
     end
@@ -48,7 +53,7 @@ class Smoothie < ApplicationRecord
       end
       notification.save
     end
-    
+
     def how_long_ago
       if (Time.now - self.created_at) <= 60 * 60
         ((Time.now - self.created_at) / 60).to_i.to_s + "分前"
@@ -58,5 +63,5 @@ class Smoothie < ApplicationRecord
         (Date.today - self.created_at.to_date).to_i.to_s + "日前"
       end
     end
-    
+
 end
