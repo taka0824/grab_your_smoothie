@@ -27,6 +27,16 @@ class EndUser < ApplicationRecord
   def remember_me
     true
   end
+  
+  def resign_process
+    self.update(is_deleted: true)
+    self.smoothies.destroy_all
+    self.comments.destroy_all
+    self.favorites.destroy_all
+    self.juicer_ingredients.destroy_all
+    self.active_notifications.destroy_all
+    self.passive_notifications.destroy_all
+  end
 
   def rule_violation_delete_process
     NotificationMailer.send_when_rule_violation_resign(self).deliver
