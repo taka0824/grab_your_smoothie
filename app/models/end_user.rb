@@ -24,10 +24,6 @@ class EndUser < ApplicationRecord
     super && (self.is_deleted == false)
   end
 
-  def remember_me
-    true
-  end
-  
   def resign_process
     self.update(is_deleted: true)
     self.smoothies.destroy_all
