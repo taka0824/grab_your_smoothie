@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     registrations: "end_users/registrations"
   }
   scope module: :end_users do
+    get  'inquiry' => 'inquiry#index'              # 入力画面
+    post 'inquiry/confirm' => 'inquiry#confirm'   # 確認画面
+    post 'inquiry/thanks' => 'inquiry#thanks'     # 送信完了画面
+    
     get "search_ways" => "search_ways#search_ways"
     get "searches/recipe_search" => "searches#recipe_search"
     get "searches/ingredient_search" => "searches#ingredient_search"
