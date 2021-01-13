@@ -79,7 +79,7 @@ class EndUsers::IngredientsController < ApplicationController
     params.require(:ingredient).permit(:name,:energy,:protein,:carb,:lipid,:vitamin_a,:vitamin_b1,:vitamin_b2,:vitamin_b6,:vitamin_b12,:vitamin_c,:vitamin_d,:vitamin_e,:vitamin_k)
   end
 
-  def exclude_string(nutrient)
+  def detect_string(nutrient)
     (/\A\d{0,4}((\.)([0-9]|\d[1-9]|\d{1,2}[1-9]|))?\z/ =~ nutrient) != 0
     # stringを弾くメソッドを作成
   end
@@ -88,7 +88,7 @@ class EndUsers::IngredientsController < ApplicationController
     nutrients = params[:ingredient].select {|nut| ['energy', 'protein', 'carb', 'lipid', 'vitamin_a', 'vitamin_b1', 'vitamin_b2','vitamin_b6','vitamin_b12', 'vitamin_c', 'vitamin_d', 'vitamin_e', 'vitamin_k'].any? {|v| v == nut }}
     # parameterで受け取った値の中でeach文で使いたい値を配列にしている
     nutrients.each do |nutrient|
-      if exclude_string(nutrient[1])
+      if detect_string(nutrient[1])
         # stringだった時下を通る　eachに渡すnutrientの値はこの時点で配列（配列の中に配列）であるため、配列nutrientの中のどの値を使うのか[] で指定している。配列は左から0,1,2,,,
         if params[:confirm] == "追加"
           @ingredient = current_end_user.ingredients.new(ingredient_params)
