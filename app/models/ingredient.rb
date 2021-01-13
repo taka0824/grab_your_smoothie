@@ -6,6 +6,10 @@ class Ingredient < ApplicationRecord
 
   validates :name, presence: true
 
+  def self.today
+    range = Date.today.beginning_of_day..Date.today.end_of_day
+    self.where(created_at: range).order(created_at: "DESC")
+  end
 
 
   def convert_to_mili(vitamin)

@@ -6,8 +6,7 @@ class Admins::SmoothiesController < ApplicationController
   end
 
   def todays_smoothies
-    range = Date.today.beginning_of_day..Date.today.end_of_day
-    @smoothies = Smoothie.where(created_at: range).page(params[:page]).per(9)
+    @smoothies = Smoothie.today.page(params[:page]).per(9)
   end
 
   def show

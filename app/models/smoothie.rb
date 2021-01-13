@@ -12,7 +12,11 @@ class Smoothie < ApplicationRecord
     def self.rank_with_favorite
       joins(:favorites).group(:id).order("count(favorites.smoothie_id) desc")
     end
-
+    
+    def self.today
+      range = Date.today.beginning_of_day..Date.today.end_of_day
+      self.where(created_at: range)
+    end
 
     def favorited_by?(end_user)
       favorites.where(end_user_id: end_user.id).exists?
