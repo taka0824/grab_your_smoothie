@@ -1,8 +1,7 @@
 class EndUsers::EndUsersController < ApplicationController
   before_action :authenticate_end_user!
   def index
-    @end_users = EndUser.active.left_joins(:smoothies).group(:id).order('count(end_users.id) desc')
-    @end_users = Kaminari.paginate_array(@end_users).page(params[:page]).per(10)
+    @end_users = EndUser.active.left_joins(:smoothies).group(:id).order('count(end_users.id) desc').page(params[:page]).per(10)
   end
 
   def show
