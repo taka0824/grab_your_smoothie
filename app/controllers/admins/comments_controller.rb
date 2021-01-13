@@ -6,8 +6,7 @@ class Admins::CommentsController < ApplicationController
   end
 
   def todays_comments
-    range = Date.today.beginning_of_day..Date.today.end_of_day
-    @comments = Comment.where(created_at: range).order(created_at: "DESC").page(params[:page]).per(10)
+    @comments = Comment.today.page(params[:page]).per(10)
   end
 
   def destroy
