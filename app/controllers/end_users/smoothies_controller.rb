@@ -79,20 +79,4 @@ class EndUsers::SmoothiesController < ApplicationController
     params.require(:smoothie).permit(:image, :introduction, :is_recommended)
   end
 
-  def image_save(image_file)
-    if Rails.env.development?
-      file_path = "#{Rails.root}/tmp/uploads/store/#{image_file.id}"
-    else
-      file_path = "#{Rails.root}/public/uploads/#{image_file.id}"
-    end
-    image_original = File.open(file_path).read
-    rmagick_image = Refile::MiniMagick::Image.from_blob(image_original).first
-    rmagick_image.auto_orient!
-    rmagick_image.strip!
-    image_rotated = rmagick_image.to_blob
-    File.open(file_path, mode = "wb") do |f|
-      f.write(image_rotated)
-    end
-  end
-
 end
