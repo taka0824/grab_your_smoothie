@@ -4,18 +4,9 @@ class EndUsers::IngredientsController < ApplicationController
   before_action :convert_nutrients_to_gram_per_100_gram, only: [:create, :update]
 
   def index
-    @ingredients = Ingredient.left_joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')
-    # 使用回数０の材料も含めたいのでleft_joins
-    if params[:created_by_self] == "0"
-      @ingredients = @ingredients.select {|v| v.created_by != current_end_user.id}
-    end
-    if params[:created_by_other_end_user] == "0"
-      @ingredients = @ingredients.select {|v| v.created_by == current_end_user.id || v.created_by == nil}
-    end
-    if params[:created_by_admin] == "0"
-      @ingredients = @ingredients.select {|v| v.created_by != nil}
-    end
-    @ingredients = Kaminari.paginate_array(@ingredients).page(params[:page]).per(15)
+    @ingredients = Ingredient.sort_by_used_times_desc
+    @ingredients = @ingredients.filter_by_created_by(params[:created_by_self], params[:created_by_other_end_user], params[:created_by_admin], current_end_user.id)
+    @ingredients = @ingredients.page(params[:page]).per(15)
   end
 
   def show

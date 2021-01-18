@@ -9,10 +9,11 @@ class Smoothie < ApplicationRecord
 
     validates :introduction, length: { maximum: 75 }
 
-    def self.rank_with_favorite
-      joins(:favorites).group(:id).order("count(favorites.smoothie_id) desc")
-    end
-    
+    scope :rank_by_favorite, -> { joins(:favorites).group(:id).order("count(favorites.smoothie_id) desc") }
+    scope :created_at_desc, -> (end_user_id) { where(end_user_id: end_user_id).order(created_at: "DESC")}
+    scope :favorite_created_at_desc, -> { includes(:favorites).order("favorites.created_at desc")}
+
+
     def self.today
       range = Date.today.beginning_of_day..Date.today.end_of_day
       self.where(created_at: range)
