@@ -13,6 +13,20 @@ class Ingredient < ApplicationRecord
     self.where(created_at: range).order(created_at: "DESC")
   end
 
+  def self.filter_by_created_by(user, other, admin, current_end_user_id)
+    array = self
+    other_end_users_ids = EndUser.where.not(id: current_end_user_id)
+    if user == "0"
+      array = array.where(created_by: [other_end_users_ids, nil])
+    end
+    if other == "0"
+      array = array.where(created_by: [current_end_user_id, nil])
+    end
+    if admin == "0"
+      array = array.where.not(created_by: nil)
+    end
+    return array
+  end
 
   def convert_to_mili(vitamin)
     (vitamin.to_f * 1000).round(3)
