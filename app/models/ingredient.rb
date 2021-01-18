@@ -6,7 +6,7 @@ class Ingredient < ApplicationRecord
 
   validates :name, presence: true
 
-  scope :sort_by_used_times_desc, -> { left_joins(:smoothie_ingredients).group(:id)}
+  scope :sort_by_used_times_desc, -> { left_joins(:smoothie_ingredients).group(:id).order('count(smoothie_ingredients.ingredient_id) desc')}
 
   def self.today
     range = Date.today.beginning_of_day..Date.today.end_of_day

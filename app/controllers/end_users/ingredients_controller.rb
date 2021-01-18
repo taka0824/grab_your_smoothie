@@ -5,7 +5,7 @@ class EndUsers::IngredientsController < ApplicationController
 
   def index
     @ingredients = Ingredient.filter_by_created_by(params[:created_by_self], params[:created_by_other_end_user], params[:created_by_admin], current_end_user.id)
-    @ingredients = @ingredients.sort_by_used_times_desc.order('count(smoothie_ingredients.ingredient_id) desc')
+    @ingredients = @ingredients.sort_by_used_times_desc
     @ingredients = @ingredients.page(params[:page]).per(15)
   end
 
