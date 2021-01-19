@@ -5,6 +5,7 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   scope :active, -> { where(is_deleted:false) }
+  scope :order_by_smoothie_number, -> { left_joins(:smoothies).group(:id).order('count(end_users.id) desc')}
 
   has_many :juicer_ingredients, dependent: :destroy
   has_many :favorites, dependent: :destroy
