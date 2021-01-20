@@ -21,7 +21,6 @@ class Admins::IngredientsController < ApplicationController
   end
 
   def confirm
-    redirect_to new_admins_ingredient_path and return if !params[:ingredient]
     @ingredient = Ingredient.new(ingredient_params)
     @gram = params[:ingredient][:gram]
     if (/\A[1-9]\d{0,3}((\.)([1-9]|\d[1-9]|\d{2}[1-9]))?\z/ =~ params[:ingredient][:gram]) != 0 || params[:ingredient][:name] == ""
@@ -75,6 +74,7 @@ class Admins::IngredientsController < ApplicationController
   end
 
   def check_data_type
+    redirect_to new_admins_ingredient_path and return if !params[:ingredient]
     nutrients = params[:ingredient].select {|nut| ['energy', 'protein', 'carb', 'lipid', 'vitamin_a', 'vitamin_b1', 'vitamin_b2','vitamin_b6','vitamin_b12', 'vitamin_c', 'vitamin_d', 'vitamin_e', 'vitamin_k'].any? {|v| v == nut }}
     # parameterで受け取った値の中でeach文で使いたい値を配列にしている
     nutrients.each do |nutrient|
